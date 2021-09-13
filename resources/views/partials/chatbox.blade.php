@@ -6,7 +6,7 @@
         <div class="chatbox-title">HapoLearn</div>
         <div class="row chatbox-message">
             <div class="chatbox-message-logo">
-                <img src="{{ asset('/images/icon-hapo.png') }}" alt="Hapo learn">
+                <img src="{{ asset('/assets/images/icon-hapo.png') }}" alt="Hapo learn">
             </div>
             <div class="chatbox-message-text">
                 HapoLearn xin chào bạn.
@@ -19,5 +19,5 @@
         </a>
         <div class="text-center chat-width">Chat với HapoLearn trong Messenger</div>
     </div>
-    <img class="logo-messenger" alt="Logo messenger" src="{{ asset('/images/logo-msg.png') }}">
+    <img class="logo-messenger" alt="Logo messenger" src="{{ asset('/assets/images/logo-msg.png') }}">
 </div>
