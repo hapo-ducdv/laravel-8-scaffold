@@ -1,0 +1,161 @@
+.why-hapolearn {
+  font-family: "UTM_BryantLG";
+  margin-top: 116px;
+  height: 740px;
+  background-image: url("../assets/images/bg-black.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &-text {
+    margin-top: 300px;
+    margin-left: 20px;
+    color: $cl-while;
+    text-align: center;
+
+    .why-hapolearn-title {
+      font-weight: bold;
+      font-size: 70px;
+      line-height: 86px;
+      text-align: center;
+      letter-spacing: -0.02em;
+      margin-left: 30px;
+      margin-bottom: 5px;
+    }
+
+    .text-content {
+      font-size: 20px;
+      line-height: 25px;
+      letter-spacing: -0.05em;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+  }
+
+  .fa-check-circle {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 7px;
+    align-items: center;
+  }
+
+  .multi-device-img {
+    width: 780px;
+    margin-left: -50px;
+    margin-top: 55px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .mb-img {
+    position: absolute;
+    width: 425px;
+    top: -230px;
+    left: -5px;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px){
+  .why-hapolearn {
+    margin-top: 80px;
+    height: 395px;
+
+    &-text {
+      .why-hapolearn-title {
+        width: 700px;
+        font-size: 50px;
+        line-height: 61px;
+        margin-left: 100px;
+        margin-top: -320px;
+        margin-bottom: 65px;
+      }
+
+      .text-content {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 7px;
+        margin-left: -25px;
+        margin-top: 10px;
+      }
+    }
+
+    .fa-check-circle {
+      font-size: 17px;
+      line-height: 20px;
+      letter-spacing: 5px;
+    }
+
+    .multi-device-img {
+      width: 378px;
+
+      img {
+        width: 100%;
+        margin-top: 35px;
+      }
+    }
+
+    .mb-img {
+      width: 250px;
+      top: -150px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 767px){
+  .why-hapolearn {
+    margin-top: 90px;
+    height: 570px;
+
+    &-text {
+      .why-hapolearn-title {
+        text-align: left;
+        width: 228px;
+        font-size: 40px;
+        line-height: 40px;
+        margin-left: 130px;
+        margin-top: -250px;
+        margin-bottom: 20px;
+      }
+
+      .text-content {
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 6px;
+        margin-top: 10px;
+      }
+    }
+
+    .fa-check-circle {
+      font-size: 16px;
+      line-height: 18px;
+      letter-spacing: -0.02em;
+      margin-right: 9px;
+    }
+
+    .multi-device-img {
+      margin: 0 auto;
+      width: 316px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .mb-img {
+      width: 225px;
+      top: -130px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
