@@ -1,6 +1,6 @@
 <div class="messenger cih">
     <div id="messenger-show" class="chatbox">
-        <div class="d-flex align-items-center justify-content-center float-right btn-close-msg">
+        <div id="btn-close-msg" class="d-flex align-items-center justify-content-center float-right btn-close-msg">
             <i class="fas fa-times"></i>
         </div>
         <div class="chatbox-title">HapoLearn</div>
@@ -19,5 +19,5 @@
         </a>
         <div class="text-center chat-width">Chat với HapoLearn trong Messenger</div>
     </div>
-    <img class="logo-messenger" alt="Logo messenger" src="{{ asset('/assets/images/logo-msg.png') }}">
+    <img id="logo-messenger" class="logo-messenger" alt="Logo messenger" src="{{ asset('/assets/images/logo-msg.png') }}">
 </div>

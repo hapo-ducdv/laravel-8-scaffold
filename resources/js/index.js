@@ -1,20 +1,19 @@
 ﻿$(function () {
-  var n = 0;
+  let n = 0;
 
-  $('.navbar-toggler').click(function() {
+  $('#navbar-toggler').click(function() {
     if (n == 0) {
-      $('.fa-bars').removeClass('fa-bars').addClass('fa-times');
+      $('#icon-navbar-toggler').removeClass('fa-bars').addClass('fa-times');
       $('.cih').hide();
       n = 1;
-    }
-    else {
-      $('.fa-times').removeClass('fa-times').addClass('fa-bars');
+    } else {
+      $('#icon-navbar-toggler').removeClass('fa-times').addClass('fa-bars');
       $('.cih').show();
       n = 0;
     }
   });
 
-  $('.feedback-slide').slick({
+  $('#feedback-slide').slick({
     dots: true,
     infinite: false,
     speed: 300,
@@ -35,15 +34,11 @@
     ]
   });
 
-  $('.btn-close-msg').click(function() {
-    $('#messenger-show', this).removeClass('chatbox');
-  });
-
-  $('.btn-close-msg').click(function() {
+  $('#btn-close-msg').click(function() {
     $('#messenger-show').slideUp();
   });
 
-  $('.logo-messenger').click(function() {
+  $('#logo-messenger').click(function() {
     $('#messenger-show').slideDown();
   });
 });

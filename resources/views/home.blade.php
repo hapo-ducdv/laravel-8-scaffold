@@ -144,7 +144,7 @@
             <p>What other students turned professionals have to say about us after learning with us and reaching their goals</p>
         </div>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner feedback-slide">
+            <div id="feedback-slide" class="carousel-inner feedback-slide">
                 <div class="carousel-item active">
                     <div class="feedback-border">
                         <div class="feedback-border-text">“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”</div>
