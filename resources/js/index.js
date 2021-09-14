@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿$(function () {
   var n = 0;
 
   $('.navbar-toggler').click(function() {

@@ -16,7 +16,7 @@
 
     @include('partials.footer')
 
-    @include('auth.login-register')
+    @include('components.authentication')
 
     @include('partials.chatbox')
 
