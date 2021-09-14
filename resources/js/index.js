@@ -1,15 +1,11 @@
 ﻿$(function () {
-  let n = 0;
-
   $('#navbar-toggler').click(function() {
-    if (n == 0) {
+    if ($('#icon-navbar-toggler').hasClass('fa-bars')) {
       $('#icon-navbar-toggler').removeClass('fa-bars').addClass('fa-times');
       $('.cih').hide();
-      n = 1;
     } else {
       $('#icon-navbar-toggler').removeClass('fa-times').addClass('fa-bars');
       $('.cih').show();
-      n = 0;
     }
   });
 
