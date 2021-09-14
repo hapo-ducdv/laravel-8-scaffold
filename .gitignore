@@ -19,3 +19,10 @@ yarn-error.log
 /public/images
 /public/fonts
 /public/assets
+/resources/js
+/resources/sass
+/resources/assets
+package-lock.json
+package.json
+webpack.mix.js
+routes/web.php
