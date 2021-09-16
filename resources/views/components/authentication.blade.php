@@ -18,19 +18,20 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
                         <div class="container">
-                            <form>
+                            <form id="form-login" method="POST" action="{{ route('login') }}">
+                                @csrf
                                 <div class="form-group">
                                     <label class="form-label" for="username">Username:</label>
-                                    <input type="email" class="form-control" id="username">
+                                    <input type="text" class="form-control" id="username" name="username" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="pwd">Password:</label>
-                                    <input type="password" class="form-control login-pass" id="pwd">
+                                    <input type="password" name="pwd" class="form-control" id="pwd" required>
                                 </div>
                                 <div class="form-group w-100 form-check d-flex align-items-center">
                                     <div class="w-50">
                                         <div class="custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                            <input type="checkbox" class="custom-control-input" id="customControlInline" name="remember" value="1">
                                             <label class="custom-control-label form-control-label" for="customControlInline">Remember me</label>
                                         </div>
                                     </div>
@@ -57,22 +58,46 @@
                     </div>
                     <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
                         <div class="container">
-                            <form>
+                            <form id="form-register" method="POST" action="{{ route('register') }}">
+                                @csrf
+                                @if(session('register_success'))
+                                    <div hidden class="show-modal"></div>
+                                @endif
                                 <div class="form-group">
                                     <label class="form-label" for="rUsername">Username:</label>
-                                    <input type="email" class="form-control" id="rUsername">
+                                    <input type="text" class="register-invalid form-control @error('username') is-invalid @enderror" id="rUsername" name="username" value="{{ old('username') }}" required>
+                                    @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="rEmail">Email:</label>
-                                    <input type="email" class="form-control" id="rEmail">
+                                    <input type="email" class="register-invalid form-control @error('email') is-invalid @enderror" id="rEmail" name="email" value="{{ old('email') }}" required>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="rPwd">Password:</label>
-                                    <input type="password" class="form-control" id="rPwd">
+                                    <input type="password" class="register-invalid form-control @error('password') is-invalid @enderror" id="rPwd" name="password" required>
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="rRepeatPwd">Repeat Password:</label>
-                                    <input type="password" class="form-control" id="rRepeatPwd">
+                                    <input type="password" class="register-invalid form-control @error('password_confirmation') is-invalid @enderror" id="rRepeatPwd" name="password_confirmation" required>
+                                    @error('password_confirmation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="d-flex justify-content-center btn-register">
                                     <button type="submit" class="btn text-uppercase btn-cover btn-register">Register</button>

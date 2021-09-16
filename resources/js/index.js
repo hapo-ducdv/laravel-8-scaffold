@@ -37,4 +37,13 @@
   $('#logo-messenger').click(function() {
     $('#messenger-show').slideDown();
   });
+
+  if ($('.register-invalid').hasClass('is-invalid') || $('#modal-register').hasClass('show-modal-register')) {
+    $('#modalLoginRegister').modal('show');
+    $('#register-tab').tab('show');
+  }
+
+  if ($('#modal-login').hasClass('show-modal-login')) {
+    $('#modalLoginRegister').modal('show');
+  }
 });
