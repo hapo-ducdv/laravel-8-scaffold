@@ -18,12 +18,32 @@
                 <li class="nav-item text-center nav-item-hidden">
                     <a class="nav-link" href="#">Lesson Details</a>
                 </li>
-                <li class="nav-item text-center">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLoginRegister">Login/Register</a>
-                </li>
-                <li class="nav-item text-center profile">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
+
+                @auth
+                    <li class="nav-item text-center dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->username }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-right" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    <li class="nav-item text-center profile">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                @else
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLoginRegister">Login/Register</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </nav>
