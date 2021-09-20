@@ -49,6 +49,11 @@
   .nav-item-hidden {
     display: none;
   }
+
+  .dropdown-item {
+    font-size: 13px;
+    text-transform: capitalize;
+  }
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px){
