@@ -23,9 +23,7 @@ class LessonUserFactory extends Factory
     {
         return [
             'lesson_id' => $this->faker->numberBetween(1, 300),
-            'user_id' => $this->faker->numberBetween(1, 30),
-            'created_at' => now(),
-            'updated_at' => now()
+            'user_id' => $this->faker->numberBetween(1, 30)
         ];
     }
 }

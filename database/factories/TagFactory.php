@@ -24,9 +24,7 @@ class TagFactory extends Factory
     {
         return [
             'name' => Str::random(10),
-            'desc' => $this->faker->text,
-            'created_at' => now(),
-            'updated_at' => now()
+            'desc' => $this->faker->text(255)
         ];
     }
 }

@@ -23,9 +23,7 @@ class CourseTagFactory extends Factory
     {
         return [
             'course_id' => $this->faker->numberBetween(1, 100),
-            'tag_id' => $this->faker->numberBetween(1, 50),
-            'created_at' => now(),
-            'updated_at' => now()
+            'tag_id' => $this->faker->numberBetween(1, 50)
         ];
     }
 }

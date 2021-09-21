@@ -23,9 +23,7 @@ class TeacherFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'intro' => $this->faker->text(255),
-            'created_at' => now(),
-            'updated_at' => now()
+            'intro' => $this->faker->text(255)
         ];
     }
 }

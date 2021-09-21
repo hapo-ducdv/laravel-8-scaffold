@@ -28,9 +28,7 @@ class CourseFactory extends Factory
             'time' => $this->faker->numberBetween(50, 300),
             'teacher_id' => $this->faker->numberBetween(1, 15),
             'image' => '/assets/images/wibu.jpg',
-            'status' => $this->faker->randomElement([0, 1]),
-            'created_at' => now(),
-            'updated_at' => now()
+            'status' => $this->faker->randomElement([0, 1])
         ];
     }
 }

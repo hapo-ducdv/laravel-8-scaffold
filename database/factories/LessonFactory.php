@@ -25,9 +25,7 @@ class LessonFactory extends Factory
             'name' => $this->faker->name,
             'desc' => $this->faker->text(255),
             'course_id' => $this->faker->numberBetween(1, 100),
-            'teacher_id' => $this->faker->numberBetween(1, 15),
-            'created_at' => now(),
-            'updated_at' => now()
+            'teacher_id' => $this->faker->numberBetween(1, 15)
         ];
     }
 }
