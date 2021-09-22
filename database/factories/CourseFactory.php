@@ -24,7 +24,7 @@ class CourseFactory extends Factory
         return [
             'name' => $this->faker->name,
             'desc' => $this->faker->text(190),
-            'price' => 599999,
+            'price' => $this->faker->numberBetween(300000, 3000000),
             'time' => $this->faker->numberBetween(50, 300),
             'teacher_id' => $this->faker->numberBetween(1, 15),
             'image' => '/assets/images/wibu.jpg',
