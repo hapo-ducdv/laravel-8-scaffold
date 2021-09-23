@@ -46,4 +46,7 @@
   if ($('#modal-login').hasClass('show-modal-login')) {
     $('#modalLoginRegister').modal('show');
   }
+
+  $('#teacher').select2();
+  $('#tags').select2();
 });

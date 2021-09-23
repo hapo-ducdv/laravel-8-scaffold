@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse justify-content-end menu" id="navbarSupportedContent">
             <ul class="navbar-nav text-center">
                 <li class="nav-item text-center nav-home">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item text-center active">
-                    <a class="nav-link" href="#">All Sources</a>
+                    <a class="nav-link" href="{{ route('all-courses') }}">All Sources</a>
                 </li>
                 <li class="nav-item text-center nav-item-hidden">
                     <a class="nav-link" href="#">List lesson</a>
