@@ -47,6 +47,13 @@
     $('#modalLoginRegister').modal('show');
   }
 
-  $('#teacher').select2();
-  $('#tags').select2();
+  $('.js-example-basic-multiple').select2();
+
+  $('#tags').select2({
+    placeholder: "Tags"
+  });
+
+  $('#teacher').select2({
+    placeholder: "Teachers"
+  });
 });

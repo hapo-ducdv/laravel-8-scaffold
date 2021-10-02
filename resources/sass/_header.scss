@@ -36,7 +36,15 @@
     }
   }
 
-  .nav-item.active,
+  .nav-item-active{
+    background: $color_hover;
+    border-radius: 17px;
+
+    .nav-link {
+      color: $cl-while;
+    }
+  }
+
   .nav-item:hover {
     background: $color_hover;
     border-radius: 17px;

@@ -9,16 +9,14 @@ use Illuminate\Http\Request;
 
 class AllCoursesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $data = $request->input();
+
         $tags = Tag::all();
         $teachers = Teacher::all();
-        $courses = Course::search()->paginate(14);
+        $courses = Course::search($data)->paginate(config('app.paginate_courses'));
 
-        $data['tags'] = $tags;
-        $data['teachers'] = $teachers;
-        $data['courses'] = $courses;
-
-        return view('all-courses', $data);
+        return view('all-courses', compact(['tags', 'teachers', 'courses']));
     }
 }

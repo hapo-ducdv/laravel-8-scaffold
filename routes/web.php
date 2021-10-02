@@ -17,9 +17,9 @@ use App\Http\Controllers\AllCoursesController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/all-courses', [AllCoursesController::class, 'index'])->name('all-courses');
+Route::get('/courses', [AllCoursesController::class, 'index'])->name('courses');

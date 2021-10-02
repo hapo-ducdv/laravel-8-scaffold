@@ -125,6 +125,14 @@ return [
 
     'remember' => 1,
 
+    'paginate_courses' => 14,
+
+    'ascending' => 'asc',
+    'descending' => 'desc',
+
+    'newest' => 'newest',
+    'oldest' => 'oldest',
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

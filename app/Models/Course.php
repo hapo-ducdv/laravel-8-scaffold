@@ -45,83 +45,61 @@ class Course extends Model
         return $this->belongsToMany(User::class, 'course_users');
     }
 
-    public function scopeSearch($query)
+    public function scopeSearch($query, $data)
     {
         //Keyword
-        if ($keySearch = request()->key_search) {
-            $query = $query->where('name', 'LIKE', '%'.$keySearch.'%')->orWhere('desc', 'LIKE', '%'.$keySearch.'%');
+        if (isset($data['keyword'])) {
+            $keyword = $data['keyword'];
+            $query = $query->where('name', 'LIKE', '%' . $keyword . '%')->orWhere('desc', 'LIKE', '%' . $keyword . '%');
         }
 
         //Tags
-        if ($tags = request()->tags) {
+        if (isset($data['tags'])) {
+            $tags = $data['tags'];
             $query->whereHas('tags', function ($subquery) use ($tags) {
-                $subquery->where('tag_id', $tags);
+                $subquery->whereIn('tag_id', $tags);
             });
         }
 
         //Number lessons
-        if ($numberLessons = request()->number_lessons) {
-            if ($numberLessons == 'asc') {
-                $query->withCount([
-                    'lessons as lessons_count' => function ($subquery) {
-                        $subquery->groupBy('course_id');
-                    }
-                ])->orderBy('lessons_count', 'ASC');
-            }
-
-            if ($numberLessons == 'desc') {
-                $query->withCount([
-                    'lessons as lessons_count' => function ($subquery) {
-                        $subquery->groupBy('course_id');
-                    }
-                ])->orderBy('lessons_count', 'DESC');
-            }
+        if (isset($data['number_lessons'])) {
+            $numberLessons = $data['number_lessons'];
+            $query = $query->withCount([
+                'lessons as lessons_count' => function ($subquery) {
+                    $subquery->groupBy('course_id');
+                }
+            ])->orderBy('lessons_count', $numberLessons);
         }
 
         //Study time
-        if ($studyTime = request()->study_time) {
-            if ($studyTime == 'asc') {
-                $query = $query->orderBy('time', 'ASC');
-            }
-
-            if ($studyTime == 'desc') {
-                $query = $query->orderBy('time', 'DESC');
-            }
+        if (isset($data['study_time'])) {
+            $studyTime = $data['study_time'];
+            $query = $query->orderBy('time', $studyTime);
         }
 
         //Number learners
-        if ($numberLearners = request()->number_learners) {
-            if ($numberLearners == 'asc') {
-                $query->withCount([
-                    'users as users_count' => function ($subquery) {
-                        $subquery->groupBy('course_id');
-                    }
-                ])->orderBy('users_count', 'ASC');
-            }
-
-            if ($numberLearners == 'desc') {
-                $query->withCount([
-                    'users as users_count' => function ($subquery) {
-                        $subquery->groupBy('course_id');
-                    }
-                ])->orderBy('users_count', 'DESC');
-            }
+        if (isset($data['number_learners'])) {
+            $numberLearners = $data['number_learners'];
+            $query = $query->withCount([
+                'users as users_count' => function ($subquery) {
+                    $subquery->groupBy('course_id');
+                }
+            ])->orderBy('users_count', $numberLearners);
         }
 
         //Teacher
-        if ($teacher = request()->teacher) {
-            $query = $query->where('teacher_id', $teacher);
+        if (isset($data['teacher'])) {
+            $teachers = $data['teacher'];
+            $query->whereHas('teachers', function ($subquery) use ($teachers) {
+                $subquery->whereIn('id', $teachers);
+            });
         }
 
         //Status
-        if ($status = request()->status) {
-            if ($status == 'newest') {
-                $query = $query->orderBy('id', 'ASC');
-            }
-
-            if ($status == 'oldest') {
-                $query = $query->orderBy('id', 'DESC');
-            }
+        if (isset($data['status']) && $data['status'] == config('app.oldest')) {
+            $query = $query->orderBy('id', config('app.ascending'));
+        } else {
+            $query = $query->orderBy('id', config('app.descending'));
         }
 
         return $query;

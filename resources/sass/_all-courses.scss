@@ -1,4 +1,4 @@
-#all-courses {
+.all-courses {
   font-family: "UTM BryantLG";
   background: $cl-bg-lr-fc;
   padding-top: 40px;
@@ -86,6 +86,15 @@
 
     .select2{
       margin-left: 10px;
+      margin-bottom: 2px;
+    }
+
+    .select2-search__field::placeholder {
+      font-family: "Open Sans Regular";
+      font-size: 14px;
+      line-height: 19px;
+      font-weight: 600;
+      color: $text_navbar_color;
     }
 
     .select2-selection {
@@ -107,8 +116,8 @@
       font-size: 14px;
       line-height: 19px;
       color: $text_navbar_color;
-      width: 180px;
-      height: 28px;
+      width: 188px;
+      height: 32px;
       background: $cl-while;
       border: 1px solid $bg-newest;
       box-sizing: border-box;
