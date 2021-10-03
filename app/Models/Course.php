@@ -47,13 +47,10 @@ class Course extends Model
 
     public function scopeSearch($query, $data)
     {
-        //Keyword
         if (isset($data['keyword'])) {
-            $keyword = $data['keyword'];
-            $query = $query->where('name', 'LIKE', '%' . $keyword . '%')->orWhere('desc', 'LIKE', '%' . $keyword . '%');
+            $query = $query->where('name', 'LIKE', '%' . $data['keyword'] . '%')->orWhere('desc', 'LIKE', '%' . $data['keyword'] . '%');
         }
 
-        //Tags
         if (isset($data['tags'])) {
             $tags = $data['tags'];
             $query->whereHas('tags', function ($subquery) use ($tags) {
@@ -61,33 +58,26 @@ class Course extends Model
             });
         }
 
-        //Number lessons
         if (isset($data['number_lessons'])) {
-            $numberLessons = $data['number_lessons'];
             $query = $query->withCount([
                 'lessons as lessons_count' => function ($subquery) {
                     $subquery->groupBy('course_id');
                 }
-            ])->orderBy('lessons_count', $numberLessons);
+            ])->orderBy('lessons_count', $data['number_lessons']);
         }
 
-        //Study time
         if (isset($data['study_time'])) {
-            $studyTime = $data['study_time'];
-            $query = $query->orderBy('time', $studyTime);
+            $query = $query->orderBy('time', $data['study_time']);
         }
 
-        //Number learners
         if (isset($data['number_learners'])) {
-            $numberLearners = $data['number_learners'];
             $query = $query->withCount([
                 'users as users_count' => function ($subquery) {
                     $subquery->groupBy('course_id');
                 }
-            ])->orderBy('users_count', $numberLearners);
+            ])->orderBy('users_count', $data['number_learners']);
         }
 
-        //Teacher
         if (isset($data['teacher'])) {
             $teachers = $data['teacher'];
             $query->whereHas('teachers', function ($subquery) use ($teachers) {
@@ -95,7 +85,6 @@ class Course extends Model
             });
         }
 
-        //Status
         if (isset($data['status']) && $data['status'] == config('app.oldest')) {
             $query = $query->orderBy('id', config('app.ascending'));
         } else {

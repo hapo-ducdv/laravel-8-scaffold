@@ -11,7 +11,7 @@ class AllCoursesController extends Controller
 {
     public function index(Request $request)
     {
-        $data = $request->input();
+        $data = $request->all();
 
         $tags = Tag::all();
         $teachers = Teacher::all();
