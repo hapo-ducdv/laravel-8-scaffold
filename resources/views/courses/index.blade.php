@@ -32,7 +32,7 @@
                                         Oldest
                                     </label>
                                 </div>
-                                <select class="teacher js-example-basic-multiple" name="teacher[]" multiple="multiple" id="teacher">
+                                <select name="teacher[]" multiple="multiple" id="teacher">
                                     @foreach($teachers as $teacher)
                                         @if(is_array(request('teacher')))
                                             @foreach(request('teacher') as $choose)
@@ -58,7 +58,7 @@
                                     <option value="asc" {{ request('number_lessons') == config('app.ascending') ? 'selected' : ''}}>Ascending</option>
                                     <option value="desc" {{ request('number_lessons') == config('app.descending') ? 'selected' : ''}}>Descending</option>
                                 </select>
-                                <select class="tags js-example-basic-multiple" name="tags[]" multiple="multiple" id="tags">
+                                <select name="tags[]" multiple="multiple" id="tags">
                                     @foreach($tags as $tag)
                                         @if(is_array(request('tags')))
                                             @foreach(request('tags') as $choose)
@@ -74,8 +74,15 @@
                     </div>
                 </form>
             </div>
+            <div class="row courses">
+                @foreach($courses as $course)
+                    @include('courses.components.card_courses')
+                @endforeach
+            </div>
 
-            @include('components._courses')
+            @if($courses)
+                {{ $courses->appends(request()->all())->onEachSide(1)->links() }}
+            @endif
         </div>
     </div>
 @endsection

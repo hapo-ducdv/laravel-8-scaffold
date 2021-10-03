@@ -47,8 +47,6 @@
     $('#modalLoginRegister').modal('show');
   }
 
-  $('.js-example-basic-multiple').select2();
-
   $('#tags').select2({
     placeholder: "Tags"
   });

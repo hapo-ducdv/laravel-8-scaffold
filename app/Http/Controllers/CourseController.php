@@ -7,7 +7,7 @@ use App\Models\Tag;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
-class AllCoursesController extends Controller
+class CourseController extends Controller
 {
     public function index(Request $request)
     {
@@ -17,6 +17,6 @@ class AllCoursesController extends Controller
         $teachers = Teacher::all();
         $courses = Course::search($data)->paginate(config('app.paginate_courses'));
 
-        return view('all-courses', compact(['tags', 'teachers', 'courses']));
+        return view('courses.index', compact('tags', 'teachers', 'courses'));
     }
 }

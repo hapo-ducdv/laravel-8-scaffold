@@ -30,6 +30,16 @@ class Course extends Model
         return $this->hasMany(Lesson::class, 'course_id', 'id');
     }
 
+    public function getNumberLessonAttribute()
+    {
+        return $this->lessons()->count();
+    }
+
+    public function getTotalTimeAttribute()
+    {
+        return $this->lessons()->sum('time');
+    }
+
     public function teachers()
     {
         return $this->hasOne(Teacher::class, 'id', 'teacher_id');
@@ -45,10 +55,15 @@ class Course extends Model
         return $this->belongsToMany(User::class, 'course_users');
     }
 
+    public function getNumberUserAttribute()
+    {
+        return $this->users()->count();
+    }
+
     public function scopeSearch($query, $data)
     {
         if (isset($data['keyword'])) {
-            $query = $query->where('name', 'LIKE', '%' . $data['keyword'] . '%')->orWhere('desc', 'LIKE', '%' . $data['keyword'] . '%');
+            $query->where('name', 'LIKE', '%' . $data['keyword'] . '%')->orWhere('desc', 'LIKE', '%' . $data['keyword'] . '%');
         }
 
         if (isset($data['tags'])) {
@@ -59,7 +74,7 @@ class Course extends Model
         }
 
         if (isset($data['number_lessons'])) {
-            $query = $query->withCount([
+            $query->withCount([
                 'lessons as lessons_count' => function ($subquery) {
                     $subquery->groupBy('course_id');
                 }
@@ -67,11 +82,11 @@ class Course extends Model
         }
 
         if (isset($data['study_time'])) {
-            $query = $query->orderBy('time', $data['study_time']);
+            $query->orderBy('time', $data['study_time']);
         }
 
         if (isset($data['number_learners'])) {
-            $query = $query->withCount([
+            $query->withCount([
                 'users as users_count' => function ($subquery) {
                     $subquery->groupBy('course_id');
                 }
@@ -86,9 +101,9 @@ class Course extends Model
         }
 
         if (isset($data['status']) && $data['status'] == config('app.oldest')) {
-            $query = $query->orderBy('id', config('app.ascending'));
+            $query->orderBy('id', config('app.ascending'));
         } else {
-            $query = $query->orderBy('id', config('app.descending'));
+            $query->orderBy('id', config('app.descending'));
         }
 
         return $query;
