@@ -67,9 +67,8 @@ class Course extends Model
         }
 
         if (isset($data['tags'])) {
-            $tags = $data['tags'];
-            $query->whereHas('tags', function ($subquery) use ($tags) {
-                $subquery->whereIn('tag_id', $tags);
+            $query->whereHas('tags', function ($subquery) use ($data) {
+                $subquery->whereIn('tag_id', $data['tags']);
             });
         }
 
@@ -94,9 +93,8 @@ class Course extends Model
         }
 
         if (isset($data['teacher'])) {
-            $teachers = $data['teacher'];
-            $query->whereHas('teachers', function ($subquery) use ($teachers) {
-                $subquery->whereIn('id', $teachers);
+            $query->whereHas('teachers', function ($subquery) use ($data) {
+                $subquery->whereIn('id', $data['teacher']);
             });
         }
 
