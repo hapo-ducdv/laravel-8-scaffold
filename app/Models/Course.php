@@ -27,7 +27,7 @@ class Course extends Model
 
     public function lessons()
     {
-        return $this->hasMany(Lesson::class, 'course_id', 'id');
+        return $this->hasMany(Lesson::class);
     }
 
     public function getNumberLessonAttribute()
