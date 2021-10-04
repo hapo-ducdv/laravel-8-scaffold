@@ -34,6 +34,8 @@ $bg-chatbox-message-text: #F1F0F0;
 $cl-login-msg: #3184F7;
 $cl-chat-width: #B3B3B3;
 $cl-bd-lg: #DADADA;
+$bg-newest: #E5E6E7;
+$cl-inp-plac: #BABABA;
 
 @font-face {
   src: url("../assets/fonts/utm_bryantlg.ttf");
@@ -44,5 +46,10 @@ $cl-bd-lg: #DADADA;
 @font-face {
   src: url("../assets/fonts/opensans-bold.ttf");
   font-family: "Open Sans";
+}
+
+@font-face {
+  src: url("../assets/fonts/opensans-regular.ttf");
+  font-family: "Open Sans Regular";
 }
 

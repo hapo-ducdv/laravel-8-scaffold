@@ -46,4 +46,12 @@
   if ($('#modal-login').hasClass('show-modal-login')) {
     $('#modalLoginRegister').modal('show');
   }
+
+  $('#tags').select2({
+    placeholder: "Tags"
+  });
+
+  $('#teacher').select2({
+    placeholder: "Teachers"
+  });
 });
