@@ -7,14 +7,14 @@
         <div class="container">
             <div class="search d-flex">
                 <form class="form-inline" method="GET" action="{{ route('courses') }}">
-                    <a class="btn btn-filter" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="btn btn-filter" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapseFilter">
                         <i class="fas fa-sliders-h"></i>
                         <span>Filter</span>
                     </a>
                     <input type="text" class="form-control input-search" name="keyword" placeholder="Search..." value="{{ request('keyword') }}">
                     <label for="keyword"><i class="fas fa-search"></i></label>
                     <button type="submit" class="btn btn-search">Search</button>
-                    <div class="collapse" id="collapseExample">
+                    <div class="collapse" id="collapseFilter">
                         <div class="d-flex collapse-filter">
                             <div class="collapse-title">
                                 <div class="title">Filter by</div>
@@ -76,7 +76,7 @@
             </div>
             <div class="row courses">
                 @foreach($courses as $course)
-                    @include('courses.components.card_courses')
+                    @include('courses.components.card_course')
                 @endforeach
             </div>
 
