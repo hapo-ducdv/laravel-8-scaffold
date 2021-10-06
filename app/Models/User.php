@@ -26,6 +26,7 @@ class User extends Authenticatable
         'password',
         'username',
         'birthday',
+        'address',
         'avatar',
         'phone',
         'intro',
@@ -53,7 +54,7 @@ class User extends Authenticatable
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class);
+        return $this->belongsToMany(Course::class, 'course_users');
     }
 
     public function lessons()

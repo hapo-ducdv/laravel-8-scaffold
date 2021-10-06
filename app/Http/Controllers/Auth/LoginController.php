@@ -27,7 +27,7 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         if ($this->attemptLogin($request)) {
-            return redirect('/')->with('success', 'Login successfully!');
+            return back()->with('success', 'Login successfully!');
         } else {
             return back()->with('error', 'Incorrect account or password');
         }

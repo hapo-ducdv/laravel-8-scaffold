@@ -3,7 +3,7 @@
         <div class="card-all-courses-body">
             <div class="d-flex w-100 card-all-courses-on">
                 <div class="w-30 card-img">
-                    <img class="rounded-circle" src="{{ $course->image }}" alt="">
+                    <img class="rounded-circle" src='{{ asset("/assets/images/courses/$course->image") }}' alt="">
                 </div>
                 <div class="w-70">
                     <h5 class="card-all-courses-title">{{ $course->name }}</h5>
@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-end more">
-                <a href="#" class="btn">More</a>
+                <a href="{{ route('course_detail', $course->id) }}" class="btn">More</a>
             </div>
             <hr class="horizontal-line">
             <div class="row courses-info">

@@ -54,4 +54,12 @@
   $('#teacher').select2({
     placeholder: "Teachers"
   });
+
+  $("#icon-upload-avatar").click(function () {
+    $("#input-upload-avatar").trigger('click');
+  });
+
+  $("#profile-avatar").click(function () {
+    $("#input-upload-avatar").trigger('click');
+  });
 });

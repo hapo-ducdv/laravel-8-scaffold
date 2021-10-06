@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Teacher;
+use App\Models\Program;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TeacherFactory extends Factory
+class ProgramFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Teacher::class;
+    protected $model = Program::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,10 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'intro' => $this->faker->text(255),
-            'image' => $this->faker->image(public_path('/assets/images/teachers'), 500, 500, 'cats', false)
+            'lesson_id' => $this->faker->numberBetween(1, 600),
+            'name' => $this->faker->name(),
+            'type' => $this->faker->numberBetween(1, 3),
+            'path' => $this->faker->imageUrl(500, 500),
         ];
     }
 }

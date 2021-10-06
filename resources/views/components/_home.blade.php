@@ -17,86 +17,43 @@
 
 <div class="container courses cih">
     <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center html-css-js">
-                    <img src="{{ asset('/assets/images/html-css-js.png') }}" alt="Html, css & js">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Html/Css/js Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                    <a href="#" class="btn">Take This Course</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center laravel">
-                    <img src="{{ asset('/assets/images/laravel-1-white.png') }}" alt="Laravel">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">LARAVEL Tutorial </h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                    <a href="#" class="btn">Take This Course</a>
+        @foreach($courses as $course)
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-img-top d-flex align-items-center justify-content-center html-css-js">
+                        <img class="rounded-circle" src='{{ asset("/assets/images/courses/$course->image") }}' alt="{{ $course->name }}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $course->name }}</h5>
+                        <p class="card-text">{{ $course->desc }}</p>
+                        <a href="{{ route('course_detail', $course->id) }}" class="btn">Take This Course</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center php">
-                    <img src="{{ asset('/assets/images/php-logo.png') }}" alt="Php">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">PHP Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                    <a href="#" class="btn">Take This Course</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
+
     </div>
     <div class="row justify-content-center">
         <span class="other_courses">Other courses</span>
     </div>
     <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center css">
-                    <img src="{{ asset('/assets/images/css.png') }}" alt="Html, css & js">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">CSS Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                    <a href="#" class="btn">Take This Course</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center rails">
-                    <img src="{{ asset('/assets/images/rails.png') }}" alt="Laravel">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Ruby on rails Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                    <a href="#" class="btn">Take This Course</a>
+        @foreach($otherCourses as $course)
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-img-top d-flex align-items-center justify-content-center rails">
+                        <img class="rounded-circle" src='{{ asset("/assets/images/courses/$course->image") }}' alt="{{ $course->name }}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $course->name }}</h5>
+                        <p class="card-text">{{ $course->desc }}</p>
+                        <a href="{{ route('course_detail', $course->id) }}" class="btn">Take This Course</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center java1">
-                    <img src="{{ asset('/assets/images/java1.png') }}" alt="Php">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Java Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                    <a href="#" class="btn">Take This Course</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
     <div class="row justify-content-center">
-        <a class="row view-all" href="#">View All Our Courses
+        <a class="row view-all" href="{{ route('courses') }}">View All Our Courses
             <i class="fas fa-long-arrow-alt-right d-flex arrow-right"></i>
         </a>
     </div>

@@ -49,12 +49,15 @@
       color: $color_card-title;
       font-size: 30px;
       font-weight: bold;
-      line-height: 37px;
+      height: 37px;
+      overflow: hidden;
       letter-spacing: -0.05em;
       margin-bottom: 10px;
     }
 
     .card-text {
+      height: 80px;
+      overflow: hidden;
       font-weight: bold;
       font-size: 14px;
       line-height: 20px;

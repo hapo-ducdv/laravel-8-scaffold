@@ -127,11 +127,43 @@ return [
 
     'paginate_courses' => 14,
 
+    'paginate_home_courses' => 3,
+
+    'paginate_courses_tab_lessons' => 10,
+
+    'paginate_other_courses' => 5,
+
+    'paginate_reviews' => 8,
+
     'ascending' => 'asc',
+
     'descending' => 'desc',
 
     'newest' => 'newest',
+
     'oldest' => 'oldest',
+
+    'i' => 0,
+
+    'max_stars' => 5,
+
+    'four_stars' => 4,
+
+    'three_stars' => 3,
+
+    'two_stars' => 2,
+
+    'one_stars' => 1,
+
+    'join' => 0,
+
+    'check_review' => 0,
+
+    'type_lesson' => 1,
+
+    'type_pdf' => 2,
+
+    'type_video' => 3,
 
     /*
     |--------------------------------------------------------------------------
