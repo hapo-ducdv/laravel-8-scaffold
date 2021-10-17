@@ -27,6 +27,11 @@ class Course extends Model
         'image',
     ];
 
+    public function getNumberCourseAttribute()
+    {
+        return $this->count();
+    }
+
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
@@ -70,6 +75,16 @@ class Course extends Model
         }
 
         return $this->users()->where('user_id', $id)->count();
+    }
+
+    public function getJoinLessonAttribute()
+    {
+        $id = null;
+        if (isset(Auth::user()->id)) {
+            $id = Auth::user()->id;
+        }
+
+        return $this->lessons()->users()->where('user_id', $id)->count();
     }
 
     public function reviews()
@@ -133,7 +148,9 @@ class Course extends Model
         }
 
         if (isset($data['study_time'])) {
-            $query->orderBy('time', $data['study_time']);
+            $query = $query->withSum('lessons', 'time', function ($subquery) {
+                $subquery->groupBy('course_id');
+            })->orderBy('lessons_sum_time', $data['study_time']);
         }
 
         if (isset($data['number_learners'])) {

@@ -165,6 +165,12 @@ return [
 
     'type_video' => 3,
 
+    'process_min' => 0,
+
+    'process_max' => 100,
+
+    'process_auto' => 1,
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

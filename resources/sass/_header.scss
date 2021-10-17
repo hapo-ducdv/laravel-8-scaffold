@@ -4,7 +4,7 @@
 
   .navbar-brand {
     width: 340px;
-    margin-left: 8%;
+    margin-left: 5.5%;
 
     img {
       width: 100%;
@@ -58,9 +58,24 @@
     display: none;
   }
 
+  .btn-dropdown:focus {
+    box-shadow: none;
+    outline: none;
+  }
+
   .dropdown-item {
-    font-size: 13px;
     text-transform: capitalize;
+    color: $text_navbar_color;
+    font-size: 13px;
+  }
+
+  .message-sesson {
+    font-size: 13px;
+    z-index: 1;
+    width: 400px;
+    position: fixed;
+    top: 100px;
+    right: 8.5%;
   }
 }
 

@@ -62,4 +62,12 @@
   $("#profile-avatar").click(function () {
     $("#input-upload-avatar").trigger('click');
   });
+
+  $('.message-sesson').delay(5000).fadeOut();
+
+  $("#btn-edit-profile").click(function () {
+    $('.input-update-profile').prop('disabled', false);
+    $('#btn-update-profile').prop('hidden', false);
+    $('#btn-edit-profile').prop('hidden', true);
+  });
 });

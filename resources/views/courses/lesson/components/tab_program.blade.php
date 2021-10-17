@@ -26,7 +26,11 @@
                         <p class="program-name">{{ $program->name }}</p>
                     </div>
                     <div class="col-2">
-                        <a class="btn btn-preview" href="{{ $program->path }}">Preview</a>
+                        @if($program->join == config('app.join'))
+                            <a href="{{ route('program', ['id' => $program->id]) }}" class="btn btn-preview" target="_blank">Preview</a>
+                        @else
+                            <a href="{{ $program->path }}" class="btn btn-preview" target="_blank">Previewed</a>
+                        @endif
                     </div>
                 </div>
             </li>

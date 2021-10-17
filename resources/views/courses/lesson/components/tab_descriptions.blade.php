@@ -14,7 +14,7 @@
         <li class="list-group-item align-items-center tags">
             <span class="tag-title">Tags:</span>
             @foreach($course->tags as $tag)
-                <span class="lesson-tag">#{{ $tag->name }}</span>
+                <div class="d-inline-flex lesson-tag">#{{ $tag->name }}</div>
             @endforeach
         </li>
     </ul>

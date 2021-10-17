@@ -22,8 +22,8 @@ class LessonUserFactory extends Factory
     public function definition()
     {
         return [
-            'lesson_id' => $this->faker->numberBetween(1, 300),
-            'user_id' => $this->faker->numberBetween(1, 30)
+            'lesson_id' => $this->faker->numberBetween(1, 3300),
+            'user_id' => $this->faker->numberBetween(1, 300)
         ];
     }
 }

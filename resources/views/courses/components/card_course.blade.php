@@ -3,7 +3,7 @@
         <div class="card-all-courses-body">
             <div class="d-flex w-100 card-all-courses-on">
                 <div class="w-30 card-img">
-                    <img class="rounded-circle" src='{{ asset("/assets/images/courses/$course->image") }}' alt="">
+                    <img class="rounded-circle" src='{{ asset("/storage/courses/$course->image") }}' alt="">
                 </div>
                 <div class="w-70">
                     <h5 class="card-all-courses-title">{{ $course->name }}</h5>

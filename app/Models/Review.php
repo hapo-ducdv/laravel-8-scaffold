@@ -36,6 +36,11 @@ class Review extends Model
         return $this->belongsTo(Lesson::class, 'target_id');
     }
 
+    public function scopeSearch($query)
+    {
+        return $query->where('type', 'course')->inRandomOrder()->limit(config('app.paginate_reviews'));
+    }
+
     public function scopeCheck($query, $id, $type)
     {
         return $query->where('user_id', Auth::user()->id)->where('target_id', $id)->where('type', $type)->count();

@@ -28,7 +28,15 @@ class CourseController extends Controller
         $courses = Course::randomCourses(config('app.paginate_other_courses'))->get();
         $reviews = $course->reviews()->where('type', 'course')->paginate(config('app.paginate_reviews'));
 
-        return view('courses.show', compact('course', 'courses', 'lessons', 'reviews'));
+        $process = config('app.process_min');
+
+        foreach ($course->lessons as $lesson) {
+            if ($course->numberLesson != config('app.process_min')) {
+                $process = intval($lesson->numberJoinedProcess($id) / $course->numberLesson * config('app.process_max'));
+            }
+        }
+
+        return view('courses.show', compact('course', 'courses', 'lessons', 'reviews', 'process'));
     }
 
     public function join($id)

@@ -17,7 +17,17 @@ class LessonController extends Controller
             $reviews = $lesson->reviews()->where('type', 'lesson')->paginate(config('app.paginate_reviews'));
 
             if ($course->join > config('app.join')) {
-                return view('courses.lesson.show', compact('course', 'courses', 'lesson', 'reviews'));
+                $process = config('app.process_max');
+
+                foreach ($lesson->programs as $program) {
+                    if ($lesson->numberProgram != config('app.process_min')) {
+                        $process = intval(($program->numberJoinedProcess($lessonId) + config('app.process_auto')) / ($lesson->numberProgram + config('app.process_auto')) * config('app.process_max'));
+                    }
+                }
+
+                $lesson->users()->attach([Auth::user()->id]);
+
+                return view('courses.lesson.show', compact('course', 'courses', 'lesson', 'reviews', 'process'));
             } else {
                 return back()->with('error', 'You need to take this course first');
             }

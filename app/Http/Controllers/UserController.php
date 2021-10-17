@@ -25,7 +25,7 @@ class UserController extends Controller
 
         if ($request['avatar']) {
             $avatar = time() . '.' . $request->file('avatar')->extension();
-            $request->file('avatar')->move(public_path('/assets/images/users'), $avatar);
+            $request->file('avatar')->move(storage_path('app/public/users'), $avatar);
             $user = $user->update(['avatar' => $avatar]);
         } else {
             $user = $user->update([

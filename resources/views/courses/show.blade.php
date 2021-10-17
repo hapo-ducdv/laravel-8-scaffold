@@ -15,8 +15,20 @@
         <div class="row">
             <div class="col-8">
                 <div class="d-flex align-items-center justify-content-center image-top">
-                    <img class="rounded-circle" src='{{ asset("/assets/images/courses/$course->image") }}' alt="">
+                    <img class="rounded-circle" src='{{ asset("/storage/courses/$course->image") }}' alt="">
                 </div>
+
+                @auth
+                    <div class="row progress-course">
+                        <div class="col-2 p-0 text-center progress-title">Progress:</div>
+                        <div class="col-9 progress p-0">
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: {{ $process }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="col-1 p-0 text-center progress-number">{{ $process }}%</div>
+                    </div>
+                @endauth
+
                 <div class="detail-course-right">
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">

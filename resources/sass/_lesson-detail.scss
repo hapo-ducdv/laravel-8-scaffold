@@ -36,8 +36,33 @@
     }
   }
 
-  .lesson-detail-left {
+  .progress-lesson {
     margin-top: 30px;
+
+    .progress-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: $text_navbar_color;
+    }
+
+    .progress {
+      height: 10px;
+      margin-top: 9px;
+      background: $cl-while;
+    }
+
+    .progress-bar {
+      background: $color_hover;
+    }
+
+    .progress-number {
+      font-size: 16px;
+      font-weight: bold;
+      color: $text_navbar_color;
+    }
+  }
+
+  .lesson-detail-left {
     background: $cl-while;
     border: 1px solid $border-detail-course;
     box-sizing: border-box;
@@ -147,6 +172,7 @@
       box-sizing: border-box;
       border-radius: 3px;
       padding: 6px 9px 3px 11px;
+      margin-bottom: 7px;
     }
   }
 
@@ -190,6 +216,10 @@
       letter-spacing: -0.05em;
       padding: 4px 16px 6px 16px;
       color: $cl-while;
+
+      &:hover {
+        color: $color_banner1_heading;
+      }
     }
   }
 
@@ -315,6 +345,10 @@
       color: $cl-while;
       margin-top: 9px;
       margin-bottom: 15px;
+
+      &:hover {
+        color: $color_banner1_heading;
+      }
     }
 
     .list-group-item {
@@ -512,6 +546,10 @@
       box-shadow: inset 0px 1.5px 2px $cl-box-shadow;
       border-radius: 22px;
       padding: 4px 23px 8px 24px;
+
+      &:hover {
+        color: $color_banner1_heading;
+      }
     }
 
     .leave-review-align {

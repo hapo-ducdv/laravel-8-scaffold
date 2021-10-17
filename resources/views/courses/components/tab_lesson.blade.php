@@ -27,13 +27,21 @@
             <li class="list-group-item align-items-center">
                 <div class="row">
                     <div class="col-1">
-                        <div class="number-lesson">{{ $key + 1 }}.</div>
+                        @if (empty(request('page')))
+                            <div class="number-lesson">{{ $key + 1 }}.</div>
+                        @else
+                            <div class="number-lesson">{{ $key + 1 + (request('page')-1)*config('app.paginate_courses_tab_lessons') }}</div>
+                        @endif
                     </div>
                     <div class="col-9 p-0">
                         <div class="name-lesson">{{ $lesson->name }}</div>
                     </div>
                     <div class="col-2">
-                        <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learn</a>
+                        @if($lesson->join == config('app.join'))
+                            <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learn</a>
+                        @else
+                            <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learned</a>
+                        @endif
                     </div>
                 </div>
             </li>

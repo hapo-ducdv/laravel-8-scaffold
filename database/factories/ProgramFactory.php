@@ -22,10 +22,10 @@ class ProgramFactory extends Factory
     public function definition()
     {
         return [
-            'lesson_id' => $this->faker->numberBetween(1, 600),
+            'lesson_id' => $this->faker->numberBetween(1, 3300),
             'name' => $this->faker->name(),
             'type' => $this->faker->numberBetween(1, 3),
-            'path' => $this->faker->imageUrl(500, 500),
+            'path' => $this->faker->imageUrl(900, 500),
         ];
     }
 }

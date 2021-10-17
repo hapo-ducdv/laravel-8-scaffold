@@ -112,14 +112,13 @@
     }
 
     .courses {
-      margin-top: 14px;
-      flex-wrap:wrap;
+      margin-top: 34px;
+      overflow: auto;
     }
 
     .course,
     .add-course {
       margin-right: 30px;
-      padding-top: 25px;
     }
 
     .course:hover,
@@ -202,6 +201,10 @@
       border-radius: 22px;
       padding: 9px 33px 11px 34px;
       margin-top: 15px;
+
+      &:hover {
+        color: $color_banner1_heading;
+      }
     }
   }
 }

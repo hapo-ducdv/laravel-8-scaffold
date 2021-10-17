@@ -27,7 +27,7 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         if ($this->attemptLogin($request)) {
-            return back()->with('success', 'Login successfully!');
+            return back()->with('success', 'Login successfully!', trans(10));
         } else {
             return back()->with('error', 'Incorrect account or password');
         }
@@ -39,6 +39,6 @@ class LoginController extends Controller
 
         Auth::logout();
 
-        return redirect('/')->with('success', 'You are logged out of '. $username);
+        return redirect('/')->with('success', 'You are logged out of '. $username, trans(0.5));
     }
 }
