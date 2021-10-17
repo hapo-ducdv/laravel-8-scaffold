@@ -16,15 +16,15 @@ class LessonController extends Controller
             $courses = Course::randomCourses(config('app.paginate_other_courses'))->get();
             $reviews = $lesson->reviews()->where('type', 'lesson')->paginate(config('app.paginate_reviews'));
 
-            if ($course->join > config('app.join')) {
-                $process = config('app.process_max');
+            $process = config('app.process_max');
 
-                foreach ($lesson->programs as $program) {
-                    if ($lesson->numberProgram != config('app.process_min')) {
-                        $process = intval(($program->numberJoinedProcess($lessonId) + config('app.process_auto')) / ($lesson->numberProgram + config('app.process_auto')) * config('app.process_max'));
-                    }
+            foreach ($lesson->programs as $program) {
+                if ($lesson->numberProgram != config('app.process_min')) {
+                    $process = intval(($program->numberJoinedProcess($lessonId) + config('app.process_auto')) / ($lesson->numberProgram + config('app.process_auto')) * config('app.process_max'));
                 }
+            }
 
+            if ($course->join > config('app.join')) {
                 $lesson->users()->attach([Auth::user()->id]);
 
                 return view('courses.lesson.show', compact('course', 'courses', 'lesson', 'reviews', 'process'));
