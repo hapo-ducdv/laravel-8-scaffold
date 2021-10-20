@@ -23,7 +23,8 @@ class TeacherFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'intro' => $this->faker->text(255)
+            'intro' => $this->faker->text(255),
+            'image' => $this->faker->image(storage_path('app/public/teachers'), 500, 500, 'cats', false)
         ];
     }
 }

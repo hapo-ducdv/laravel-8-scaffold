@@ -125,13 +125,63 @@ return [
 
     'remember' => 1,
 
+    'login_error' => 'You must be logged in to do this',
+
+    'register_success' => 'The new account created successfully! Let is login!',
+
+    'login_incorrect' => 'Incorrect username or password',
+
+    'success_create_review' => 'Create a successful review',
+
+    'error_create_review' => 'You can only add 1 comment',
+
+    'not_join_course' => 'You taken this course',
+
     'paginate_courses' => 14,
 
+    'paginate_home_courses' => 3,
+
+    'paginate_courses_tab_lessons' => 10,
+
+    'paginate_other_courses' => 5,
+
+    'paginate_reviews' => 8,
+
     'ascending' => 'asc',
+
     'descending' => 'desc',
 
     'newest' => 'newest',
+
     'oldest' => 'oldest',
+
+    'i' => 0,
+
+    'max_stars' => 5,
+
+    'four_stars' => 4,
+
+    'three_stars' => 3,
+
+    'two_stars' => 2,
+
+    'one_stars' => 1,
+
+    'join' => 0,
+
+    'check_review' => 0,
+
+    'type_lesson' => 1,
+
+    'type_pdf' => 2,
+
+    'type_video' => 3,
+
+    'process_min' => 0,
+
+    'process_max' => 100,
+
+    'process_auto' => 1,
 
     /*
     |--------------------------------------------------------------------------

@@ -14,6 +14,6 @@ class LessonUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        LessonUser::factory()->count(300)->create();
+        LessonUser::factory()->count(2000)->create();
     }
 }

@@ -24,9 +24,10 @@ class LessonFactory extends Factory
         return [
             'name' => $this->faker->name,
             'desc' => $this->faker->text(255),
+            'requirements' => $this->faker->text(1000),
             'time' => $this->faker->randomDigit(),
-            'course_id' => $this->faker->numberBetween(1, 100),
-            'teacher_id' => $this->faker->numberBetween(1, 15)
+            'course_id' => $this->faker->numberBetween(1, 300),
+            'teacher_id' => $this->faker->numberBetween(1, 25)
         ];
     }
 }

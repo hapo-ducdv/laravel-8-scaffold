@@ -7,7 +7,7 @@
             </div>
             <div class="banner-first-content-desc-up d-block">Interface lessons, "on-the-go" practice,</div>
             <div class="banner-first-content-desc-bot d-block">peer support</div>
-            <a class="btn d-flex align-items-center justify-content-center" href="#">Start Learning Now !</a>
+            <a class="btn d-flex align-items-center justify-content-center" href="{{ route('courses') }}">Start Learning Now !</a>
         </div>
     </div>
     <div class="linear-gradient cih">
@@ -17,86 +17,42 @@
 
 <div class="container courses cih">
     <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center html-css-js">
-                    <img src="{{ asset('/assets/images/html-css-js.png') }}" alt="Html, css & js">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Html/Css/js Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                    <a href="#" class="btn">Take This Course</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center laravel">
-                    <img src="{{ asset('/assets/images/laravel-1-white.png') }}" alt="Laravel">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">LARAVEL Tutorial </h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                    <a href="#" class="btn">Take This Course</a>
+        @foreach($courses as $course)
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-img-top d-flex align-items-center justify-content-center html-css-js">
+                        <img class="rounded-circle" src='{{ asset("/storage/courses/$course->image") }}' alt="{{ $course->name }}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $course->name }}</h5>
+                        <p class="card-text">{{ $course->desc }}</p>
+                        <a href="{{ route('course_detail', $course->id) }}" class="btn">Take This Course</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center php">
-                    <img src="{{ asset('/assets/images/php-logo.png') }}" alt="Php">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">PHP Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                    <a href="#" class="btn">Take This Course</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
     <div class="row justify-content-center">
         <span class="other_courses">Other courses</span>
     </div>
     <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center css">
-                    <img src="{{ asset('/assets/images/css.png') }}" alt="Html, css & js">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">CSS Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                    <a href="#" class="btn">Take This Course</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center rails">
-                    <img src="{{ asset('/assets/images/rails.png') }}" alt="Laravel">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Ruby on rails Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                    <a href="#" class="btn">Take This Course</a>
+        @foreach($otherCourses as $course)
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-img-top d-flex align-items-center justify-content-center rails">
+                        <img class="rounded-circle" src='{{ asset("/storage/courses/$course->image") }}' alt="{{ $course->name }}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $course->name }}</h5>
+                        <p class="card-text">{{ $course->desc }}</p>
+                        <a href="{{ route('course_detail', $course->id) }}" class="btn">Take This Course</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-img-top d-flex align-items-center justify-content-center java1">
-                    <img src="{{ asset('/assets/images/java1.png') }}" alt="Php">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Java Tutorial</h5>
-                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                    <a href="#" class="btn">Take This Course</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
     <div class="row justify-content-center">
-        <a class="row view-all" href="#">View All Our Courses
+        <a class="row view-all" href="{{ route('courses') }}">View All Our Courses
             <i class="fas fa-long-arrow-alt-right d-flex arrow-right"></i>
         </a>
     </div>
@@ -140,85 +96,31 @@
     </div>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div id="feedback-slide" class="carousel-inner feedback-slide">
-            <div class="carousel-item active">
-                <div class="feedback-border">
-                    <div class="feedback-border-text">“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”</div>
-                </div>
-                <div class="feedback-abc-border">
-                    <img src="{{ asset('/assets/images/polygon.png') }}" alt="">
-                </div>
-                <div class="feedback-info d-flex">
-                    <img src="{{ asset('/assets/images/avatar.png') }}" class="rounded-circle feedback-info-img" alt="Avatar">
-                    <div class="card-body">
-                        <div class="feedback-info-title">Hoang Anh Nguyen</div>
-                        <div class="feedback-info-subtitle">PHP</div>
-                        <div class="feedback-info-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+            @foreach($reviews as $review)
+                <div class="carousel-item">
+                    <div class="feedback-border">
+                        <div class="feedback-border-text">“ {{$review->content}} ”</div>
+                    </div>
+                    <div class="feedback-abc-border">
+                        <img src='{{ asset("/assets/images/polygon.png") }}' alt="">
+                    </div>
+                    <div class="feedback-info d-flex">
+                        <img src="{{ asset('/storage/users/'. $review->users->avatar. '') }}" class="rounded-circle feedback-info-img" alt="Avatar">
+                        <div class="card-body">
+                            <div class="feedback-info-title">{{ $review->users->fullname }}</div>
+                            <div class="feedback-info-subtitle">{{ $review->courses->name }}</div>
+                            <div class="feedback-info-icon">
+                                @for ($i = config('app.i'); $i < $review->courses->total_rate; $i++)
+                                    <i class="fas fa-star"></i>
+                                @endfor
+                                @for ($i = config('app.i'); $i < config('app.max_stars') - $review->courses->total_rate; $i++)
+                                    <i class="far fa-star"></i>
+                                @endfor
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="feedback-border">
-                    <div class="feedback-border-text">“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”</div>
-                </div>
-                <div class="feedback-info d-flex">
-                    <img src="{{ asset('/assets/images/avatar.png') }}" class="rounded-circle feedback-info-img" alt="Avatar">
-                    <div class="card-body">
-                        <div class="feedback-info-title">Hoang Anh Nguyen</div>
-                        <div class="feedback-info-subtitle">Python</div>
-                        <div class="feedback-info-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="feedback-border">
-                    <div class="feedback-border-text">“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”</div>
-                </div>
-                <div class="feedback-info d-flex">
-                    <img src="{{ asset('/assets/images/avatar.png') }}" class="rounded-circle feedback-info-img" alt="Avatar">
-                    <div class="card-body">
-                        <div class="feedback-info-title">Hoang Anh Nguyen</div>
-                        <div class="feedback-info-subtitle">Java</div>
-                        <div class="feedback-info-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="feedback-border">
-                    <div class="feedback-border-text">“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”</div>
-                </div>
-                <div class="feedback-info d-flex">
-                    <img src="{{ asset('/assets/images/avatar.png') }}" class="rounded-circle feedback-info-img" alt="Avatar">
-                    <div class="card-body">
-                        <div class="feedback-info-title">Hoang Anh Nguyen</div>
-                        <div class="feedback-info-subtitle">Java</div>
-                        <div class="feedback-info-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -226,7 +128,7 @@
 <div class="cih">
     <div class="d-flex flex-column align-items-center justify-content-center banner-end">
         <div class="text-center banner-end-text">Become a member of our growing community!</div>
-        <a class="btn" href="#">Start Learning Now!</a>
+        <a class="btn" href="{{ route('courses') }}">Start Learning Now!</a>
     </div>
 </div>
 
@@ -237,15 +139,15 @@
     <div class="row statistic-content">
         <div class="col-12 col-md-4 d-flex flex-column align-items-center">
             <div class="statistic-content-title">Courses</div>
-            <div class="statistic-content-number">1586</div>
+            <div class="statistic-content-number">{{ number_format($numberCourse, 0, ',', '.') }}</div>
         </div>
         <div class="col-12 col-md-4 d-flex flex-column align-items-center">
             <div class="statistic-content-title">Lessons</div>
-            <div class="statistic-content-number">2,689</div>
+            <div class="statistic-content-number">{{ number_format($numberLesson, 0, ',', '.') }}</div>
         </div>
         <div class="col-12 col-md-4 d-flex flex-column align-items-center">
             <div class="statistic-content-title">Learns</div>
-            <div class="statistic-content-number">16,882</div>
+            <div class="statistic-content-number">{{ number_format($numberUser, 0, ',', '.') }}</div>
         </div>
     </div>
 </div>

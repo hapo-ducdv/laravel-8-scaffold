@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\Tag;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -18,5 +19,37 @@ class CourseController extends Controller
         $courses = Course::search($data)->paginate(config('app.paginate_courses'));
 
         return view('courses.index', compact('tags', 'teachers', 'courses'));
+    }
+
+    public function show(Request $request, $id)
+    {
+        $course = Course::find($id);
+        $lessons = $course->lessons()->where('name', 'LIKE', '%' . $request['keyword'] . '%')->paginate(config('app.paginate_courses_tab_lessons'));
+        $courses = Course::randomCourses(config('app.paginate_other_courses'))->get();
+        $reviews = $course->reviews()->where('type', 'course')->paginate(config('app.paginate_reviews'));
+
+        $process = config('app.process_min');
+
+        foreach ($course->lessons as $lesson) {
+            if ($course->numberLesson != config('app.process_min')) {
+                $process = intval($lesson->numberJoinedProcess($id) / $course->numberLesson * config('app.process_max'));
+            }
+        }
+
+        return view('courses.show', compact('course', 'courses', 'lessons', 'reviews', 'process'));
+    }
+
+    public function join($id)
+    {
+        Course::find($id)->users()->sync([Auth::user()->id]);
+
+        return back()->with('success', 'Join the successful course');
+    }
+
+    public function leave($id)
+    {
+        Course::find($id)->users()->detach([Auth::user()->id]);
+
+        return redirect()->route('course_detail', $id)->with('success', 'Leave this course successfully');
     }
 }

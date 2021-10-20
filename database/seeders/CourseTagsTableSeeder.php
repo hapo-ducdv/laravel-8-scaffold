@@ -14,6 +14,6 @@ class CourseTagsTableSeeder extends Seeder
      */
     public function run()
     {
-        CourseTag::factory()->count(300)->create();
+        CourseTag::factory()->count(1500)->create();
     }
 }

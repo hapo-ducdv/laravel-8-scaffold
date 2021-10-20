@@ -1,0 +1,688 @@
+.breadcrumb-main {
+  background: $bg-breadcrumb;
+
+  .breadcrumb {
+    margin-bottom: 0;
+    padding-left: 8%;
+
+    .breadcrumb-link {
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+    }
+  }
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: quote(">");
+}
+
+.detail {
+  font-family: "UTM_BryantLG";
+  background: $cl-bg-lr-fc;
+  padding: 35px 8.5% 110px 8%;
+
+  .image-top {
+    width: 100%;
+    height: 439px;
+    background: $bg-html-css-js;
+    border-radius: 10px;
+    margin-bottom: 30px;
+
+    img {
+      height: 70%;
+    }
+  }
+
+  .nav-item {
+    .nav-link {
+      font-weight: bold;
+      font-size: 20px;
+      padding: 0;
+      line-height: 25px;
+      margin-right: 80px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      background: none;
+      border: none;
+    }
+
+    .nav-link:hover {
+      color: $color_hover;
+    }
+
+    .active {
+      color: $color_hover;
+    }
+  }
+
+  .progress-course {
+    .progress-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: $text_navbar_color;
+    }
+
+    .progress {
+      height: 10px;
+      margin-top: 9px;
+      background: $cl-while;
+    }
+
+    .progress-bar {
+      background: $color_hover;
+    }
+
+    .progress-number {
+      font-size: 16px;
+      font-weight: bold;
+      color: $text_navbar_color;
+    }
+  }
+
+  .detail-course-right {
+    background: $cl-while;
+    border: 1px solid $border-detail-course;
+    box-sizing: border-box;
+    padding: 19px 18px 40px 18px;
+
+    .input-search {
+      width: 244px;
+      height: 40px;
+    }
+
+    .input-search::placeholder {
+      font-size: 16px;
+      line-height: 22px;
+      color: $cl-inp-plac;
+    }
+
+    .fa-search {
+      margin-left: -55px;
+      font-size: 20px;
+      line-height: 23px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+    }
+
+    .btn-search {
+      background: $color_hover;
+      border: 1px solid $color_hover;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 20px;
+      color: $cl-while;
+    }
+
+    .btn-search:hover {
+      color: $color_banner1_heading;
+    }
+
+    .btn-join-course {
+      background: $color_hover;
+      border: 1px solid $color_hover;
+      box-shadow: inset 0px 1.5px 2px $cl-box-shadow;
+      padding: 10px 30px;
+      border-radius: 22px;
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 20px;
+      color: $cl-while;
+    }
+
+    .btn-join-course:hover {
+      color: $color_banner1_heading;
+    }
+
+    .number-lesson {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      padding: 0;
+    }
+
+    .name-lesson {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      padding: 0;
+    }
+
+    .btn-learn {
+      background: $color_hover;
+      box-shadow: inset 0px 1.5px 2px $cl-box-shadow;
+      border-radius: 22px;
+      font-weight: bold;
+      padding: 4px 20px 8px 20px;
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: -0.05em;
+      color: $cl-while;
+    }
+
+    .btn-learn:hover {
+      color: $color_banner1_heading;
+    }
+
+    .progress {
+      height: 1px;
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+
+    .progress-bar {
+      background: $color_hover;
+    }
+
+    .list-lesson {
+      padding-left: 13px;
+    }
+
+    .list-group-item:first-child {
+      padding-top: 30px;
+      padding-bottom: 34px;
+    }
+
+    .list-group-item {
+      padding: 18px 0;
+    }
+
+    .main-teacher {
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 31px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin-top: 30px;
+      margin-bottom: 37px;
+    }
+
+    .teacher {
+      margin-bottom: 50px;
+    }
+
+    .teacher-intro {
+      margin-top: 14px;
+    }
+
+    .teacher-image {
+      width: 100px;
+    }
+
+    .teacher-desc {
+      font-size: 18px;
+      line-height: 26px;
+      letter-spacing: -0.02em;
+      color: $teacher-desc;
+      margin-top: 25px;
+      margin-left: -110px;
+    }
+
+    .teacher-name {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin-bottom: 1px;
+    }
+
+    .teacher-time {
+      font-size: 14px;
+      line-height: 17px;
+      letter-spacing: -0.02em;
+      color: $teacher-time;
+      margin-bottom: 8px;
+    }
+
+    .fa-google-plus-g {
+      padding: 2px;
+      width: 20px;
+      height: 20px;
+      color: $cl-gg;
+    }
+
+    .fa-facebook-f {
+      color: $cl-fb;
+      margin: 0 10px;
+    }
+
+    .fa-slack {
+      color: $cl-slack;
+    }
+  }
+
+  .desc-course {
+    height: 439px;
+    background: $cl-while;
+    overflow: auto;
+    border: 1px solid $border-detail-course;
+    box-sizing: border-box;
+    padding: 14px 17px 25px 17px;
+
+    .desc-title {
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 31px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+    }
+
+    .desc-text {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 26px;
+      text-align: justify;
+      letter-spacing: -0.02em;
+      color: $teacher-desc;
+    }
+
+    .list-group-item {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .list-group-item:first-child {
+      border-bottom: 1px solid $color_hover;
+    }
+  }
+
+  .review {
+    font-family: "UTM_BryantLG";
+
+    .list-group-item:first-child {
+      padding-top: 30px;
+      padding-bottom: 12px;
+    }
+
+    .list-group-item {
+      padding: 25px 0;
+    }
+
+    .review-count-review {
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 31px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin: 0;
+    }
+
+    .aggregate-rating {
+      width: 100%;
+      height: 100%;
+      background: $text_navbar_color;
+      border-radius: 5px;
+      margin-left: 3px;
+    }
+
+    .aggregate-rating-average {
+      font-weight: bold;
+      font-size: 60px;
+      line-height: 74px;
+      letter-spacing: -0.02em;
+      color: $cl-while;
+      margin: 0;
+    }
+
+    .aggregate-rating-icon {
+      font-size: 25px;
+      line-height: 29px;
+      color: $cl-star-hover;
+    }
+
+    .aggregate-rating-count {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.02em;
+      color: $cl-while;
+    }
+
+    .detail-rating {
+      border: 1px solid $border-detail-rating;
+      box-sizing: border-box;
+      border-radius: 5px;
+      padding: 11px 28px 13px 16px;
+    }
+
+    .detail-rating-align {
+      margin-bottom: 13px;
+    }
+
+    .detail-rating-star {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+    }
+
+    .detail-rating-progress {
+      margin-top: 10px;
+      height: 6px;
+    }
+
+    .detail-rating-number {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 17px;
+      letter-spacing: -0.02em;
+      color: $detail-rating-number;
+    }
+
+    .show-reviews {
+      border: none;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      margin-bottom: 30px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin-left: 9px;
+    }
+
+    .review-image {
+      width: 40px;
+      height: 40px;
+    }
+
+    .review-body {
+      margin-top: 9px;
+      margin-left: 10px;
+    }
+
+    .review-first-name,
+    .review-later-name {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin-top: -3px;
+    }
+
+    .review-first-icon {
+      margin-left: 15px;
+      font-size: 15px;
+      line-height: 17px;
+      color: $cl-star-hover;
+    }
+
+    .review-first-time,
+    .review-later-time {
+      margin-left: 15px;
+      font-size: 14px;
+      line-height: 17px;
+      letter-spacing: -0.02em;
+      color: $teacher-time;
+    }
+
+    .review-first-desc,
+    .review-later-desc {
+      font-size: 18px;
+      line-height: 26px;
+      letter-spacing: -0.02em;
+      color: $teacher-desc;
+    }
+
+    .review-first-desc {
+      margin-top: 25px;
+      margin-left: -50px;
+    }
+
+    .review-horizontal-line {
+      margin: 0;
+    }
+
+    .review-later {
+      margin-top: 9px;
+      margin-left: 10px;
+    }
+
+    .review-later-time {
+      margin-left: 34px;
+    }
+
+    .review-later-desc {
+      margin-top: 13px;
+      margin-bottom: 0;
+    }
+
+    .leave-review-title {
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 27px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin-bottom: 0;
+    }
+
+    .leave-review-message {
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      color: $leave-review-message;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .btn-review-send {
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: -0.05em;
+      color: $cl-while;
+      background: $color_hover;
+      box-shadow: inset 0px 1.5px 2px $cl-box-shadow;
+      border-radius: 22px;
+      padding: 4px 23px 8px 24px;
+
+      &:hover {
+        color: $color_banner1_heading;
+      }
+    }
+
+    .leave-review-align {
+      padding-bottom: 0;
+    }
+
+    .leave-review-vote {
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 27px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin-right: 16px;
+    }
+
+    .leave-review-stars {
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      color: $leave-review-message;
+      margin-left: 154px;
+    }
+
+    .rating-input {
+      display: none;
+    }
+
+    .rating-icon {
+      float: right;
+      cursor: pointer;
+      margin-right: 7px;
+      font-size: 18px;
+      color: $rating-icon;
+    }
+
+    .rating {
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 47px;
+      margin-left: 59px;
+    }
+
+    .rating-input:checked ~ .rating-icon {
+      color: $cl-star-hover;
+    }
+
+    .rating:not(:checked) > .rating-icon:hover,
+    .rating:not(:checked) > .rating-icon:hover ~ .rating-icon,
+    .rating-input:checked > .rating-icon:hover,
+    .rating-input:checked > .rating-icon:hover ~ .rating-icon {
+      color: $cl-star-hover;
+    }
+  }
+
+  .course-info {
+    margin-top: 30px;
+    background: $cl-while;
+    border: 1px solid $border-detail-course;
+    box-sizing: border-box;
+    padding: 0 10px;
+
+    .detail-course-content {
+      font-size: 21px;
+      line-height: 37px;
+      letter-spacing: -0.05em;
+      color: $text_navbar_color;
+    }
+
+    .detail-course-number {
+      font-weight: bold;
+    }
+
+    .detail-course-icon {
+      font-size: 28px;
+      margin-right: 8px;
+    }
+
+    .detail-tags {
+      color: $detail-tag;
+    }
+
+    .list-group-item {
+      padding: 26px 0 32px 11px;
+    }
+
+    .btn-leave-course {
+      background: $color_hover;
+      border: 1px solid $color_hover;
+      box-shadow: inset 0px 1.5px 2px $cl-box-shadow;
+      padding: 10px 30px;
+      border-radius: 22px;
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 20px;
+      color: $cl-while;
+    }
+
+    .btn-leave-course:hover {
+      color: $color_banner1_heading;
+    }
+  }
+
+  .other-course {
+    margin-top: 30px;
+    background: $cl-while;
+    border: 1px solid $detail-other-course;
+    box-sizing: border-box;
+
+    .title {
+      padding: 14px 0 15px 0;
+      background: $color_hover;
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 31px;
+      letter-spacing: -0.05em;
+      color: $cl-while;
+      margin: 0;
+    }
+
+    .detail-course-number {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+    }
+
+    .detail-course-text {
+      font-weight: bold;
+      padding-left: 8px;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+    }
+
+    .list-group {
+      padding: 0 15px;
+    }
+
+    .btn-view-all {
+      background: $color_hover;
+      box-shadow: inset 0px 1.5px 2px $cl-box-shadow;
+      border-radius: 22px;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.05em;
+      padding: 9px 24px 11px 25px;
+      color: $cl-while;
+      margin-top: 9px;
+      margin-bottom: 15px;
+
+      &:hover {
+        color: $color_banner1_heading;
+      }
+    }
+
+    .list-group-item {
+      padding: 16px 0 15px 0;
+    }
+  }
+
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+
+    .page-link {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $color_hover;
+      font-weight: bold;
+      box-sizing: border-box;
+      font-size: 15px;
+      border-radius: 3px;
+      margin-left: 5px;
+      color: $color_hover;
+    }
+
+    .page-link:hover {
+      color: white;
+      background: $color_hover;
+    }
+
+    .active {
+      .page-link {
+        color: white;
+        background: $color_hover;
+      }
+    }
+  }
+}

@@ -1,0 +1,210 @@
+.profile {
+  font-family: "UTM BryantLG";
+  padding: 40px 8.5% 110px 8%;
+  background: $bg-profile;
+
+  .list-group .list-group-flush {
+    background: $bg-profile;
+  }
+
+  .list-group-item {
+    background: $bg-profile;
+    padding: 15px 0;
+  }
+
+  .profile-avatar {
+    cursor: pointer;
+    width: 260px;
+    height: 260px;
+
+    &:hover {
+      opacity: 0.4;
+      border: 2px solid $cl-box-shadow;
+    }
+  }
+
+  .icon-upload-avatar {
+    cursor: pointer;
+    font-size: 30px;
+    position: absolute;
+    color: $cl-border;
+    bottom: 26%;
+    left: 46%;
+
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+
+  .input-upload-avatar {
+    display: none;
+  }
+
+  .profile-name {
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 31px;
+    letter-spacing: -0.02em;
+    color: $text_navbar_color;
+    margin-top: 14px;
+    margin-bottom: 4px;
+  }
+
+  .profile-email {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    color: $text_navbar_color;
+    margin-bottom: 0;
+  }
+
+  .birthday,
+  .phone,
+  .address  {
+    margin-left: 8px;
+  }
+
+  .profile-icon-birthday {
+    font-size: 17px;
+    line-height: 20px;
+    color: $cl-profile-icon-birthday;
+    margin-right: 22px;
+  }
+
+  .profile-icon-phone {
+    font-size: 17px;
+    line-height: 20px;
+    color: $color_hover;
+    margin-right: 22px;
+  }
+
+  .profile-icon-address {
+    font-size: 17px;
+    line-height: 20px;
+    color: $cl-profile-icon-address;
+    margin-right: 22px;
+  }
+
+  .profile-birthday,
+  .profile-phone,
+  .profile-address {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    color: $text_navbar_color;
+  }
+
+  .horizontal-line {
+    border: 1px solid $color_hover;
+    margin-bottom: 2px;
+    margin-top: 0;
+  }
+
+  .my-course {
+    margin-top: 125px;
+
+    .title {
+      font-weight: bold;
+      font-size: 38px;
+      line-height: 47px;
+      color: $text_navbar_color;
+      margin-bottom: 0;
+    }
+
+    .courses {
+      margin-top: 34px;
+      overflow: auto;
+    }
+
+    .course,
+    .add-course {
+      margin-right: 30px;
+    }
+
+    .course:hover,
+    .add-course:hover{
+      color: $color_hover;
+    }
+
+    .course-image {
+      width: 65px;
+      height: 65px;
+    }
+
+    .course-name,
+    .add-course-text {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 17px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+
+    .add-course-icon {
+      padding: 23px 24px;
+      color: $color_hover;
+      font-size: 16px;
+      border-radius: 50%;
+      background: $cl-while;
+      border: 1.5px solid $color_hover;
+      box-sizing: border-box;
+    }
+
+    .add-course-text {
+      color: $color_hover;
+    }
+  }
+
+  .edit-profile {
+    margin-top: 65px;
+
+    .title {
+      font-weight: bold;
+      font-size: 38px;
+      line-height: 47px;
+      color: $text_navbar_color;
+      margin-bottom: 0;
+    }
+
+    .update-profile {
+      margin-top: 25px;
+    }
+
+    .update-profile-line {
+      margin-bottom: 8px;
+    }
+
+    .line-right {
+      padding-right: 20px;
+      padding-left: 0;
+    }
+
+    .update-profile-label {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 25px;
+      letter-spacing: -0.02em;
+      color: $text_navbar_color;
+      margin-bottom: 9px;
+    }
+
+    .btn-update {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.05em;
+      color: $cl-while;
+      background: $color_hover;
+      box-shadow: inset 0px 1.5px 2px #6F8710;
+      border-radius: 22px;
+      padding: 9px 33px 11px 34px;
+      margin-top: 15px;
+
+      &:hover {
+        color: $color_banner1_heading;
+      }
+    }
+  }
+}

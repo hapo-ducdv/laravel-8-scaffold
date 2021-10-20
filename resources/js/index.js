@@ -54,4 +54,34 @@
   $('#teacher').select2({
     placeholder: "Teachers"
   });
+
+  $("#icon-upload-avatar").click(function () {
+    $("#input-upload-avatar").trigger('click');
+  });
+
+  $("#profile-avatar").click(function () {
+    $("#input-upload-avatar").trigger('click');
+  });
+
+  $('.message-sesson').delay(5000).fadeOut();
+
+  $("#btn-edit-profile").click(function () {
+    $('.input-update-profile').prop('disabled', false);
+    $('#btn-update-profile').prop('hidden', false);
+    $('#btn-edit-profile').prop('hidden', true);
+  });
+
+  if ($('#pills-review-tab').hasClass('show-pills-tab')) {
+    $('#pills-tab .show-pills-tab').tab('show');
+  }
+
+  $("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
+    var id = $(e.target).attr("href").substr(1);
+    window.location.hash = id;
+  });
+
+  var hash = window.location.hash;
+
+  $('#pills-tab a[href="' + hash + '"]').tab('show');
+
 });

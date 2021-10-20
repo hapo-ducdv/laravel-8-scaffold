@@ -14,6 +14,6 @@ class ReviewsTableSeeder extends Seeder
      */
     public function run()
     {
-        Review::factory()->count(200)->create();
+        Review::factory()->count(2000)->create();
     }
 }
