@@ -12,11 +12,10 @@
                 </form>
                 <div class="col-4 d-flex justify-content-end">
                     <form action="{{ route('join_course', $course->id) }}">
-                        @csrf
-                        @if($course->join == config('app.join'))
-                            <button type="submit" class="w-30 btn btn-join-course">Join in the course</button>
-                        @else
+                        @if($course->join)
                             <div class="w-30 text-right btn btn-join-course">Joined</div>
+                        @else
+                            <button type="submit" class="w-30 btn btn-join-course">Join in the course</button>
                         @endif
                     </form>
                 </div>
@@ -27,20 +26,24 @@
             <li class="list-group-item align-items-center">
                 <div class="row">
                     <div class="col-1">
-                        @if (empty(request('page')))
-                            <div class="number-lesson">{{ $key + 1 }}.</div>
-                        @else
-                            <div class="number-lesson">{{ $key + 1 + (request('page')-1)*config('app.paginate_courses_tab_lessons') }}</div>
-                        @endif
+                        <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="number-lesson">
+                            @if (empty(request('page')))
+                                {{ $key + 1 }}.
+                            @else
+                                {{ $key + 1 + (request('page')-1)*config('app.paginate_courses_tab_lessons') }}
+                            @endif
+                        </a>
                     </div>
                     <div class="col-9 p-0">
-                        <div class="name-lesson">{{ $lesson->name }}</div>
+                        <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="name-lesson">{{ $lesson->name }}</a>
                     </div>
                     <div class="col-2">
-                        @if($lesson->join == config('app.join'))
-                            <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learn</a>
-                        @else
-                            <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learned</a>
+                        @if($course->join)
+                            @if($lesson->join)
+                                <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learned</a>
+                            @else
+                                <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learn</a>
+                            @endif
                         @endif
                     </div>
                 </div>

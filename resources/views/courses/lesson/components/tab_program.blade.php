@@ -26,10 +26,10 @@
                         <p class="program-name">{{ $program->name }}</p>
                     </div>
                     <div class="col-2">
-                        @if($program->join == config('app.join'))
-                            <a href="{{ route('program', ['id' => $program->id]) }}" class="btn btn-preview" target="_blank">Preview</a>
+                        @if($program->join)
+                            <a href="{{ route('program', ['lesson' => $lesson->id, 'program' => $program->id]) }}" id="btn-preview" class="btn btn-preview" target="_blank">Previewed</a>
                         @else
-                            <a href="{{ $program->path }}" class="btn btn-preview" target="_blank">Previewed</a>
+                            <a href="{{ route('program', ['lesson' => $lesson->id, 'program' => $program->id]) }}" id="btn-preview" class="btn btn-preview" target="_blank">Preview</a>
                         @endif
                     </div>
                 </div>

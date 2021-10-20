@@ -70,4 +70,18 @@
     $('#btn-update-profile').prop('hidden', false);
     $('#btn-edit-profile').prop('hidden', true);
   });
+
+  if ($('#pills-review-tab').hasClass('show-pills-tab')) {
+    $('#pills-tab .show-pills-tab').tab('show');
+  }
+
+  $("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
+    var id = $(e.target).attr("href").substr(1);
+    window.location.hash = id;
+  });
+
+  var hash = window.location.hash;
+
+  $('#pills-tab a[href="' + hash + '"]').tab('show');
+
 });

@@ -92,34 +92,38 @@
             {{ $reviews->links() }}
         @endif
 
-        <li class="list-group-item leave-review-align">
-            <form method="POST" class="leave-review" action="{{ route('review_course') }}">
-                @csrf
-                <h5 class="leave-review-title">Leave a Review</h5>
-                <div class="form-group">
-                    <label class="leave-review-message">Message</label>
-                    <textarea class="form-control" name="content" rows="3" required></textarea>
-                </div>
-                <input hidden type="text" name="target_id" value="{{ $course->id }}">
-                <input hidden type="text" name="type" value="course">
-                <div class="form-group">
-                    <label class="leave-review-vote">Vote</label>
-                    <div class="rating">
-                        <input id="fiveStars" class="rating-input" type="radio" name="rate" value="5" required/>
-                        <label for="fiveStars" class="rating-icon"><i class="fas fa-star"></i></label>
-                        <input id="fourStars" class="rating-input" type="radio" name="rate" value="4"/>
-                        <label for="fourStars" class="rating-icon"><i class="fas fa-star"></i></label>
-                        <input id="ThreeStars" class="rating-input" type="radio" name="rate" value="3"/>
-                        <label for="ThreeStars" class="rating-icon"><i class="fas fa-star"></i></label>
-                        <input id="twoStars" class="rating-input" type="radio" name="rate" value="2"/>
-                        <label for="twoStars" class="rating-icon"><i class="fas fa-star"></i></label>
-                        <input id="oneStars" class="rating-input" type="radio" name="rate" value="1"/>
-                        <label for="oneStars" class="rating-icon"><i class="fas fa-star"></i></label>
-                    </div>
-                    <label class="leave-review-stars">(stars)</label>
-                </div>
-                <button type="submit" class="btn float-right btn-review-send">Send</button>
-            </form>
-        </li>
+        @auth
+            @if($course->join)
+                <li class="list-group-item leave-review-align">
+                    <form method="POST" class="leave-review" action="{{ route('review_course') }}">
+                        @csrf
+                        <h5 class="leave-review-title">Leave a Review</h5>
+                        <div class="form-group">
+                            <label class="leave-review-message">Message</label>
+                            <textarea class="form-control" name="content" rows="3" required></textarea>
+                        </div>
+                        <input hidden type="text" name="target_id" value="{{ $course->id }}">
+                        <input hidden type="text" name="type" value="course">
+                        <div class="form-group">
+                            <label class="leave-review-vote">Vote</label>
+                            <div class="rating">
+                                <input id="fiveStars" class="rating-input" type="radio" name="rate" value="5" required/>
+                                <label for="fiveStars" class="rating-icon"><i class="fas fa-star"></i></label>
+                                <input id="fourStars" class="rating-input" type="radio" name="rate" value="4"/>
+                                <label for="fourStars" class="rating-icon"><i class="fas fa-star"></i></label>
+                                <input id="ThreeStars" class="rating-input" type="radio" name="rate" value="3"/>
+                                <label for="ThreeStars" class="rating-icon"><i class="fas fa-star"></i></label>
+                                <input id="twoStars" class="rating-input" type="radio" name="rate" value="2"/>
+                                <label for="twoStars" class="rating-icon"><i class="fas fa-star"></i></label>
+                                <input id="oneStars" class="rating-input" type="radio" name="rate" value="1"/>
+                                <label for="oneStars" class="rating-icon"><i class="fas fa-star"></i></label>
+                            </div>
+                            <label class="leave-review-stars">(stars)</label>
+                        </div>
+                        <button type="submit" class="btn float-right btn-review-send">Send</button>
+                    </form>
+                </li>
+            @endif
+        @endauth
     </ul>
 </div>

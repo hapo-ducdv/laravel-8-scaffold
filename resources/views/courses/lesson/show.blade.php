@@ -3,6 +3,15 @@
 @section('title', 'Lesson detail')
 
 @section('content')
+    <nav class="breadcrumb-main" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses') }}">All courses</a></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('course_detail', $course->id) }}">Course detail</a></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="">Lesson detail</a></li>
+        </ol>
+    </nav>
+
     <div class="lesson-detail">
         <div class="row">
             <div class="col-8">
@@ -99,7 +108,7 @@
                                 <div class="col-6 pl-0">
                                     <div class="detail-course-number detail-tags">
                                         @foreach($course->tags as $tag)
-                                            #{{ $tag->name }}
+                                            <a href="/courses?tags[]={{ $tag->id }}">#{{ $tag->name }}</a>
                                         @endforeach
                                     </div>
                                 </div>

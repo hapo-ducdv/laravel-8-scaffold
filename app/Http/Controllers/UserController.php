@@ -10,13 +10,9 @@ class UserController extends Controller
 {
     public function show()
     {
-        if (isset(Auth::user()->id)) {
-            $user = User::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
 
-            return view('profile', compact('user'));
-        } else {
-            return redirect('/')->with('error', 'Please login first');
-        }
+        return view('profile', compact('user'));
     }
 
     public function update(UserRequest $request)
@@ -30,7 +26,6 @@ class UserController extends Controller
         } else {
             $user = $user->update([
                 'fullname' => $request['update_fullname'],
-                'email' => $request['update_email'],
                 'birthday' => $request['update_birthday'],
                 'phone' => $request['update_phone'],
                 'address' => $request['update_address'],

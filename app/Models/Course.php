@@ -69,22 +69,7 @@ class Course extends Model
 
     public function getJoinAttribute()
     {
-        $id = null;
-        if (isset(Auth::user()->id)) {
-            $id = Auth::user()->id;
-        }
-
-        return $this->users()->where('user_id', $id)->count();
-    }
-
-    public function getJoinLessonAttribute()
-    {
-        $id = null;
-        if (isset(Auth::user()->id)) {
-            $id = Auth::user()->id;
-        }
-
-        return $this->lessons()->users()->where('user_id', $id)->count();
+        return $this->users->contains(Auth::user()->id);
     }
 
     public function reviews()

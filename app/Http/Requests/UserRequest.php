@@ -26,7 +26,6 @@ class UserRequest extends FormRequest
     {
         return [
             'avatar' => 'image',
-            'update_email' => 'unique:users,email,'.Auth::user()->id,
         ];
     }
 
@@ -34,7 +33,6 @@ class UserRequest extends FormRequest
     {
         return [
             'avatar.image' => 'Upload file format is not correct (jpg, jpeg, png, bmp, gif, svg, or webp)',
-            'email.unique' => 'This email already exists',
         ];
     }
 }

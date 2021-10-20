@@ -20,6 +20,11 @@
                         <div class="container">
                             <form id="form-login" method="POST" action="{{ route('login') }}">
                                 @csrf
+
+                                @if(session('error') == config('app.login_error') || session('success') == config('app.register_success') || session('error') == config('app.login_incorrect'))
+                                    <div hidden id="modal-login" class="show-modal-login"></div>
+                                @endif
+
                                 <div class="form-group">
                                     <label class="form-label" for="username">Username:</label>
                                     <input type="text" class="form-control" id="username" name="username" required>
@@ -60,9 +65,6 @@
                         <div class="container">
                             <form id="form-register" method="POST" action="{{ route('register') }}">
                                 @csrf
-                                @if(session('register_success'))
-                                    <div hidden class="show-modal"></div>
-                                @endif
                                 <div class="form-group">
                                     <label class="form-label" for="rUsername">Username:</label>
                                     <input type="text" class="register-invalid form-control @error('username') is-invalid @enderror" id="rUsername" name="username" value="{{ old('username') }}" required>

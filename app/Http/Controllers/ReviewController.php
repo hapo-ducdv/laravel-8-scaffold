@@ -11,26 +11,22 @@ class ReviewController extends Controller
 {
     public function store(ReviewRequest $request)
     {
-        if (isset(Auth::user()->id)) {
-            if ($request['type'] == 'course' && Course::find($request['target_id'])->join == config('app.join')) {
-                return back()->with('error', 'You taken this course');
-            } else {
-                if (Review::check($request['target_id'], $request['type']) == config('app.check_review')) {
-                    Review::create([
-                        'user_id' => Auth::id(),
-                        'target_id' => $request['target_id'],
-                        'type' => $request['type'],
-                        'content' => $request['content'],
-                        'rate' => $request['rate'],
-                    ]);
-
-                    return back()->with('success', 'Create a successful review');
-                } else {
-                    return back()->with('error', 'You can only add 1 comment');
-                }
-            }
+        if ($request['type'] == 'course' && Course::find($request['target_id'])->join == config('app.join')) {
+            return back()->with('error', 'You taken this course');
         } else {
-            return back()->with('error', 'You must be logged in to do this');
+            if (Review::check($request['target_id'], $request['type']) == config('app.check_review')) {
+                Review::create([
+                    'user_id' => Auth::id(),
+                    'target_id' => $request['target_id'],
+                    'type' => $request['type'],
+                    'content' => $request['content'],
+                    'rate' => $request['rate'],
+                ]);
+
+                return back()->with('success', 'Create a successful review')->withFragment('#pills-review');
+            } else {
+                return back()->with('error', 'You can only add 1 comment')->withFragment('#pills-review');
+            }
         }
     }
 }

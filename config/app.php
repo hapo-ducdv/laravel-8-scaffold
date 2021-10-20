@@ -125,6 +125,18 @@ return [
 
     'remember' => 1,
 
+    'login_error' => 'You must be logged in to do this',
+
+    'register_success' => 'The new account created successfully! Let is login!',
+
+    'login_incorrect' => 'Incorrect username or password',
+
+    'success_create_review' => 'Create a successful review',
+
+    'error_create_review' => 'You can only add 1 comment',
+
+    'not_join_course' => 'You taken this course',
+
     'paginate_courses' => 14,
 
     'paginate_home_courses' => 3,

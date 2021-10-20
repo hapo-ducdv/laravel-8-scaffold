@@ -33,17 +33,17 @@ class Lesson extends Model
 
     public function getJoinAttribute()
     {
-        $id = null;
-        if (isset(Auth::user()->id)) {
-            $id = Auth::user()->id;
-        }
-
-        return $this->users()->where('user_id', $id)->count();
+        return $this->users->contains(Auth::user()->id);
     }
 
     public function programs()
     {
         return $this->hasMany(Program::class, 'lesson_id');
+    }
+
+    public function courses()
+    {
+        return $this->belongsTo(Course::class, 'course_id');
     }
 
     public function getNumberProgramAttribute()
@@ -93,13 +93,8 @@ class Lesson extends Model
 
     public function scopeNumberJoinedProcess($query, $courseId)
     {
-        $id = null;
-        if (isset(Auth::user()->id)) {
-            $id = Auth::user()->id;
-        }
-
-        return $query->where('course_id', $courseId)->whereHas('users', function ($subquery) use ($id) {
-            $subquery->where('user_id', $id);
+        return $query->where('course_id', $courseId)->whereHas('users', function ($subquery) {
+            $subquery->where('user_id', Auth::user()->id);
         })->count();
     }
 }

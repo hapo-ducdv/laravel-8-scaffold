@@ -19,14 +19,16 @@
                 </div>
 
                 @auth
-                    <div class="row progress-course">
-                        <div class="col-2 p-0 text-center progress-title">Progress:</div>
-                        <div class="col-9 progress p-0">
-                            <div class="progress-bar" role="progressbar"
-                                 style="width: {{ $process }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                    @if($course->join)
+                        <div class="row progress-course">
+                            <div class="col-2 p-0 text-center progress-title">Progress:</div>
+                            <div class="col-9 progress p-0">
+                                <div class="progress-bar" role="progressbar"
+                                     style="width: {{ $process }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-1 p-0 text-center progress-number">{{ $process }}%</div>
                         </div>
-                        <div class="col-1 p-0 text-center progress-number">{{ $process }}%</div>
-                    </div>
+                    @endif
                 @endauth
 
                 <div class="detail-course-right">
@@ -35,7 +37,7 @@
                             <a class="nav-link active" id="pills-lesson-tab" data-toggle="pill" href="#pills-lesson" role="tab" aria-controls="pills-lesson" aria-selected="true">Lessons</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-teacher-tab" data-toggle="pill" href="#pills-teacher" role="tab" aria-controls="pills-teacher" aria-selected="false">Tearcher</a>
+                            <a class="nav-link" id="pills-teacher-tab" data-toggle="pill" href="#pills-teacher" role="tab" aria-controls="pills-teacher" aria-selected="false">Teacher</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-selected="false">Reviews</a>
@@ -115,7 +117,7 @@
                                 <div class="col-6 pl-0">
                                     <div class="detail-course-number detail-tags">
                                         @foreach($course->tags as $tag)
-                                            #{{ $tag->name }}
+                                            <a href="/courses?tags[]={{ $tag->id }}">#{{ $tag->name }}</a>
                                         @endforeach
                                     </div>
                                 </div>
@@ -136,7 +138,7 @@
                             </div>
                         </li>
 
-                        @if($course->join > config('app.join'))
+                        @if($course->join)
                             <li class="list-group-item d-flex justify-content-center">
                                 <form action="{{ route('leave_course', $course->id) }}">
                                     @csrf

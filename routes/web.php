@@ -23,18 +23,21 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::prefix('courses')->group(function () {
-    Route::get('/', [CourseController::class, 'index'])->name('courses');
+Route::get('/courses', [CourseController::class, 'index'])->name('courses');
 
+Route::get('/course/{id}', [CourseController::class, 'show'])->name('course_detail');
+
+Route::middleware(['auth'])->group(function () {
     Route::prefix('course')->group(function () {
-        Route::get('/{id}', [CourseController::class, 'show'])->name('course_detail');
         Route::get('/{id}/join', [CourseController::class, 'join'])->name('join_course');
         Route::get('/{id}/leave', [CourseController::class, 'leave'])->name('leave_course');
-        Route::get('/{id}/lesson/{lesson}', [LessonController::class, 'show'])->name('lesson_detail');
+        Route::get('/{id}/lesson/{lesson}', [LessonController::class, 'show'])->name('lesson_detail')->middleware('check.joined.course');
+        Route::get('/lesson/{lesson}/program/{program}', [ProgramController::class, 'show'])->name('program')->middleware('check.joined.course');
     });
-});
-Route::get('/program/{id}', [ProgramController::class, 'show'])->name('program');
-Route::post('/review', [ReviewController::class, 'store'])->name('review_course');
 
-Route::get('/profile', [UserController::class, 'show'])->name('profile');
-Route::post('/update-profile', [UserController::class, 'update'])->name('update_profile');
+    Route::post('/review', [ReviewController::class, 'store'])->name('review_course');
+
+    Route::get('/profile', [UserController::class, 'show'])->name('profile');
+
+    Route::post('/update-profile', [UserController::class, 'update'])->name('update_profile');
+});

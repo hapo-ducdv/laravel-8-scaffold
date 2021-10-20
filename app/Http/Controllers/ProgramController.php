@@ -7,14 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends Controller
 {
-    public function show($id)
+    public function show($lessonId, $programId)
     {
-        if (isset(Auth::user()->id)) {
-            $program = Program::find($id);
+        $program = Program::find($programId);
 
-            $program->users()->attach([Auth::user()->id]);
+        $program->users()->sync([Auth::user()->id]);
 
-            return redirect()->to($program->path);
-        }
+        return redirect()->to($program->path);
     }
 }

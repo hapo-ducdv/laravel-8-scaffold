@@ -41,35 +41,15 @@ class CourseController extends Controller
 
     public function join($id)
     {
-        if (isset(Auth::user()->id)) {
-            $course = Course::find($id);
+        Course::find($id)->users()->sync([Auth::user()->id]);
 
-            if ($course->join == config('app.join')) {
-                $course->users()->attach([Auth::user()->id]);
-
-                return back()->with('success', 'Join the successful course');
-            } else {
-                return back()->with('error', 'You taken this course');
-            }
-        } else {
-            return back()->with('error', 'You must be logged in to do this');
-        }
+        return back()->with('success', 'Join the successful course');
     }
 
     public function leave($id)
     {
-        if (isset(Auth::user()->id)) {
-            $course = Course::find($id);
+        Course::find($id)->users()->detach([Auth::user()->id]);
 
-            if ($course->join > config('app.join')) {
-                $course->users()->detach([Auth::user()->id]);
-
-                return redirect()->route('course_detail', $id)->with('success', 'Leave this course successfully');
-            } else {
-                return back()->with('error', 'You need to take this course first');
-            }
-        } else {
-            return back()->with('error', 'You must be logged in to do this');
-        }
+        return redirect()->route('course_detail', $id)->with('success', 'Leave this course successfully');
     }
 }

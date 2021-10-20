@@ -65,7 +65,7 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class="update-profile-label">Email:</label>
-                                <input value="{{ $user->email }}" name="update_email" type="email" class="form-control input-update-profile" placeholder="Your email..." required disabled>
+                                <input value="{{ $user->email }}" name="update_email" type="email" class="form-control" placeholder="Your email..." disabled>
                             </div>
                         </div>
                         <div class="form-row update-profile-line">

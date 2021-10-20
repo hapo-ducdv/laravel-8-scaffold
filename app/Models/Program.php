@@ -41,23 +41,13 @@ class Program extends Model
 
     public function getJoinAttribute()
     {
-        $id = null;
-        if (isset(Auth::user()->id)) {
-            $id = Auth::user()->id;
-        }
-
-        return $this->users()->where('user_id', $id)->count();
+        return $this->users->contains(Auth::user()->id);
     }
 
     public function scopeNumberJoinedProcess($query, $lessonId)
     {
-        $id = null;
-        if (isset(Auth::user()->id)) {
-            $id = Auth::user()->id;
-        }
-
-        return $query->where('lesson_id', $lessonId)->whereHas('users', function ($subquery) use ($id) {
-            $subquery->where('user_id', $id);
+        return $query->where('lesson_id', $lessonId)->whereHas('users', function ($subquery) {
+            $subquery->where('user_id', Auth::user()->id);
         })->count();
     }
 }

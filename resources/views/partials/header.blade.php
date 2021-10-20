@@ -1,5 +1,5 @@
-<div class="container-fluid header">
-    <nav class="navbar navbar-expand-md navbar-light header-menu">
+<div class="container-fluid p-0 header">
+    <nav class="navbar navbar-expand-md navbar-light p-0 header-menu">
         <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i id="icon-navbar-toggler" class="fas fa-bars"></i>
         </button>
