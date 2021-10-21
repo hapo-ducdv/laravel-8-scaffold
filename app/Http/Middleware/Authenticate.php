@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Validation\ValidationException;
 
 class Authenticate extends Middleware
 {
@@ -15,7 +16,8 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return back()->with('error', 'You must be logged in to do this');
+            session()->flash('error', 'You must be logged in to do this');
+            throw ValidationException::withMessages([]);
         } else {
             return $request;
         }
