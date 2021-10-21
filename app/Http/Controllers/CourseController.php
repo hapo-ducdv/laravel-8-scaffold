@@ -41,14 +41,14 @@ class CourseController extends Controller
 
     public function join($id)
     {
-        Course::find($id)->users()->sync([Auth::user()->id]);
+        Course::find($id)->users()->sync([Auth::user()->id ?? null]);
 
         return back()->with('success', 'Join the successful course');
     }
 
     public function leave($id)
     {
-        Course::find($id)->users()->detach([Auth::user()->id]);
+        Course::find($id)->users()->detach([Auth::user()->id ?? null]);
 
         return redirect()->route('course_detail', $id)->with('success', 'Leave this course successfully');
     }

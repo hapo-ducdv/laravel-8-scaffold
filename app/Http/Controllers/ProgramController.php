@@ -11,7 +11,7 @@ class ProgramController extends Controller
     {
         $program = Program::find($programId);
 
-        $program->users()->sync([Auth::user()->id]);
+        $program->users()->sync([Auth::user()->id ?? null]);
 
         return redirect()->to($program->path);
     }

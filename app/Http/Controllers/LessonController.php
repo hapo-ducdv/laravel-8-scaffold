@@ -23,7 +23,7 @@ class LessonController extends Controller
             }
         }
 
-        $lesson->users()->sync([Auth::user()->id]);
+        $lesson->users()->sync([Auth::user()->id ?? null]);
 
         return view('courses.lesson.show', compact('course', 'courses', 'lesson', 'reviews', 'process'));
     }

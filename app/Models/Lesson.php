@@ -33,7 +33,7 @@ class Lesson extends Model
 
     public function getJoinAttribute()
     {
-        return $this->users->contains(Auth::user()->id);
+        return $this->users->contains(Auth::user()->id ?? null);
     }
 
     public function programs()
@@ -94,7 +94,7 @@ class Lesson extends Model
     public function scopeNumberJoinedProcess($query, $courseId)
     {
         return $query->where('course_id', $courseId)->whereHas('users', function ($subquery) {
-            $subquery->where('user_id', Auth::user()->id);
+            $subquery->where('user_id', Auth::user()->id ?? null);
         })->count();
     }
 }

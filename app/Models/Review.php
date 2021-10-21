@@ -43,6 +43,6 @@ class Review extends Model
 
     public function scopeCheck($query, $id, $type)
     {
-        return $query->where('user_id', Auth::user()->id)->where('target_id', $id)->where('type', $type)->count();
+        return $query->where('user_id', Auth::user()->id ?? null)->where('target_id', $id)->where('type', $type)->count();
     }
 }

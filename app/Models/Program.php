@@ -47,7 +47,7 @@ class Program extends Model
     public function scopeNumberJoinedProcess($query, $lessonId)
     {
         return $query->where('lesson_id', $lessonId)->whereHas('users', function ($subquery) {
-            $subquery->where('user_id', Auth::user()->id);
+            $subquery->where('user_id', Auth::user()->id ?? null);
         })->count();
     }
 }
