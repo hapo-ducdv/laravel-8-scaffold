@@ -76,6 +76,10 @@
   }
 
   $("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
+    var scrollHeight = $(document).scrollTop();
+    setTimeout(function() {
+      $(window).scrollTop(scrollHeight );
+    }, 5);
     var id = $(e.target).attr("href").substr(1);
     window.location.hash = id;
   });
@@ -84,4 +88,27 @@
 
   $('#pills-tab a[href="' + hash + '"]').tab('show');
 
+  $('.btn-preview').click(function() {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
+    $.ajax({
+      type: 'post',
+      url: '/course/lesson/' + $(this).data('lesson-id') + '/program/join',
+      data: {
+        lessonId: $(this).data('lesson-id'),
+        programId: $(this).data('program-id'),
+      },
+      dataType: 'json',
+      success: function (response) {
+        $('#progress-bar').css('width', response.progress + '%');
+        $('#progress-number').html(response.progress + '%');
+      }
+    })
+
+    $(this).html('Previewed');
+  });
 });

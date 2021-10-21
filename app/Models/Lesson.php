@@ -46,11 +46,6 @@ class Lesson extends Model
         return $this->belongsTo(Course::class, 'course_id');
     }
 
-    public function getNumberProgramAttribute()
-    {
-        return $this->programs()->count();
-    }
-
     public function reviews()
     {
         return $this->hasMany(Review::class, 'target_id');
@@ -89,6 +84,15 @@ class Lesson extends Model
     public function getOneStarRatingAttribute()
     {
         return $this->reviews()->where('type', 'lesson')->where('rate', config('app.one_stars'))->count();
+    }
+
+    public function getProgressAttribute()
+    {
+        $numberJoined = Program::numberJoinedProcess($this->id);
+        $numberProgram = $this->programs()->count() == config('app.process_min') ? config('app.process_auto') : $this->programs()->count();
+        $progress = round($numberJoined / $numberProgram * config('app.process_max'), config('app.process_auto'));
+
+        return $progress == config('app.process_min') ? config('app.process_min') : $progress;
     }
 
     public function scopeNumberJoinedProcess($query, $courseId)

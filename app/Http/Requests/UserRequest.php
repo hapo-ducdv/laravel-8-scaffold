@@ -26,13 +26,18 @@ class UserRequest extends FormRequest
     {
         return [
             'avatar' => 'image',
+            'update_phone' => 'nullable|numeric|unique:users,phone|regex:/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/',
         ];
     }
+
 
     public function messages()
     {
         return [
             'avatar.image' => 'Upload file format is not correct (jpg, jpeg, png, bmp, gif, svg, or webp)',
+            'update_phone.numeric' => 'The phone number must be numeric',
+            'update_phone.unique' => 'This phone number already exists',
+            'update_phone.regex' => 'Invalid phone number',
         ];
     }
 }

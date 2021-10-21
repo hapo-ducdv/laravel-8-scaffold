@@ -41,7 +41,7 @@ class Program extends Model
 
     public function getJoinAttribute()
     {
-        return $this->users->contains(Auth::user()->id);
+        return $this->users->contains(Auth::user()->id ?? null);
     }
 
     public function scopeNumberJoinedProcess($query, $lessonId)

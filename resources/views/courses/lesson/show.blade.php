@@ -21,9 +21,9 @@
                 <div class="row progress-lesson">
                     <div class="col-2 p-0 text-center progress-title">Progress:</div>
                     <div class="col-9 progress p-0">
-                        <div class="progress-bar" role="progressbar" style="width: {{ $process }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: {{ $lesson->progress }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <div class="col-1 p-0 text-center progress-number">{{ $process }}%</div>
+                    <div id="progress-number" class="col-1 p-0 text-center progress-number">{{ $lesson->progress }}%</div>
                 </div>
                 <div class="lesson-detail-left">
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">

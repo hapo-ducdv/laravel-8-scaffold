@@ -65,7 +65,7 @@
         </div>
         @enderror
 
-        @error('update_email')
+        @error('update_phone')
         <div class="alert alert-danger text-center message-sesson">
             <i class="mr-2 fas fa-exclamation-circle"></i> {{ $message }}
         </div>
