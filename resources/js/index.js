@@ -97,7 +97,7 @@
 
     $.ajax({
       type: 'post',
-      url: '/course/lesson/' + $(this).data('lesson-id') + '/program/join',
+      url: '/courses/lessons/' + $(this).data('lesson-id') + '/programs/' + $(this).data('program-id') + '/join',
       data: {
         lessonId: $(this).data('lesson-id'),
         programId: $(this).data('program-id'),
