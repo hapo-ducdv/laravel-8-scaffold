@@ -61,29 +61,12 @@ class Lesson extends Model
         return round($this->reviews()->where('type', 'lesson')->avg('rate'));
     }
 
-    public function getFiveStarRatingAttribute()
+    public function getStarRatingAttribute()
     {
-        return $this->reviews()->where('type', 'lesson')->where('rate', config('app.max_stars'))->count();
-    }
-
-    public function getFourStarRatingAttribute()
-    {
-        return $this->reviews()->where('type', 'lesson')->where('rate', config('app.four_stars'))->count();
-    }
-
-    public function getThreeStarRatingAttribute()
-    {
-        return $this->reviews()->where('type', 'lesson')->where('rate', config('app.three_stars'))->count();
-    }
-
-    public function getTwoStarRatingAttribute()
-    {
-        return $this->reviews()->where('type', 'lesson')->where('rate', config('app.two_stars'))->count();
-    }
-
-    public function getOneStarRatingAttribute()
-    {
-        return $this->reviews()->where('type', 'lesson')->where('rate', config('app.one_stars'))->count();
+        return $this->reviews()->where('type', 'lesson')
+            ->selectRaw('count(*) as total, rate')
+            ->groupBy('rate')
+            ->get();
     }
 
     public function getProgressAttribute()
