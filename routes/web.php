@@ -35,9 +35,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/lessons/{lesson}/programs/{program}/join', [ProgramController::class, 'store'])->middleware('check.joined.course');
     });
 
-    Route::post('/review', [ReviewController::class, 'store'])->name('review_course');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('review_course');
 
     Route::get('/profile', [UserController::class, 'show'])->name('profile');
 
-    Route::post('/update-profile', [UserController::class, 'update'])->name('update_profile');
+    Route::post('/profile/update', [UserController::class, 'update'])->name('update_profile');
 });
