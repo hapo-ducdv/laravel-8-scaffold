@@ -27,9 +27,9 @@
                     </div>
                     <div class="col-2">
                         @if($program->join)
-                            <a href="{{ route('program', ['lesson' => $lesson->id, 'program' => $program->id]) }}" id="btn-preview" class="btn btn-preview" target="_blank">Previewed</a>
+                            <a href="{{ $program->path }}" class="btn btn-preview" data-lesson-id="{{ $lesson->id }}" data-program-id="{{ $program->id }}" target="_blank">Previewed</a>
                         @else
-                            <a href="{{ route('program', ['lesson' => $lesson->id, 'program' => $program->id]) }}" id="btn-preview" class="btn btn-preview" target="_blank">Preview</a>
+                            <a href="{{ $program->path }}" class="btn btn-preview" data-lesson-id="{{ $lesson->id }}" data-program-id="{{ $program->id }}" target="_blank">Preview</a>
                         @endif
                     </div>
                 </div>

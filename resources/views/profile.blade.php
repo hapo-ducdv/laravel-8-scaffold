@@ -75,7 +75,7 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class="update-profile-label">Phone:</label>
-                                <input value="{{ $user->phone }}" name="update_phone" type="number" class="form-control input-update-profile" placeholder="Your address..." disabled>
+                                <input maxlength="10" value="{{ $user->phone }}" name="update_phone" type="text" class="form-control input-update-profile" placeholder="Your address..." disabled>
                             </div>
                         </div>
                         <div class="form-row update-profile-line">

@@ -112,6 +112,26 @@ class Course extends Model
         return $this->reviews()->where('type', 'course')->where('rate', config('app.one_stars'))->count();
     }
 
+    public function getProgressAttribute()
+    {
+        $numberProgram = config('app.process_min');
+        $numberProgramJoined = config('app.process_min');
+
+        $numberLesson = $this->lessons()->count();
+
+        foreach ($this->lessons as $lesson) {
+            $takeNumberProgramJoined = Program::numberJoinedProcess($lesson->id);
+            $takeNumberProgram = $lesson->programs()->count();
+            $numberProgram += $takeNumberProgram;
+            $numberProgramJoined += $takeNumberProgramJoined;
+        }
+
+        $sumLessonProgram = ($numberLesson * $numberProgram) == 0 ? config('app.process_auto') : ($numberLesson * $numberProgram);
+        $progress = round(($numberLesson * $numberProgramJoined) / $sumLessonProgram * config('app.process_max'), config('app.process_auto'));
+
+        return $progress == config('app.process_min') ? config('app.process_min') : $progress;
+    }
+
     public function scopeSearch($query, $data)
     {
         if (isset($data['keyword'])) {

@@ -24,9 +24,9 @@
                             <div class="col-2 p-0 text-center progress-title">Progress:</div>
                             <div class="col-9 progress p-0">
                                 <div class="progress-bar" role="progressbar"
-                                     style="width: {{ $process }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                     style="width: {{ $course->progress }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <div class="col-1 p-0 text-center progress-number">{{ $process }}%</div>
+                            <div class="col-1 p-0 text-center progress-number">{{ $course->progress }}%</div>
                         </div>
                     @endif
                 @endauth

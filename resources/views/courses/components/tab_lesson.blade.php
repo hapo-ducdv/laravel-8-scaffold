@@ -40,7 +40,7 @@
                     <div class="col-2">
                         @if($course->join)
                             @if($lesson->join)
-                                <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learned</a>
+                                <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">{{ ($lesson->progress == config('app.process_max')) ? 'Learned': 'Learning...'}}</a>
                             @else
                                 <a href="{{ route('lesson_detail', ['id' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learn</a>
                             @endif
