@@ -7,6 +7,8 @@ use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\FacebookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('user', UserController::class)->only(['show', 'update']);
 });
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login_google');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('login_facebook');
+Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);

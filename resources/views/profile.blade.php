@@ -11,7 +11,11 @@
                         <form method="post" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
-                            <img src='{{ $user->avatar ? asset("/storage/users/$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
+                            @if(substr($user->avatar, 0, 5) == 'https')
+                                <img src='{{ $user->avatar }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
+                            @else
+                                <img src='{{ $user->avatar ? asset("/storage/users/$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
+                            @endif
                             <i class="fas fa-camera text-center icon-upload-avatar" id="icon-upload-avatar"></i>
                             <input onchange="form.submit()" type="file" name="avatar" class="input-upload-avatar" id="input-upload-avatar">
                         </form>

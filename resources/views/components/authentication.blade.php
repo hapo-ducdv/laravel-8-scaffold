@@ -51,10 +51,10 @@
                                     <div class="horizontal-line"><hr></div>
                                 </div>
                                 <div class="d-flex flex-column align-items-center login-account">
-                                    <a href="#" class="btn d-flex justify-content-center align-items-center login-account-google">
+                                    <a href="{{ route('login_google') }}" class="btn d-flex justify-content-center align-items-center login-account-google">
                                         <i class="fab fa-google-plus-g"></i> Google
                                     </a>
-                                    <a href="#" class="btn d-flex justify-content-center align-items-center login-account-facebook">
+                                    <a href="{{ route('login_facebook') }}" class="btn d-flex justify-content-center align-items-center login-account-facebook">
                                         <i class="fab fa-facebook-f"></i> Facebook
                                     </a>
                                 </div>
