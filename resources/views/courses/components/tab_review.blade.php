@@ -25,9 +25,9 @@
                 </div>
                 <div class="col-8">
                     <div class="detail-rating">
-                        @foreach($course->starRating as $key => $rating)
+                        @foreach($course->star_rating as $key => $rating)
                             <div class="row detail-rating-align">
-                                <span class="col-2 p-0 text-center detail-rating-star">{{ config('app.max_stars') - $key }} stars</span>
+                                <span class="col-2 p-0 text-center detail-rating-star">{{ $key + config('app.one_stars')}} stars</span>
                                 <div class="col-9 p-0 progress detail-rating-progress">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $course->number_review > config('app.process_min') ? $rating / $course->number_review * config('app.process_max') : config('app.process_min') }}%"></div>
                                 </div>

@@ -89,19 +89,15 @@ class Course extends Model
 
     public function getStarRatingAttribute()
     {
-        $starRatingTotal = [config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars')];
+        $starRatings = [config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars')];
 
-        $starRating = $this->reviews()->where('type', 'course')->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
+        $ratings = $this->reviews()->where('type', 'course')->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
 
-        foreach ($starRating as $rating) {
-            for ($i = config('app.i'); $i < config('app.max_stars'); $i++) {
-                if ($rating->rate == config('app.max_stars') - $i) {
-                    $starRatingTotal[$i] = $rating->total;
-                }
-            }
+        foreach ($ratings as $rating) {
+            $starRatings[$rating->rate - config('app.one_stars')] = $rating->total;
         }
 
-        return $starRatingTotal;
+        return $starRatings;
     }
 
     public function getProgressAttribute()
