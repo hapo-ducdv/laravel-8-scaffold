@@ -63,10 +63,19 @@ class Lesson extends Model
 
     public function getStarRatingAttribute()
     {
-        return $this->reviews()->where('type', 'lesson')
-            ->selectRaw('count(*) as total, rate')
-            ->groupBy('rate')
-            ->get();
+        $starRatingTotal = [config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars')];
+
+        $starRating = $this->reviews()->where('type', 'lesson')->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
+
+        foreach ($starRating as $rating) {
+            for ($i = config('app.i'); $i < config('app.max_stars'); $i++) {
+                if ($rating->rate == config('app.max_stars') - $i) {
+                    $starRatingTotal[$i] = $rating->total;
+                }
+            }
+        }
+
+        return $starRatingTotal;
     }
 
     public function getProgressAttribute()

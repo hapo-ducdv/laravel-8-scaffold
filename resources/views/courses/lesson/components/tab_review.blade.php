@@ -25,13 +25,13 @@
                 </div>
                 <div class="col-8">
                     <div class="detail-rating">
-                        @foreach($lesson->starRating as $starRating)
+                        @foreach($lesson->starRating as $key => $rating)
                             <div class="row detail-rating-align">
-                                <span class="col-2 p-0 text-center detail-rating-star">{{ $starRating->rate }} stars</span>
+                                <span class="col-2 p-0 text-center detail-rating-star">{{ config('app.max_stars') - $key }} stars</span>
                                 <div class="col-9 p-0 progress detail-rating-progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $lesson->number_review > config('app.process_min') ? $starRating->total / $lesson->number_review * config('app.process_max') : config('app.process_min') }}%"></div>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $lesson->number_review > config('app.process_min') ? $rating / $lesson->number_review * config('app.process_max') : config('app.process_min') }}%"></div>
                                 </div>
-                                <span class="col-1 p-0 text-center detail-rating-number">{{ $starRating->total }}</span>
+                                <span class="col-1 p-0 text-center detail-rating-number">{{ $rating }}</span>
                             </div>
                         @endforeach
                     </div>
