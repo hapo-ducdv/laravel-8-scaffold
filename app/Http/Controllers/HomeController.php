@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         $courses = Course::randomCourses(config('app.paginate_home_courses'))->get();
         $otherCourses = Course::randomCourses(config('app.paginate_home_courses'))->get();
-        $reviews = Review::search()->get();
+        $reviews = Review::randomReviews()->get();
         $numberCourse = Course::count();
         $numberLesson = Lesson::count();
         $numberUser = User::where('role', User::ROLE_USER)->count();
