@@ -11,13 +11,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $courses = Course::randomCourses(config('app.paginate_home_courses'))->get();
-        $otherCourses = Course::randomCourses(config('app.paginate_home_courses'))->get();
-        $reviews = Review::Search()->get();
-        $numberCourse = Course::count();
-        $numberLesson = Lesson::count();
-        $numberUser = User::count();
+        $courses = Course::suggestionCourses()->get();
+        $otherCourses = Course::randomCourses()->get();
+        $reviews = Review::qualityReviews()->get();
+        $totalCourse = Course::count();
+        $totalLesson = Lesson::count();
+        $totalUser = User::where('role', User::ROLE_USER)->count();
 
-        return view('home', compact('courses', 'otherCourses', 'reviews', 'numberCourse', 'numberLesson', 'numberUser'));
+        return view('home', compact('courses', 'otherCourses', 'reviews', 'totalCourse', 'totalLesson', 'totalUser'));
     }
 }

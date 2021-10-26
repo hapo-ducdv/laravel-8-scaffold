@@ -183,6 +183,8 @@ return [
 
     'process_auto' => 1,
 
+    'decimal' => 0,
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

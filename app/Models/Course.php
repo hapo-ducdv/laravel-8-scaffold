@@ -181,8 +181,22 @@ class Course extends Model
         return $query;
     }
 
-    public function scopeRandomCourses($query, $number)
+    public function scopeRandomCourses($query)
     {
-        $query->inRandomOrder()->limit($number);
+        $query->inRandomOrder()->limit(config('app.paginate_home_courses'));
+    }
+
+    public function scopeRatings($query, $ratings)
+    {
+        if (isset($ratings)) {
+            $query->withAvg('reviews', 'rate')->orderBy('reviews_avg_rate', $ratings);
+        }
+
+        return $query;
+    }
+
+    public function scopeSuggestionCourses($query)
+    {
+        return $query->ratings(config('app.descending'))->limit(config('app.paginate_home_courses'));
     }
 }
