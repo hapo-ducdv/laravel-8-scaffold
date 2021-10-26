@@ -199,5 +199,4 @@ class Course extends Model
     {
         return $query->ratings('desc')->limit(config('app.paginate_home_courses'));
     }
-
 }
