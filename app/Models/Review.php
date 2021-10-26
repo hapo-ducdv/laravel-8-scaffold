@@ -36,9 +36,9 @@ class Review extends Model
         return $this->belongsTo(Lesson::class, 'target_id');
     }
 
-    public function scopeRandomReviews($query)
+    public function scopeQualityReviews($query)
     {
-        return $query->where('type', 'course')->inRandomOrder()->limit(config('app.paginate_reviews'));
+        return $query->where('type', 'course')->where('rate', config('app.max_stars'))->limit(config('app.paginate_reviews'));
     }
 
     public function scopeCheck($query, $id, $type)

@@ -139,15 +139,15 @@
     <div class="row statistic-content">
         <div class="col-12 col-md-4 d-flex flex-column align-items-center">
             <div class="statistic-content-title">Courses</div>
-            <div class="statistic-content-number">{{ number_format($numberCourse, 0, ',', '.') }}</div>
+            <div class="statistic-content-number">{{ number_format($totalCourse, config('app.i'), ',', '.') }}</div>
         </div>
         <div class="col-12 col-md-4 d-flex flex-column align-items-center">
             <div class="statistic-content-title">Lessons</div>
-            <div class="statistic-content-number">{{ number_format($numberLesson, 0, ',', '.') }}</div>
+            <div class="statistic-content-number">{{ number_format($totalLesson, config('app.i'), ',', '.') }}</div>
         </div>
         <div class="col-12 col-md-4 d-flex flex-column align-items-center">
             <div class="statistic-content-title">Learns</div>
-            <div class="statistic-content-number">{{ number_format($numberUser, 0, ',', '.') }}</div>
+            <div class="statistic-content-number">{{ number_format($totalUser, config('app.i'), ',', '.') }}</div>
         </div>
     </div>
 </div>
