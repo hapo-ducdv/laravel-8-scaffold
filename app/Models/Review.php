@@ -13,6 +13,9 @@ class Review extends Model
 
     protected $table = 'reviews';
 
+    const TYPE_COURSE = 'course';
+    const TYPE_LESSON = 'lesson';
+
     protected $fillable = [
         'user_id',
         'target_id',

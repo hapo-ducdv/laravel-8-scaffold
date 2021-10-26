@@ -53,19 +53,19 @@ class Lesson extends Model
 
     public function getNumberReviewAttribute()
     {
-        return $this->reviews()->where('type', 'lesson')->count();
+        return $this->reviews()->where('type', Review::TYPE_LESSON)->count();
     }
 
     public function getTotalRateAttribute()
     {
-        return round($this->reviews()->where('type', 'lesson')->avg('rate'));
+        return round($this->reviews()->where('type', Review::TYPE_LESSON)->avg('rate'));
     }
 
     public function getStarRatingAttribute()
     {
         $starRatings = [config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars')];
 
-        $ratings = $this->reviews()->where('type', 'lesson')->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
+        $ratings = $this->reviews()->where('type', Review::TYPE_LESSON)->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
 
         foreach ($ratings as $rating) {
             $starRatings[$rating->rate - config('app.one_stars')] = $rating->total;
