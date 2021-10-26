@@ -11,7 +11,7 @@
                     <button type="submit" class="btn btn-search">Search</button>
                 </form>
                 <div class="col-4 d-flex justify-content-end">
-                    <form action="{{ route('join_course', $course->id) }}">
+                    <form action="{{ route('courses.join', $course->id) }}">
                         @if($course->join)
                             <div class="w-30 text-right btn btn-join-course">Joined</div>
                         @else

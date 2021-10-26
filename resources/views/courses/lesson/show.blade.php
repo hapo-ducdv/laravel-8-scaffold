@@ -129,7 +129,7 @@
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-center">
-                            <form action="{{ route('leave_course', $course->id) }}">
+                            <form action="{{ route('courses.leave', $course->id) }}">
                                 @csrf
                                 <input type="hidden" name="course_id" value="{{ $course->id }}"/>
                                 <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
