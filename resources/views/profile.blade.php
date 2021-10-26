@@ -8,7 +8,8 @@
             <div class="col-12 col-md-3">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">
-                        <form method="post" action="{{ route('update_profile') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
+                            @method('patch')
                             @csrf
                             <img src='{{ $user->avatar ? asset("/storage/users/$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
                             <i class="fas fa-camera text-center icon-upload-avatar" id="icon-upload-avatar"></i>
@@ -56,7 +57,8 @@
                     <h5 class="title">Edit profile</h5>
                     <hr class="horizontal-line">
                     <hr class="horizontal-line">
-                    <form method="post" class="update-profile" action="{{ route('update_profile') }}">
+                    <form method="post" class="update-profile" action="{{ route('profile.update', $user->id) }}">
+                        @method('patch')
                         @csrf
                         <div class="form-row update-profile-line">
                             <div class="form-group col-12 col-md-6 line-right">

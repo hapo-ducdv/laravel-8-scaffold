@@ -26,7 +26,7 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{{ route('profile') }}">
+                            <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}">
                                 <i class="mr-3 fas fa-user"></i> Profile
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"

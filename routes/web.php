@@ -37,7 +37,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/reviews', [ReviewController::class, 'store'])->name('review_course');
 
-    Route::get('/profile', [UserController::class, 'show'])->name('profile');
-
-    Route::post('/profile/update', [UserController::class, 'update'])->name('update_profile');
+    Route::resource('profile', UserController::class);
 });
