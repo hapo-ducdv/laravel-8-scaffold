@@ -197,6 +197,6 @@ class Course extends Model
 
     public function scopeSuggestionCourses($query)
     {
-        return $query->ratings('desc')->limit(config('app.paginate_home_courses'));
+        return $query->ratings(config('app.descending'))->limit(config('app.paginate_home_courses'));
     }
 }
