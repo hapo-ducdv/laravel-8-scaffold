@@ -11,7 +11,7 @@
                 <nav class="nav flex-column footer-nav-left">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                     <a class="nav-link" href="https://www.facebook.com/haposoft">Features</a>
-                    <a class="nav-link" href="{{ route('courses') }}">Courses</a>
+                    <a class="nav-link" href="{{ route('courses.index') }}">Courses</a>
                     <a class="nav-link" href="https://blog.haposoft.com/">Blog</a>
                 </nav>
                 <nav class="nav flex-column footer-nav-right">

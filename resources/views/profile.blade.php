@@ -42,12 +42,12 @@
                     <hr class="horizontal-line">
                     <div class="d-flex courses">
                         @foreach($user->courses as $course)
-                            <a href="{{ route('course_detail', $course->id) }}" class="mt-0 text-center course">
+                            <a href="{{ route('courses.show', $course->id) }}" class="mt-0 text-center course">
                                 <img class="rounded-circle course-image" src='{{ asset("/storage/courses/$course->image") }}' alt="">
                                 <p class="course-name">{{ $course->name }}</p>
                             </a>
                         @endforeach
-                        <a href="{{ route('courses') }}" class="mt-0 text-center add-course">
+                        <a href="{{ route('courses.index') }}" class="mt-0 text-center add-course">
                             <i class="fas fa-plus add-course-icon"></i>
                             <p class="add-course-text">Add course</p>
                         </a>

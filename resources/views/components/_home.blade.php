@@ -7,7 +7,7 @@
             </div>
             <div class="banner-first-content-desc-up d-block">Interface lessons, "on-the-go" practice,</div>
             <div class="banner-first-content-desc-bot d-block">peer support</div>
-            <a class="btn d-flex align-items-center justify-content-center" href="{{ route('courses') }}">Start Learning Now !</a>
+            <a class="btn d-flex align-items-center justify-content-center" href="{{ route('courses.index') }}">Start Learning Now !</a>
         </div>
     </div>
     <div class="linear-gradient cih">
@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $course->name }}</h5>
                         <p class="card-text">{{ $course->desc }}</p>
-                        <a href="{{ route('course_detail', $course->id) }}" class="btn">Take This Course</a>
+                        <a href="{{ route('courses.show', $course->id) }}" class="btn">Take This Course</a>
                     </div>
                 </div>
             </div>
@@ -45,14 +45,14 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $course->name }}</h5>
                         <p class="card-text">{{ $course->desc }}</p>
-                        <a href="{{ route('course_detail', $course->id) }}" class="btn">Take This Course</a>
+                        <a href="{{ route('courses.show', $course->id) }}" class="btn">Take This Course</a>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
     <div class="row justify-content-center">
-        <a class="row view-all" href="{{ route('courses') }}">View All Our Courses
+        <a class="row view-all" href="{{ route('courses.index') }}">View All Our Courses
             <i class="fas fa-long-arrow-alt-right d-flex arrow-right"></i>
         </a>
     </div>
@@ -128,7 +128,7 @@
 <div class="cih">
     <div class="d-flex flex-column align-items-center justify-content-center banner-end">
         <div class="text-center banner-end-text">Become a member of our growing community!</div>
-        <a class="btn" href="{{ route('courses') }}">Start Learning Now!</a>
+        <a class="btn" href="{{ route('courses.index') }}">Start Learning Now!</a>
     </div>
 </div>
 

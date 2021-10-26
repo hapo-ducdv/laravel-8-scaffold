@@ -23,19 +23,17 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/courses', [CourseController::class, 'index'])->name('courses');
-
-Route::get('/courses/{course}', [CourseController::class, 'show'])->name('course_detail');
+Route::resource('courses', CourseController::class);
 
 Route::middleware(['auth'])->group(function () {
-    Route::prefix('courses')->group(function () {
-        Route::get('/{course}/join', [CourseController::class, 'join'])->name('join_course');
-        Route::get('/{course}/leave', [CourseController::class, 'leave'])->name('leave_course');
-        Route::get('/{course}/lessons/{lesson}', [LessonController::class, 'show'])->name('lesson_detail')->middleware('check.joined.course');
-        Route::post('/lessons/{lesson}/programs/{program}/join', [ProgramController::class, 'store'])->middleware('check.joined.course');
-    });
+    Route::get('/courses/{course}/join', [CourseController::class, 'join'])->name('join_course');
+    Route::get('/courses/{course}/leave', [CourseController::class, 'leave'])->name('leave_course');
 
-    Route::post('/reviews', [ReviewController::class, 'store'])->name('review_course');
+    Route::resource('courses.lessons', LessonController::class)->middleware('check.joined.course');
+
+    Route::post('/lessons/{lesson}/programs/{program}/join', [ProgramController::class, 'store'])->middleware('check.joined.course');
+
+    Route::resource('reviews', ReviewController::class);
 
     Route::resource('profile', UserController::class);
 });

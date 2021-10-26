@@ -42,6 +42,6 @@ class CourseController extends Controller
     {
         Course::find($id)->users()->detach([Auth::user()->id ?? null]);
 
-        return redirect()->route('course_detail', $id)->with('success', 'Leave this course successfully');
+        return redirect()->route('courses.show', $id)->with('success', 'Leave this course successfully');
     }
 }

@@ -10,13 +10,13 @@
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item text-center {{ Route::is(['course*', 'lesson*']) ? 'nav-item-active' : ''}}">
-                    <a class="nav-link" href="{{ route('courses') }}" href="{{ route('courses') }}">All Courses</a>
+                    <a class="nav-link" href="{{ route('courses.index') }}">All Courses</a>
                 </li>
                 <li class="nav-item text-center nav-item-hidden">
-                    <a class="nav-link" href="{{ route('courses') }}">List lesson</a>
+                    <a class="nav-link" href="{{ route('courses.index') }}">List lesson</a>
                 </li>
                 <li class="nav-item text-center nav-item-hidden">
-                    <a class="nav-link" href="{{ route('courses') }}">Lesson Details</a>
+                    <a class="nav-link" href="{{ route('courses.index') }}">Lesson Details</a>
                 </li>
 
                 @auth

@@ -5,7 +5,7 @@
     <ul class="list-group list-group-flush list-lesson">
         <li class="list-group-item list-group-flush">
             <div class="row">
-                <form class="col-8 form-inline" action="{{ route('course_detail', $course->id) }}">
+                <form class="col-8 form-inline" action="{{ route('courses.show', $course->id) }}">
                     <input value="{{ request('keyword') }}" type="text" class="form-control input-search" name="keyword" placeholder="Search...">
                     <label for="keyword"><i class="fas fa-search"></i></label>
                     <button type="submit" class="btn btn-search">Search</button>
@@ -26,7 +26,7 @@
             <li class="list-group-item align-items-center">
                 <div class="row">
                     <div class="col-1">
-                        <a href="{{ route('lesson_detail', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="number-lesson">
+                        <a href="{{ route('courses.lessons.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="number-lesson">
                             @if (empty(request('page')))
                                 {{ $key + 1 }}.
                             @else
@@ -35,14 +35,14 @@
                         </a>
                     </div>
                     <div class="col-9 p-0">
-                        <a href="{{ route('lesson_detail', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="name-lesson">{{ $lesson->name }}</a>
+                        <a href="{{ route('courses.lessons.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="name-lesson">{{ $lesson->name }}</a>
                     </div>
                     <div class="col-2">
                         @if($course->join)
                             @if($lesson->join)
-                                <a href="{{ route('lesson_detail', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">{{ ($lesson->progress == config('app.process_max')) ? 'Learned': 'Learning...'}}</a>
+                                <a href="{{ route('courses.lessons.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">{{ ($lesson->progress == config('app.process_max')) ? 'Learned': 'Learning...'}}</a>
                             @else
-                                <a href="{{ route('lesson_detail', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learn</a>
+                                <a href="{{ route('courses.lessons.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learn</a>
                             @endif
                         @endif
                     </div>
