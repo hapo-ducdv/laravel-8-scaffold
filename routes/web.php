@@ -23,17 +23,17 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::resource('courses', CourseController::class);
+Route::resource('courses', CourseController::class)->only(['index', 'show']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/courses/{course}/join', [CourseController::class, 'join'])->name('courses.join');
     Route::get('/courses/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
 
-    Route::resource('courses.lessons', LessonController::class)->middleware('check.joined.course');
+    Route::resource('courses.lessons', LessonController::class)->only(['show'])->middleware('check.joined.course');
 
-    Route::post('/lessons/{lesson}/programs/{program}/join', [ProgramController::class, 'store'])->name('programs.join')->middleware('check.joined.course');
+    Route::post('/lessons/{lesson}/programs/{program}/join', [ProgramController::class, 'join'])->name('programs.join')->middleware('check.joined.course');
 
-    Route::resource('reviews', ReviewController::class);
+    Route::resource('reviews', ReviewController::class)->only(['store']);
 
-    Route::resource('profile', UserController::class);
+    Route::resource('profile', UserController::class)->only(['show', 'update']);
 });
