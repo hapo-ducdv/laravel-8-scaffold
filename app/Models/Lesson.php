@@ -63,7 +63,7 @@ class Lesson extends Model
 
     public function getStarRatingAttribute()
     {
-        $starRatings = [config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars'), config('app.min_stars')];
+        $starRatings = [0, 0, 0, 0, 0];
 
         $ratings = $this->reviews()->where('type', Review::TYPE_LESSON)->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
 
