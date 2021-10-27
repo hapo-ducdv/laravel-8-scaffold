@@ -25,41 +25,15 @@
                 </div>
                 <div class="col-8">
                     <div class="detail-rating">
-                        <div class="row detail-rating-align">
-                            <span class="col-2 p-0 text-center detail-rating-star">5 stars</span>
-                            <div class="col-9 p-0 progress detail-rating-progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $course->number_review > 0 ? $course->five_star_rating / $course->number_review * 100 : 0 }}%"></div>
+                        @foreach($course->star_rating as $key => $rating)
+                            <div class="row detail-rating-align">
+                                <span class="col-2 p-0 text-center detail-rating-star">{{ $key + config('app.one_stars')}} stars</span>
+                                <div class="col-9 p-0 progress detail-rating-progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $course->number_review > config('app.process_min') ? $rating / $course->number_review * config('app.process_max') : config('app.process_min') }}%"></div>
+                                </div>
+                                <span class="col-1 p-0 text-center detail-rating-number">{{ $rating }}</span>
                             </div>
-                            <span class="col-1 p-0 text-center detail-rating-number">{{ $course->five_star_rating }}</span>
-                        </div>
-                        <div class="row detail-rating-align">
-                            <span class="col-2 p-0 text-center detail-rating-star">4 stars</span>
-                            <div class="col-9 p-0 progress detail-rating-progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $course->number_review > 0 ? $course->four_star_rating / $course->number_review * 100 : 0 }}%"></div>
-                            </div>
-                            <span class="col-1 p-0 text-center detail-rating-number">{{ $course->four_star_rating }}</span>
-                        </div>
-                        <div class="row detail-rating-align">
-                            <span class="col-2 p-0 text-center detail-rating-star">3 stars</span>
-                            <div class="col-9 p-0 progress detail-rating-progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $course->number_review > 0 ? $course->three_star_rating / $course->number_review * 100 : 0 }}%"></div>
-                            </div>
-                            <span class="col-1 p-0 text-center detail-rating-number">{{ $course->three_star_rating }}</span>
-                        </div>
-                        <div class="row detail-rating-align">
-                            <span class="col-2 p-0 text-center detail-rating-star">2 stars</span>
-                            <div class="col-9 p-0 progress detail-rating-progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $course->number_review > 0 ? $course->two_star_rating / $course->number_review * 100 : 0 }}%"></div>
-                            </div>
-                            <span class="col-1 p-0 text-center detail-rating-number">{{ $course->two_star_rating }}</span>
-                        </div>
-                        <div class="row">
-                            <span class="col-2 p-0 text-center detail-rating-star">1 stars</span>
-                            <div class="col-9 p-0 progress detail-rating-progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ $course->number_review > 0 ? $course->one_star_rating / $course->number_review * 100 : 0 }}%"></div>
-                            </div>
-                            <span class="col-1 p-0 text-center detail-rating-number">{{ $course->one_star_rating }}</span>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -79,37 +79,25 @@ class Course extends Model
 
     public function getNumberReviewAttribute()
     {
-        return $this->reviews()->where('type', 'course')->count();
+        return $this->reviews()->where('type', Review::TYPE_COURSE)->count();
     }
 
     public function getTotalRateAttribute()
     {
-        return round($this->reviews()->where('type', 'course')->avg('rate'));
+        return round($this->reviews()->where('type', Review::TYPE_COURSE)->avg('rate'));
     }
 
-    public function getFiveStarRatingAttribute()
+    public function getStarRatingAttribute()
     {
-        return $this->reviews()->where('type', 'course')->where('rate', config('app.max_stars'))->count();
-    }
+        $starRatings = [0, 0, 0, 0, 0];
 
-    public function getFourStarRatingAttribute()
-    {
-        return $this->reviews()->where('type', 'course')->where('rate', config('app.four_stars'))->count();
-    }
+        $ratings = $this->reviews()->where('type', Review::TYPE_COURSE)->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
 
-    public function getThreeStarRatingAttribute()
-    {
-        return $this->reviews()->where('type', 'course')->where('rate', config('app.three_stars'))->count();
-    }
+        foreach ($ratings as $rating) {
+            $starRatings[$rating->rate - config('app.one_stars')] = $rating->total;
+        }
 
-    public function getTwoStarRatingAttribute()
-    {
-        return $this->reviews()->where('type', 'course')->where('rate', config('app.two_stars'))->count();
-    }
-
-    public function getOneStarRatingAttribute()
-    {
-        return $this->reviews()->where('type', 'course')->where('rate', config('app.one_stars'))->count();
+        return $starRatings;
     }
 
     public function getProgressAttribute()

@@ -167,6 +167,8 @@ return [
 
     'one_stars' => 1,
 
+    'min_stars' => 0,
+
     'join' => 0,
 
     'check_review' => 0,
