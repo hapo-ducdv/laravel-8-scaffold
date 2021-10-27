@@ -6,7 +6,7 @@
     <div class="all-courses">
         <div class="container">
             <div class="search d-flex">
-                <form class="form-inline" method="GET" action="{{ route('courses') }}">
+                <form class="form-inline" method="GET" action="{{ route('courses.index') }}">
                     <a class="btn btn-filter" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapseFilter">
                         <i class="fas fa-sliders-h"></i>
                         <span>Filter</span>

@@ -8,7 +8,8 @@
             <div class="col-12 col-md-3">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">
-                        <form method="post" action="{{ route('update_profile') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
+                            @method('patch')
                             @csrf
                             <img src='{{ $user->avatar ? asset("/storage/users/$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
                             <i class="fas fa-camera text-center icon-upload-avatar" id="icon-upload-avatar"></i>
@@ -41,12 +42,12 @@
                     <hr class="horizontal-line">
                     <div class="d-flex courses">
                         @foreach($user->courses as $course)
-                            <a href="{{ route('course_detail', $course->id) }}" class="mt-0 text-center course">
+                            <a href="{{ route('courses.show', $course->id) }}" class="mt-0 text-center course">
                                 <img class="rounded-circle course-image" src='{{ asset("/storage/courses/$course->image") }}' alt="">
                                 <p class="course-name">{{ $course->name }}</p>
                             </a>
                         @endforeach
-                        <a href="{{ route('courses') }}" class="mt-0 text-center add-course">
+                        <a href="{{ route('courses.index') }}" class="mt-0 text-center add-course">
                             <i class="fas fa-plus add-course-icon"></i>
                             <p class="add-course-text">Add course</p>
                         </a>
@@ -56,7 +57,8 @@
                     <h5 class="title">Edit profile</h5>
                     <hr class="horizontal-line">
                     <hr class="horizontal-line">
-                    <form method="post" class="update-profile" action="{{ route('update_profile') }}">
+                    <form method="post" class="update-profile" action="{{ route('user.update', $user->id) }}">
+                        @method('patch')
                         @csrf
                         <div class="form-row update-profile-line">
                             <div class="form-group col-12 col-md-6 line-right">

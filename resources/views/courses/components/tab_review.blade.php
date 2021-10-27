@@ -95,7 +95,7 @@
         @auth
             @if($course->join)
                 <li class="list-group-item leave-review-align">
-                    <form method="POST" class="leave-review" action="{{ route('review_course') }}">
+                    <form method="POST" class="leave-review" action="{{ route('reviews.store') }}">
                         @csrf
                         <h5 class="leave-review-title">Leave a Review</h5>
                         <div class="form-group">
