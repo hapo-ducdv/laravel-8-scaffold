@@ -31,9 +31,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('courses.lessons', LessonController::class)->only(['show'])->middleware('check.joined.course');
 
-    Route::post('/lessons/{lesson}/programs/{program}/join', [ProgramController::class, 'join'])->name('programs.join')->middleware('check.joined.course');
+    Route::post('/programs/{program}/join', [ProgramController::class, 'join'])->name('programs.join');
 
     Route::resource('reviews', ReviewController::class)->only(['store']);
 
-    Route::resource('profile', UserController::class)->only(['show', 'update']);
+    Route::resource('user', UserController::class)->only(['show', 'update']);
 });

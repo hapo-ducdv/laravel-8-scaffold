@@ -11,8 +11,9 @@ class ProgramController extends Controller
 {
     public function join(Request $request)
     {
-        Program::find($request['programId'])->users()->sync(['user_id' => Auth::user()->id ?? null]);
-        $progress = Lesson::find($request['lessonId'])->progress;
+        $program = Program::find($request['programId']);
+        $program->users()->sync(['user_id' => Auth::user()->id ?? null]);
+        $progress = $program->lesson->progress;
 
         return response()->json([
             'progress' => $progress
