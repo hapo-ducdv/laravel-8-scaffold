@@ -95,7 +95,7 @@
         <p>What other students turned professionals have to say about us after learning with us and reaching their goals</p>
     </div>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div id="feedback-slide" class="carousel-inner feedback-slide">
+        <div id="feedbackSlide" class="carousel-inner feedback-slide">
             @foreach($reviews as $review)
                 <div class="carousel-item">
                     <div class="feedback-border">

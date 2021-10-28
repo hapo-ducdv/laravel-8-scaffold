@@ -1,15 +1,15 @@
 ﻿$(function () {
-  $('#navbar-toggler').click(function() {
-    if ($('#icon-navbar-toggler').hasClass('fa-bars')) {
-      $('#icon-navbar-toggler').removeClass('fa-bars').addClass('fa-times');
+  $('#navbarToggler').click(function() {
+    if ($('#iconNavbarToggler').hasClass('fa-bars')) {
+      $('#iconNavbarToggler').removeClass('fa-bars').addClass('fa-times');
       $('.cih').hide();
     } else {
-      $('#icon-navbar-toggler').removeClass('fa-times').addClass('fa-bars');
+      $('#iconNavbarToggler').removeClass('fa-times').addClass('fa-bars');
       $('.cih').show();
     }
   });
 
-  $('#feedback-slide').slick({
+  $('#feedbackSlide').slick({
     dots: true,
     infinite: false,
     speed: 300,
@@ -30,20 +30,20 @@
     ]
   });
 
-  $('#btn-close-msg').click(function() {
-    $('#messenger-show').slideUp();
+  $('#closeMsg').click(function() {
+    $('#messengerShow').slideUp();
   });
 
-  $('#logo-messenger').click(function() {
-    $('#messenger-show').slideDown();
+  $('.logo-messenger').click(function() {
+    $('#messengerShow').slideDown();
   });
 
-  if ($('.register-invalid').hasClass('is-invalid') || $('#modal-register').hasClass('show-modal-register')) {
+  if ($('.register-invalid').hasClass('is-invalid')) {
     $('#modalLoginRegister').modal('show');
-    $('#register-tab').tab('show');
+    $('#registerTab').tab('show');
   }
 
-  if ($('#modal-login').hasClass('show-modal-login')) {
+  if ($('#modalLogin').hasClass('show-modal-login')) {
     $('#modalLoginRegister').modal('show');
   }
 
@@ -55,25 +55,21 @@
     placeholder: "Teachers"
   });
 
-  $("#icon-upload-avatar").click(function () {
-    $("#input-upload-avatar").trigger('click');
+  $("#iconUploadAvatar").click(function () {
+    $(".input-upload-avatar").trigger('click');
   });
 
-  $("#profile-avatar").click(function () {
-    $("#input-upload-avatar").trigger('click');
+  $("#profileAvatar").click(function () {
+    $(".input-upload-avatar").trigger('click');
   });
 
   $('.message-sesson').delay(5000).fadeOut();
 
-  $("#btn-edit-profile").click(function () {
+  $("#editProfile").click(function () {
     $('.input-update-profile').prop('disabled', false);
-    $('#btn-update-profile').prop('hidden', false);
-    $('#btn-edit-profile').prop('hidden', true);
+    $('#updateProfile').prop('hidden', false);
+    $('#editProfile').prop('hidden', true);
   });
-
-  if ($('#pills-review-tab').hasClass('show-pills-tab')) {
-    $('#pills-tab .show-pills-tab').tab('show');
-  }
 
   $("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
     var scrollHeight = $(document).scrollTop();
@@ -86,28 +82,24 @@
 
   var hash = window.location.hash;
 
-  $('#pills-tab a[href="' + hash + '"]').tab('show');
+  $('#pillsTab a[href="' + hash + '"]').tab('show');
 
   $('.btn-preview').click(function() {
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-
     $.ajax({
       type: 'post',
       url: '/programs/join',
       data: {
         programId: $(this).data('program-id'),
       },
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
       dataType: 'json',
       success: function (response) {
-        $('#progress-bar').css('width', response.progress + '%');
-        $('#progress-number').html(response.progress + '%');
+        $('#progressBar').css('width', response.progress + '%');
+        $('#progressNumber').html(response.progress + '%');
       }
     })
-
     $(this).html('Previewed');
   });
 });

@@ -1,7 +1,7 @@
 <div class="container-fluid p-0 header">
     <nav class="navbar navbar-expand-md navbar-light p-0 header-menu">
-        <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i id="icon-navbar-toggler" class="fas fa-bars"></i>
+        <button id="navbarToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i id="iconNavbarToggler" class="fas fa-bars"></i>
         </button>
         <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('/assets/images/hapo_learn.png') }}" alt="hapo learn"></a>
         <div class="collapse navbar-collapse justify-content-end menu" id="navbarSupportedContent">

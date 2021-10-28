@@ -11,8 +11,8 @@
                         <form method="post" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
-                            <img src='{{ $user->avatar ? asset("/storage/users/$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
-                            <i class="fas fa-camera text-center icon-upload-avatar" id="icon-upload-avatar"></i>
+                            <img src='{{ $user->avatar ? asset("/storage/users/$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profileAvatar" class="rounded-circle profile-avatar" alt="Avatar">
+                            <i class="fas fa-camera text-center icon-upload-avatar" id="iconUploadAvatar"></i>
                             <input onchange="form.submit()" type="file" name="avatar" class="input-upload-avatar" id="input-upload-avatar">
                         </form>
                         <p class="profile-name">{{ $user->fullname }}</p>
@@ -90,8 +90,8 @@
                                 <textarea name="update_intro" class="form-control input-update-profile" rows="4" placeholder="About you..." disabled>{{ $user->intro }}</textarea>
                             </div>
                         </div>
-                        <div id="btn-edit-profile" class="btn float-right btn-update">Edit</div>
-                        <button hidden id="btn-update-profile" type="submit" class="btn float-right btn-update">Update</button>
+                        <div id="editProfile" class="btn float-right btn-update">Edit</div>
+                        <button hidden id="updateProfile" type="submit" class="btn float-right btn-update">Update</button>
                     </form>
                 </div>
             </div>
