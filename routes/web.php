@@ -40,8 +40,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class)->only(['show', 'update']);
 });
 
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login_google');
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::prefix('auth')->group(function () {
+    Route::get('/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
+    Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('login_facebook');
-Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+    Route::get('/facebook', [FacebookController::class, 'redirectToFacebook'])->name('login.facebook');
+    Route::get('/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+});

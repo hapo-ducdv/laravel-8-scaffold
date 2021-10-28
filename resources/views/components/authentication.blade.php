@@ -40,7 +40,7 @@
                                             <label class="custom-control-label form-control-label" for="customControlInline">Remember me</label>
                                         </div>
                                     </div>
-                                    <a href="#" class="w-50 text-right forgot-pwd"><u>Forgot password</u></a>
+                                    <a href="{{ route('password.request') }}" class="w-50 text-right forgot-pwd"><u>Forgot password</u></a>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn text-uppercase btn-cover btn-login">login</button>
@@ -51,10 +51,10 @@
                                     <div class="horizontal-line"><hr></div>
                                 </div>
                                 <div class="d-flex flex-column align-items-center login-account">
-                                    <a href="{{ route('login_google') }}" class="btn d-flex justify-content-center align-items-center login-account-google">
+                                    <a href="{{ route('login.google') }}" class="btn d-flex justify-content-center align-items-center login-account-google">
                                         <i class="fab fa-google-plus-g"></i> Google
                                     </a>
-                                    <a href="{{ route('login_facebook') }}" class="btn d-flex justify-content-center align-items-center login-account-facebook">
+                                    <a href="{{ route('login.facebook') }}" class="btn d-flex justify-content-center align-items-center login-account-facebook">
                                         <i class="fab fa-facebook-f"></i> Facebook
                                     </a>
                                 </div>
