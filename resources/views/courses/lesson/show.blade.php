@@ -7,7 +7,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.index') }}">All courses</a></li>
-            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.show', $course->id) }}">Course detail</a></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.show', $course) }}">Course detail</a></li>
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="">Lesson detail</a></li>
         </ol>
     </nav>
@@ -129,7 +129,7 @@
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-center">
-                            <form action="{{ route('courses.leave', $course->id) }}">
+                            <form action="{{ route('courses.leave', $course) }}">
                                 @csrf
                                 <input type="hidden" name="course_id" value="{{ $course->id }}"/>
                                 <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
@@ -144,10 +144,10 @@
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-1 pr-0">
-                                        <a class="detail-course-number" href="{{ route('courses.show', $course->id) }}">{{ $key + 1 }}.</a>
+                                        <a class="detail-course-number" href="{{ route('courses.show', $course) }}">{{ $key + 1 }}.</a>
                                     </div>
                                     <div class="col-11 pl-0">
-                                        <a class="detail-course-text" href="{{ route('courses.show', $course->id) }}">{{ $course->name }}</a>
+                                        <a class="detail-course-text" href="{{ route('courses.show', $course) }}">{{ $course->name }}</a>
                                     </div>
                                 </div>
                             </li>
