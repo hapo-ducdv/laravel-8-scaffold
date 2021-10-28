@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -65,5 +66,29 @@ class User extends Authenticatable
     public function reviews()
     {
         return $this->hasMany(Review::class, 'user_id');
+    }
+
+    public function getBirthdayFormatAttribute()
+    {
+        return Carbon::parse($this['birthday'])->format('d/m/Y');
+    }
+
+    public function updateAvatar($data, $user)
+    {
+        $data->file('avatar')->store('/public/users');
+        $path = $data->file('avatar')->hashName();
+
+        return $user->update(['avatar' => '/storage/users/' . $path]);
+    }
+
+    public function updateInfo($data, $user)
+    {
+        return $user->update([
+            'fullname' => $data['update_fullname'],
+            'birthday' => $data['update_birthday'],
+            'phone' => $data['update_phone'],
+            'address' => $data['update_address'],
+            'intro' => $data['update_intro']
+        ]);
     }
 }

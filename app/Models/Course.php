@@ -169,9 +169,9 @@ class Course extends Model
         return $query;
     }
 
-    public function scopeRandomCourses($query)
+    public function scopeRandomCourses($query, $number)
     {
-        $query->inRandomOrder()->limit(config('app.paginate_home_courses'));
+        $query->inRandomOrder()->limit($number);
     }
 
     public function scopeRatings($query, $ratings)
