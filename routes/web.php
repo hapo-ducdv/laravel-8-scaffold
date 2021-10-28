@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/courses/{course}/join', [CourseController::class, 'join'])->name('courses.join');
     Route::get('/courses/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
 
-    Route::resource('courses.lessons', LessonController::class)->only(['show']);
+    Route::resource('courses.lessons', LessonController::class)->only(['show'])->middleware('check.joined.course');
 
     Route::post('/programs/join', [ProgramController::class, 'join'])->name('programs.join');
 
