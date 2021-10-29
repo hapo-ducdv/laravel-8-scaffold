@@ -1,5 +1,11 @@
 require('./bootstrap');
-require('./index');
+require('./chatbox');
+require('./courses_index');
+require('./home');
+require('./login_register');
+require('./profile');
+require('./program');
+require('./review');
 
 import "slick-carousel/slick/slick.min.js";
 import "slick-carousel/slick/slick.js";
