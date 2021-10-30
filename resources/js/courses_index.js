@@ -1,9 +1,9 @@
 $(function () {
-  $('#tags').select2({
+  $('.select-tags').select2({
     placeholder: "Tags"
   });
 
-  $('#teacher').select2({
+  $('.select-teachers').select2({
     placeholder: "Teachers"
   });
 });

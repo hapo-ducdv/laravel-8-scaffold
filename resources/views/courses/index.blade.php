@@ -32,7 +32,7 @@
                                         Oldest
                                     </label>
                                 </div>
-                                <select name="teacher[]" multiple="multiple" id="teacher">
+                                <select name="teacher[]" multiple="multiple" class="select-teachers">
                                     @foreach($teachers as $teacher)
                                         @if(is_array(request('teacher')))
                                             @foreach(request('teacher') as $choose)
@@ -58,7 +58,7 @@
                                     <option value="asc" {{ request('number_lessons') == config('app.ascending') ? 'selected' : ''}}>Ascending</option>
                                     <option value="desc" {{ request('number_lessons') == config('app.descending') ? 'selected' : ''}}>Descending</option>
                                 </select>
-                                <select name="tags[]" multiple="multiple" id="tags">
+                                <select name="tags[]" multiple="multiple" class="select-tags">
                                     @foreach($tags as $tag)
                                         @if(is_array(request('tags')))
                                             @foreach(request('tags') as $choose)
