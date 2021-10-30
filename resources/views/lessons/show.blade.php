@@ -41,13 +41,13 @@
                         </li>
                     </ul>
                     <div class="tab-content lesson-detail-desc" id="pills-tabContent">
-                        @include('courses.lesson.components.tab_descriptions')
+                        @include('lessons.components.tab_descriptions')
 
-                        @include('courses.lesson.components.tab_teacher')
+                        @include('lessons.components.tab_teacher')
 
-                        @include('courses.lesson.components.tab_program')
+                        @include('lessons.components.tab_program')
 
-                        @include('courses.lesson.components.tab_review')
+                        @include('lessons.components.tab_review')
                     </div>
                 </div>
             </div>

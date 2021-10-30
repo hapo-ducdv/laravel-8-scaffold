@@ -5,9 +5,7 @@ $(function () {
       url: '/programs/join',
       data: {
         programId: $(this).data('program-id'),
-      },
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        _token: $('meta[name="csrf-token"]').attr('content')
       },
       dataType: 'json',
       success: function (response) {
