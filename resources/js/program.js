@@ -17,7 +17,7 @@ $(function () {
       '/programs/join',
       {programId: $(this).data('program-id')},
       'json'
-      );
+    );
 
     $.ajax({
       success: function (response) {
