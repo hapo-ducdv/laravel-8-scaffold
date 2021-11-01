@@ -1,17 +1,17 @@
-<div class="tab-pane fade show active" id="pills-lesson" role="tabpanel" aria-labelledby="pills-lesson-tab">
+<div class="tab-pane fade show active" id="pillsLesson" role="tabpanel" aria-labelledby="pillsLessonTab">
     <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <ul class="list-group list-group-flush list-lesson">
         <li class="list-group-item list-group-flush">
             <div class="row">
-                <form class="col-8 form-inline" action="{{ route('courses.show', $course->id) }}">
+                <form class="col-8 form-inline" action="{{ route('courses.show', $course) }}">
                     <input value="{{ request('keyword') }}" type="text" class="form-control input-search" name="keyword" placeholder="Search...">
                     <label for="keyword"><i class="fas fa-search"></i></label>
                     <button type="submit" class="btn btn-search">Search</button>
                 </form>
                 <div class="col-4 d-flex justify-content-end">
-                    <form action="{{ route('courses.join', $course->id) }}">
+                    <form action="{{ route('courses.join', $course) }}">
                         @if($course->join)
                             <div class="w-30 text-right btn btn-join-course">Joined</div>
                         @else
@@ -26,7 +26,7 @@
             <li class="list-group-item align-items-center">
                 <div class="row">
                     <div class="col-1">
-                        <a href="{{ route('courses.lessons.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="number-lesson">
+                        <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="number-lesson">
                             @if (empty(request('page')))
                                 {{ $key + 1 }}.
                             @else
@@ -35,14 +35,14 @@
                         </a>
                     </div>
                     <div class="col-9 p-0">
-                        <a href="{{ route('courses.lessons.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="name-lesson">{{ $lesson->name }}</a>
+                        <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="name-lesson">{{ $lesson->name }}</a>
                     </div>
                     <div class="col-2">
                         @if($course->join)
                             @if($lesson->join)
-                                <a href="{{ route('courses.lessons.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">{{ ($lesson->progress == config('app.process_max')) ? 'Learned': 'Learning...'}}</a>
+                                <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="float-right btn btn-learn">{{ ($lesson->progress == config('app.process_max')) ? 'Learned': 'Learning...'}}</a>
                             @else
-                                <a href="{{ route('courses.lessons.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}" class="float-right btn btn-learn">Learn</a>
+                                <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="float-right btn btn-learn">Learn</a>
                             @endif
                         @endif
                     </div>

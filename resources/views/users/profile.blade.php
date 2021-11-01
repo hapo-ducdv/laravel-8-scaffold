@@ -11,11 +11,7 @@
                         <form method="post" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
-                            @if(substr($user->avatar, 0, 5) == 'https')
-                                <img src='{{ $user->avatar }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
-                            @else
-                                <img src='{{ $user->avatar ? asset("/storage/users/$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
-                            @endif
+                            <img src='{{ $user->avatar ? asset("$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
                             <i class="fas fa-camera text-center icon-upload-avatar" id="icon-upload-avatar"></i>
                             <input onchange="form.submit()" type="file" name="avatar" class="input-upload-avatar" id="input-upload-avatar">
                         </form>
@@ -24,7 +20,7 @@
                     </li>
                     <li class="list-group-item birthday">
                         <i class="fas fa-birthday-cake profile-icon-birthday"></i>
-                        <span class="profile-birthday">{{ $user->birthday }}</span>
+                        <span class="profile-birthday">{{ $user->birthday_format }}</span>
                     </li>
                     <li class="list-group-item phone">
                         <i class="fas fa-phone-alt profile-icon-phone"></i>
@@ -46,7 +42,7 @@
                     <hr class="horizontal-line">
                     <div class="d-flex courses">
                         @foreach($user->courses as $course)
-                            <a href="{{ route('courses.show', $course->id) }}" class="mt-0 text-center course">
+                            <a href="{{ route('courses.show', $course) }}" class="mt-0 text-center course">
                                 <img class="rounded-circle course-image" src='{{ asset("/storage/courses/$course->image") }}' alt="">
                                 <p class="course-name">{{ $course->name }}</p>
                             </a>
@@ -94,8 +90,8 @@
                                 <textarea name="update_intro" class="form-control input-update-profile" rows="4" placeholder="About you..." disabled>{{ $user->intro }}</textarea>
                             </div>
                         </div>
-                        <div id="btn-edit-profile" class="btn float-right btn-update">Edit</div>
-                        <button hidden id="btn-update-profile" type="submit" class="btn float-right btn-update">Update</button>
+                        <div id="editProfile" class="btn float-right btn-update">Edit</div>
+                        <button hidden id="updateProfile" type="submit" class="btn float-right btn-update">Update</button>
                     </form>
                 </div>
             </div>
