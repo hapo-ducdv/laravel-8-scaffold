@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-end more">
-                <a href="{{ route('courses.show', $course->id) }}" class="btn">More</a>
+                <a href="{{ route('courses.show', $course) }}" class="btn">More</a>
             </div>
             <hr class="horizontal-line">
             <div class="row courses-info">

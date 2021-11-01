@@ -10,7 +10,8 @@ class ProgramController extends Controller
 {
     public function join(Request $request)
     {
-        $program = Program::find($request['programId']);
+        $program = Program::findOrFail($request['programId']);
+
         $program->users()->sync(['user_id' => Auth::user()->id ?? null]);
 
         return response()->json([

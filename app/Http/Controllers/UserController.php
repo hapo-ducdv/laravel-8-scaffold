@@ -4,39 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function show()
+    public function show(User $user)
     {
-        $user = User::find(Auth::user()->id);
-
-        return view('profile', compact('user'));
+        if ($user['id'] == Auth::user()->id) {
+            return view('profile', compact('user'));
+        } else {
+            return 'You do not have access to this page. Please check your account';
+        }
     }
 
-    public function update(UserRequest $request)
+    public function update(UserRequest $request, User $user)
     {
-        $user = User::find(Auth::user()->id);
-
         if ($request['avatar']) {
-            $avatar = time() . '.' . $request->file('avatar')->extension();
-            $request->file('avatar')->move(storage_path('app/public/users'), $avatar);
-            $user = $user->update(['avatar' => $avatar]);
-        } else {
-            $user = $user->update([
-                'fullname' => $request['update_fullname'],
-                'birthday' => $request['update_birthday'],
-                'phone' => $request['update_phone'],
-                'address' => $request['update_address'],
-                'intro' => $request['update_intro']
-            ]);
-        }
+            $user->updateAvatar($request, $user);
 
-        if ($user) {
             return back()->with('success', 'Successful update');
         } else {
-            return back()->with('error', 'Fail update');
+            $user->updateInfo($request, $user);
+
+            return back()->with('success', 'Successful update');
         }
     }
 }
