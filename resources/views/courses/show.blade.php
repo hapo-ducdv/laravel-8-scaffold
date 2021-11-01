@@ -140,7 +140,7 @@
 
                         @if($course->join)
                             <li class="list-group-item d-flex justify-content-center">
-                                <form action="{{ route('courses.leave', $course->id) }}">
+                                <form action="{{ route('courses.leave', $course) }}">
                                     @csrf
                                     <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
                                 </form>

@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index()
     {
         $courses = Course::suggestionCourses()->get();
-        $otherCourses = Course::randomCourses()->get();
+        $otherCourses = Course::randomCourses(config('app.paginate_home_courses'))->get();
         $reviews = Review::qualityReviews()->get();
         $totalCourse = Course::count();
         $totalLesson = Lesson::count();

@@ -11,8 +11,13 @@
                         <form method="post" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
+<<<<<<< HEAD:resources/views/users/profile.blade.php
                             <img src='{{ $user->avatar ? asset("/storage/users/$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profileAvatar" class="rounded-circle profile-avatar" alt="Avatar">
                             <i class="fas fa-camera text-center icon-upload-avatar" id="iconUploadAvatar"></i>
+=======
+                            <img src='{{ $user->avatar ? asset("$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
+                            <i class="fas fa-camera text-center icon-upload-avatar" id="icon-upload-avatar"></i>
+>>>>>>> f20b7bb1cad67ca41c72526ca200f3b8ddc84b4b:resources/views/profile.blade.php
                             <input onchange="form.submit()" type="file" name="avatar" class="input-upload-avatar" id="input-upload-avatar">
                         </form>
                         <p class="profile-name">{{ $user->fullname }}</p>
@@ -20,7 +25,7 @@
                     </li>
                     <li class="list-group-item birthday">
                         <i class="fas fa-birthday-cake profile-icon-birthday"></i>
-                        <span class="profile-birthday">{{ $user->birthday }}</span>
+                        <span class="profile-birthday">{{ $user->birthday_format }}</span>
                     </li>
                     <li class="list-group-item phone">
                         <i class="fas fa-phone-alt profile-icon-phone"></i>
@@ -42,7 +47,7 @@
                     <hr class="horizontal-line">
                     <div class="d-flex courses">
                         @foreach($user->courses as $course)
-                            <a href="{{ route('courses.show', $course->id) }}" class="mt-0 text-center course">
+                            <a href="{{ route('courses.show', $course) }}" class="mt-0 text-center course">
                                 <img class="rounded-circle course-image" src='{{ asset("/storage/courses/$course->image") }}' alt="">
                                 <p class="course-name">{{ $course->name }}</p>
                             </a>

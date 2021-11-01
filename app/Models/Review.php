@@ -44,7 +44,7 @@ class Review extends Model
         return $query->where('type', 'course')->where('rate', config('app.max_stars'))->limit(config('app.paginate_reviews'));
     }
 
-    public function scopeCheck($query, $id, $type)
+    public function scopeCheckExistence($query, $id, $type)
     {
         return $query->where('user_id', Auth::user()->id ?? null)->where('target_id', $id)->where('type', $type)->count();
     }
