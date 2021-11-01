@@ -4,6 +4,7 @@ require('./courses_index');
 require('./home');
 require('./login_register');
 require('./profile');
+require('./ajax_setup');
 require('./program');
 require('./review');
 
