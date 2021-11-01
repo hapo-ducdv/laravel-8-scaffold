@@ -22,7 +22,7 @@
                 @auth
                     <li class="dropdown nav-item {{ Route::is(['user*']) ? 'nav-item-active' : ''}}">
                         <a class="btn dropdown-toggle nav-link btn-dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->username }}
+                            {{ Auth::user()->username ?? Auth::user()->fullname }}
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

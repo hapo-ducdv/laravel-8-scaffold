@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-8">
                 <div class="d-flex align-items-center justify-content-center image-top">
-                    <img class="rounded-circle" src='{{ asset("/storage/courses/$course->image") }}' alt="">
+                    <img class="rounded-circle" src='{{ asset("$course->image") }}' alt="">
                 </div>
 
                 @auth

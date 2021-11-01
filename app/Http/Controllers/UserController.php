@@ -11,7 +11,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         if ($user['id'] == Auth::user()->id) {
-            return view('profile', compact('user'));
+            return view('users.profile', compact('user'));
         } else {
             return 'You do not have access to this page. Please check your account';
         }

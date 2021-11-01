@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-8">
                 <div class="d-flex align-items-center justify-content-center image-top">
-                    <img class="rounded-circle" src='{{ asset("/storage/courses/$course->image") }}' alt="Course image">
+                    <img class="rounded-circle" src='{{ asset("$course->image") }}' alt="Course image">
                 </div>
                 <div class="row progress-lesson">
                     <div class="col-2 p-0 text-center progress-title">Progress:</div>
