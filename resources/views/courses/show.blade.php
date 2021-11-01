@@ -32,15 +32,15 @@
                 @endauth
 
                 <div class="detail-course-right">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <ul class="nav nav-pills" id="pillsTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="pills-lesson-tab" data-toggle="pill" href="#pills-lesson" role="tab" aria-controls="pills-lesson" aria-selected="true">Lessons</a>
+                            <a class="nav-link active" id="pillsLessonTab" data-toggle="pill" href="#pillsLesson" role="tab" aria-controls="pillsLesson" aria-selected="true">Lessons</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-teacher-tab" data-toggle="pill" href="#pills-teacher" role="tab" aria-controls="pills-teacher" aria-selected="false">Teacher</a>
+                            <a class="nav-link" id="pillsTeacherTab" data-toggle="pill" href="#pillsTeacher" role="tab" aria-controls="pillsTeacher" aria-selected="false">Teacher</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-selected="false">Reviews</a>
+                            <a class="nav-link" id="pillsReviewTab" data-toggle="pill" href="#pillsReview" role="tab" aria-controls="pillsReview" aria-selected="false">Reviews</a>
                         </li>
                     </ul>
                     <div class="tab-content lessons" id="pills-tabContent">

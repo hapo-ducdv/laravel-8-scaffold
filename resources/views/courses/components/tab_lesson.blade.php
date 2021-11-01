@@ -1,4 +1,4 @@
-<div class="tab-pane fade show active" id="pills-lesson" role="tabpanel" aria-labelledby="pills-lesson-tab">
+<div class="tab-pane fade show active" id="pillsLesson" role="tabpanel" aria-labelledby="pillsLessonTab">
     <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
     </div>

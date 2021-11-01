@@ -90,8 +90,8 @@
                                 <textarea name="update_intro" class="form-control input-update-profile" rows="4" placeholder="About you..." disabled>{{ $user->intro }}</textarea>
                             </div>
                         </div>
-                        <div id="btn-edit-profile" class="btn float-right btn-update">Edit</div>
-                        <button hidden id="btn-update-profile" type="submit" class="btn float-right btn-update">Update</button>
+                        <div id="editProfile" class="btn float-right btn-update">Edit</div>
+                        <button hidden id="updateProfile" type="submit" class="btn float-right btn-update">Update</button>
                     </form>
                 </div>
             </div>

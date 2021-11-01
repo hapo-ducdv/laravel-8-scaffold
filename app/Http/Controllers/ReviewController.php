@@ -18,10 +18,9 @@ class ReviewController extends Controller
                 'content' => $request['content'],
                 'rate' => $request['rate'],
             ]);
-
-            return back()->with('success', 'Create a successful review')->withFragment('#pills-review');
+            return back()->with('success', 'Create a successful review')->withFragment('#pillsReview');
         } else {
-            return back()->with('error', 'You can only add 1 comment')->withFragment('#pills-review');
+            return back()->with('error', 'You can only add 1 comment')->withFragment('#pillsReview');
         }
     }
 }

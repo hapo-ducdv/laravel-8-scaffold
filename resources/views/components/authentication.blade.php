@@ -5,10 +5,10 @@
                 <div class="modal-title" id="modalLoginRegisterLabel">
                     <ul class="nav nav-tabs w-100">
                         <li class="nav-item w-50">
-                            <a class="text-uppercase d-flex justify-content-center align-items-center nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                            <a class="text-uppercase d-flex justify-content-center align-items-center nav-link active" id="loginTab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
                         </li>
                         <li class="nav-item w-50">
-                            <a class="text-uppercase d-flex justify-content-center align-items-center nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                            <a class="text-uppercase d-flex justify-content-center align-items-center nav-link" id="registerTab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
                         </li>
                     </ul>
                     <button type="button" class="tab-close rounded-circle" data-dismiss="modal">
@@ -22,7 +22,7 @@
                                 @csrf
 
                                 @if(session('error') == config('app.login_error') || session('success') == config('app.register_success') || session('error') == config('app.login_incorrect'))
-                                    <div hidden id="modal-login" class="show-modal-login"></div>
+                                    <div hidden id="modalLogin" class="show-modal-login"></div>
                                 @endif
 
                                 <div class="form-group">

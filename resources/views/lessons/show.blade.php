@@ -21,33 +21,33 @@
                 <div class="row progress-lesson">
                     <div class="col-2 p-0 text-center progress-title">Progress:</div>
                     <div class="col-9 progress p-0">
-                        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: {{ $lesson->progress }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div id="progressBar" class="progress-bar" role="progressbar" style="width: {{ $lesson->progress }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <div id="progress-number" class="col-1 p-0 text-center progress-number">{{ $lesson->progress }}%</div>
+                    <div id="progressNumber" class="col-1 p-0 text-center progress-number">{{ $lesson->progress }}%</div>
                 </div>
                 <div class="lesson-detail-left">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <ul class="nav nav-pills" id="pillsTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="pills-descriptions-tab" data-toggle="pill" href="#pills-descriptions" role="tab" aria-controls="pills-descriptions" aria-selected="true">Descriptions</a>
+                            <a class="nav-link active" id="pillsDescriptionsTab" data-toggle="pill" href="#pillsDescriptions" role="tab" aria-controls="pillsDescriptions" aria-selected="true">Descriptions</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-tearcher-tab" data-toggle="pill" href="#pills-tearcher" role="tab" aria-controls="pills-tearcher" aria-selected="false">Tearcher</a>
+                            <a class="nav-link" id="pillsTeacherTab" data-toggle="pill" href="#pillsTeacher" role="tab" aria-controls="pillsTeacher" aria-selected="false">Tearcher</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-program-tab" data-toggle="pill" href="#pills-program" role="tab" aria-controls="pills-program" aria-selected="false">Program</a>
+                            <a class="nav-link" id="pillsProgramTab" data-toggle="pill" href="#pillsProgram" role="tab" aria-controls="pillsProgram" aria-selected="false">Program</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-selected="false">Reviews</a>
+                            <a class="nav-link" id="pillsReviewTab" data-toggle="pill" href="#pillsReview" role="tab" aria-controls="pillsReview" aria-selected="false">Reviews</a>
                         </li>
                     </ul>
                     <div class="tab-content lesson-detail-desc" id="pills-tabContent">
-                        @include('courses.lesson.components.tab_descriptions')
+                        @include('lessons.components.tab_descriptions')
 
-                        @include('courses.lesson.components.tab_teacher')
+                        @include('lessons.components.tab_teacher')
 
-                        @include('courses.lesson.components.tab_program')
+                        @include('lessons.components.tab_program')
 
-                        @include('courses.lesson.components.tab_review')
+                        @include('lessons.components.tab_review')
                     </div>
                 </div>
             </div>
