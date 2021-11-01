@@ -26,7 +26,7 @@
                 <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-img-top d-flex align-items-center justify-content-center html-css-js">
-                            <img class="rounded-circle" src='{{ asset("/storage/courses/$course->image") }}' alt="{{ $course->name }}">
+                            <img class="rounded-circle" src='{{ asset("$course->image") }}' alt="{{ $course->name }}">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $course->name }}</h5>
@@ -45,7 +45,7 @@
                 <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-img-top d-flex align-items-center justify-content-center rails">
-                            <img class="rounded-circle" src='{{ asset("/storage/courses/$course->image") }}' alt="{{ $course->name }}">
+                            <img class="rounded-circle" src='{{ asset("$course->image") }}' alt="{{ $course->name }}">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $course->name }}</h5>
@@ -110,7 +110,7 @@
                             <img src='{{ asset("/assets/images/polygon.png") }}' alt="">
                         </div>
                         <div class="feedback-info d-flex">
-                            <img src="{{ asset('/storage/users/'. $review->users->avatar. '') }}" class="rounded-circle feedback-info-img" alt="Avatar">
+                            <img src="{{ asset(''. $review->users->avatar. '') }}" class="rounded-circle feedback-info-img" alt="Avatar">
                             <div class="card-body">
                                 <div class="feedback-info-title">{{ $review->users->fullname }}</div>
                                 <div class="feedback-info-subtitle">{{ $review->courses->name }}</div>
@@ -156,5 +156,4 @@
             </div>
         </div>
     </div>
-
 @endsection

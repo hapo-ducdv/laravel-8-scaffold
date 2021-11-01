@@ -6,7 +6,7 @@
     <h5 class="main-teacher">Main Teachers</h5>
     <div class="teacher">
         <div class="media">
-            <img src="{{ asset('/storage/teachers/' . $course->teachers->image . '') }}" class="mr-3 rounded-circle teacher-image" alt="Image of teacher">
+            <img src="{{ asset('' . $course->teachers->image . '') }}" class="mr-3 rounded-circle teacher-image" alt="Image of teacher">
             <div class="media-body teacher-intro">
                 <h5 class="mt-0 teacher-name">{{ $course->teachers->name }}</h5>
                 <p class="teacher-time">Starting from {{ $course->teachers->created_at->format('d/m/Y') }}</p>

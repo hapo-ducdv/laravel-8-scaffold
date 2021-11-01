@@ -43,7 +43,7 @@
                     <div class="d-flex courses">
                         @foreach($user->courses as $course)
                             <a href="{{ route('courses.show', $course) }}" class="mt-0 text-center course">
-                                <img class="rounded-circle course-image" src='{{ asset("/storage/courses/$course->image") }}' alt="">
+                                <img class="rounded-circle course-image" src='{{ asset("$course->image") }}' alt="">
                                 <p class="course-name">{{ $course->name }}</p>
                             </a>
                         @endforeach

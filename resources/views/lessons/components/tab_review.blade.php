@@ -42,7 +42,7 @@
         @foreach($reviews as $review)
             <li class="list-group-item">
                 <div class="media reviews-first">
-                    <img src="{{ asset('/storage/users/' . $review->users->avatar . '') }}" class="rounded-circle review-image" alt="">
+                    <img src="{{ asset('' . $review->users->avatar . '') }}" class="rounded-circle review-image" alt="">
                     <div class="media-body review-body">
                         <div class="d-flex align-item-center">
                             <h5 class="review-first-name">{{ $review->users->fullname }}</h5>
