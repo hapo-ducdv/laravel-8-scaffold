@@ -27,7 +27,7 @@ class CourseFactory extends Factory
             'price' => $this->faker->numberBetween(300000, 3000000),
             'time' => $this->faker->numberBetween(50, 300),
             'teacher_id' => $this->faker->numberBetween(1, 25),
-            'image' => $this->faker->image(storage_path('app/public/courses'), 500, 500, 'cats', false),
+            'image' => $this->faker->imageUrl(500, 500),
             'status' => $this->faker->randomElement([0, 1])
         ];
     }

@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'username' => $this->faker->unique()->userName(),
             'password' => Hash::make('123456'),
-            'avatar' => $this->faker->image(storage_path('app/public/users'), 500, 500, 'cats', false),
+            'avatar' => $this->faker->imageUrl(500, 500),
             'birthday' => $this->faker->date(),
             'address' => $this->faker->address(),
             'phone' => $this->faker->phoneNumber(),
