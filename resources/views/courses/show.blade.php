@@ -143,7 +143,6 @@
                                 <form method="post" action="{{ route('course-users.destroy', $course) }}">
                                     @method('DELETE')
                                     @csrf
-                                    <input type="hidden" name="course_id" value="{{ $course->id }}">
                                     <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
                                 </form>
                             </li>

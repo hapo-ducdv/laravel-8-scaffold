@@ -7,7 +7,6 @@ use App\Models\Review;
 use App\Models\Tag;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
