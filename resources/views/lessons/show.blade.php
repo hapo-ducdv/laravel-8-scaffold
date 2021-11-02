@@ -129,10 +129,9 @@
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-center">
-                            <form method="post" action="{{ route('courses.users.destroy', [$course, Auth::user()->id]) }}">
+                            <form method="post" action="{{ route('courses.users.destroy', [$course, Auth::user()]) }}">
                                 @method('DELETE')
                                 @csrf
-                                <input type="hidden" name="course_id" value="{{ $course->id }}">
                                 <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
                             </form>
                         </li>

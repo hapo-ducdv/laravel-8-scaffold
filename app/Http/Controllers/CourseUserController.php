@@ -21,12 +21,12 @@ class CourseUserController extends Controller
         }
     }
 
-    public function destroy(Request $request)
+    public function destroy($courseId, $userId)
     {
-        $course = Course::findOrFail($request['course_id']);
+        $course = Course::findOrFail($courseId);
 
         if ($course->isJoined) {
-            $course->users()->detach([Auth::user()->id ?? null]);
+            $course->users()->detach($userId);
 
             return redirect()->route('courses.show', $course)->with('success', 'Leave this course successfully');
         } else {
