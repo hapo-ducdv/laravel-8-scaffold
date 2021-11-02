@@ -29,7 +29,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('courses', CourseController::class)->only(['index', 'show']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('course-users', CourseUserController::class)->only(['store', 'destroy']);
+    Route::resource('courses.users', CourseUserController::class)->only(['store', 'destroy']);
 
     Route::resource('courses.lessons', LessonController::class)->only(['show'])->middleware('check.joined.course');
 
