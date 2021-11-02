@@ -17,11 +17,11 @@
             <div class="row courses-info">
                 <div class="col-4 col-md-4 d-flex flex-column align-items-center">
                     <div class="courses-info-title">Learners</div>
-                    <div class="courses-info-number">{{ $course->number_user }}</div>
+                    <div class="courses-info-number">{{ $course->total_user }}</div>
                 </div>
                 <div class="col-4 col-md-4 d-flex flex-column align-items-center">
                     <div class="courses-info-title">Lessons</div>
-                    <div class="courses-info-number">{{ $course->number_lesson }}</div>
+                    <div class="courses-info-number">{{ $course->total_lesson }}</div>
                 </div>
                 <div class="col-4 col-md-4 d-flex flex-column align-items-center">
                     <div class="courses-info-title">Times</div>

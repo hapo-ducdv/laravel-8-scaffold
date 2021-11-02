@@ -37,6 +37,11 @@ class Course extends Model
         return $this->lessons()->count();
     }
 
+    public function getTotalTimeAttribute()
+    {
+        return $this->lessons()->sum('time');
+    }
+
     public function teachers()
     {
         return $this->hasOne(Teacher::class, 'id', 'teacher_id');
@@ -52,7 +57,12 @@ class Course extends Model
         return $this->belongsToMany(User::class, 'course_users');
     }
 
-    public function getJoinedAttribute()
+    public function getTotalUserAttribute()
+    {
+        return $this->users()->where('role', User::ROLE_USER)->count();
+    }
+
+    public function getIsJoinedAttribute()
     {
         return $this->users->contains(Auth::user()->id ?? null);
     }

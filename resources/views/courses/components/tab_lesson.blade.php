@@ -14,7 +14,7 @@
                     <form method="post" action="{{ route('course-users.store') }}">
                         @csrf
                         <input type="hidden" name="course_id" value="{{ $course->id }}">
-                        @if($course->joined)
+                        @if($course->is_joined)
                             <button type="submit" class="w-30 btn btn-join-course">Joined</button>
                         @else
                             <button type="submit" class="w-30 btn btn-join-course">Join in the course</button>
@@ -40,8 +40,8 @@
                         <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="name-lesson">{{ $lesson->name }}</a>
                     </div>
                     <div class="col-2">
-                        @if($course->joined)
-                            @if($lesson->joined)
+                        @if($course->is_joined)
+                            @if($lesson->is_joined)
                                 <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="float-right btn btn-learn">{{ ($lesson->progress == config('app.process_max')) ? 'Learned': 'Learning...'}}</a>
                             @else
                                 <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="float-right btn btn-learn">Learn</a>

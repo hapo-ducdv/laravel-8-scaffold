@@ -19,7 +19,7 @@
                 </div>
 
                 @auth
-                    @if($course->joined)
+                    @if($course->is_joined)
                         <div class="row progress-course">
                             <div class="col-2 p-0 text-center progress-title">Progress:</div>
                             <div class="col-9 progress p-0">
@@ -138,7 +138,7 @@
                             </div>
                         </li>
 
-                        @if($course->joined)
+                        @if($course->is_joined)
                             <li class="list-group-item d-flex justify-content-center">
                                 <form method="post" action="{{ route('course-users.destroy', $course) }}">
                                     @method('DELETE')

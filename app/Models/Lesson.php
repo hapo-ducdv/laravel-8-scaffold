@@ -31,7 +31,7 @@ class Lesson extends Model
         return $this->belongsToMany(User::class, 'lesson_users');
     }
 
-    public function getJoinedAttribute()
+    public function getIsJoinedAttribute()
     {
         return $this->users->contains(Auth::user()->id ?? null);
     }

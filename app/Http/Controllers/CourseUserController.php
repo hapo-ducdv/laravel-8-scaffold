@@ -12,7 +12,7 @@ class CourseUserController extends Controller
     {
         $course = Course::findOrFail($request['course_id']);
 
-        if (!$course->joined) {
+        if (!$course->isJoined) {
             $course->users()->sync([Auth::user()->id ?? null]);
 
             return back()->with('success', 'Join the successful course');
@@ -23,7 +23,7 @@ class CourseUserController extends Controller
 
     public function destroy(Course $courseUser)
     {
-        if ($courseUser->joined) {
+        if ($courseUser->isJoined) {
             $courseUser->users()->detach([Auth::user()->id ?? null]);
 
             return redirect()->route('courses.show', $courseUser)->with('success', 'Leave this course successfully');
