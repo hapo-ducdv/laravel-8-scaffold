@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 
 class CourseUserController extends Controller
 {
-    public function store(Request $request)
+    public function store(Course $course)
     {
-        $course = Course::findOrFail($request['course_id']);
-
         if (!$course->isJoined) {
             $course->users()->sync([Auth::user()->id ?? null]);
 
@@ -21,12 +21,12 @@ class CourseUserController extends Controller
         }
     }
 
-    public function destroy(Course $courseUser)
+    public function destroy(Course $course)
     {
-        if ($courseUser->isJoined) {
-            $courseUser->users()->detach([Auth::user()->id ?? null]);
+        if ($course->isJoined) {
+            $course->users()->detach([Auth::user()->id ?? null]);
 
-            return redirect()->route('courses.show', $courseUser)->with('success', 'Leave this course successfully');
+            return redirect()->route('courses.show', $course)->with('success', 'Leave this course successfully');
         } else {
             return back()->with('error', 'You have not taken this course');
         }

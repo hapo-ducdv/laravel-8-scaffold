@@ -140,7 +140,7 @@
 
                         @if($course->is_joined)
                             <li class="list-group-item d-flex justify-content-center">
-                                <form method="post" action="{{ route('course-users.destroy', $course) }}">
+                                <form method="post" action="{{ route('courses.users.destroy', [$course, Auth::user()->id ?? null]) }}">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
