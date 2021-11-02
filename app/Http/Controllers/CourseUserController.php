@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CourseUser;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 
 class CourseUserController extends Controller
 {
-    public function store(Course $course)
+    public function store(Request $request)
     {
+        $course = Course::findOrFail($request['course_id']);
+
         if (!$course->isJoined) {
             $course->users()->sync([Auth::user()->id ?? null]);
 
@@ -21,8 +21,10 @@ class CourseUserController extends Controller
         }
     }
 
-    public function destroy(Course $course)
+    public function destroy(Request $request)
     {
+        $course = Course::findOrFail($request['course_id']);
+
         if ($course->isJoined) {
             $course->users()->detach([Auth::user()->id ?? null]);
 

@@ -11,7 +11,7 @@
                     <button type="submit" class="btn btn-search">Search</button>
                 </form>
                 <div class="col-4 d-flex justify-content-end">
-                    <form method="post" action="{{ route('courses.users.store', $course) }}">
+                    <form method="post" action="{{ route('course-users.store') }}">
                         @csrf
                         <input type="hidden" name="course_id" value="{{ $course->id }}">
                         @if($course->is_joined)
