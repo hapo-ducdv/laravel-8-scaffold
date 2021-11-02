@@ -39,7 +39,7 @@ class Program extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function getJoinAttribute()
+    public function getJoinedAttribute()
     {
         return $this->users->contains(Auth::user()->id ?? null);
     }

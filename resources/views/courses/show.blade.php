@@ -19,7 +19,7 @@
                 </div>
 
                 @auth
-                    @if($course->join)
+                    @if($course->joined)
                         <div class="row progress-course">
                             <div class="col-2 p-0 text-center progress-title">Progress:</div>
                             <div class="col-9 progress p-0">
@@ -138,10 +138,12 @@
                             </div>
                         </li>
 
-                        @if($course->join)
+                        @if($course->joined)
                             <li class="list-group-item d-flex justify-content-center">
-                                <form action="{{ route('courses.leave', $course) }}">
+                                <form method="post" action="{{ route('course-users.destroy', $course) }}">
+                                    @method('DELETE')
                                     @csrf
+                                    <input type="hidden" name="course_id" value="{{ $course->id }}">
                                     <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
                                 </form>
                             </li>
@@ -151,7 +153,7 @@
                 <div class="other-course">
                     <h5 class="text-center title">Other Courses</h5>
                     <ul class="list-group list-group-flush">
-                        @foreach($courses as $key => $course)
+                        @foreach($randomCourses as $key => $course)
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-1 pr-0">

@@ -26,7 +26,7 @@
                         <p class="program-name">{{ $program->name }}</p>
                     </div>
                     <div class="col-2">
-                        @if($program->join)
+                        @if($program->joined)
                             <a href="{{ $program->path }}" class="btn btn-preview" data-program="{{ $program->id }}" target="_blank">Previewed</a>
                         @else
                             <a href="{{ $program->path }}" class="btn btn-preview" data-program-id="{{ $program->id }}" target="_blank">Preview</a>

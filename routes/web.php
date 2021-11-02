@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -28,8 +29,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('courses', CourseController::class)->only(['index', 'show']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/courses/{course}/join', [CourseController::class, 'join'])->name('courses.join');
-    Route::get('/courses/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
+    Route::resource('course-users', CourseUserController::class)->only(['store', 'destroy']);
 
     Route::resource('courses.lessons', LessonController::class)->only(['show'])->middleware('check.joined.course');
 

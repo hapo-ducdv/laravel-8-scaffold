@@ -27,24 +27,14 @@ class Course extends Model
         'image',
     ];
 
-    public function getNumberCourseAttribute()
-    {
-        return $this->count();
-    }
-
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
     }
 
-    public function getNumberLessonAttribute()
+    public function getTotalLessonAttribute()
     {
         return $this->lessons()->count();
-    }
-
-    public function getTotalTimeAttribute()
-    {
-        return $this->lessons()->sum('time');
     }
 
     public function teachers()
@@ -62,12 +52,7 @@ class Course extends Model
         return $this->belongsToMany(User::class, 'course_users');
     }
 
-    public function getNumberUserAttribute()
-    {
-        return $this->users()->count();
-    }
-
-    public function getJoinAttribute()
+    public function getJoinedAttribute()
     {
         return $this->users->contains(Auth::user()->id ?? null);
     }
@@ -87,37 +72,48 @@ class Course extends Model
         return round($this->reviews()->where('type', Review::TYPE_COURSE)->avg('rate'));
     }
 
+    public function getRatingsAttribute()
+    {
+        return $this->reviews()->where('type', Review::TYPE_COURSE)->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
+    }
+
     public function getStarRatingAttribute()
     {
         $starRatings = [0, 0, 0, 0, 0];
-
-        $ratings = $this->reviews()->where('type', Review::TYPE_COURSE)->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
-
-        foreach ($ratings as $rating) {
+        foreach ($this->ratings as $rating) {
             $starRatings[$rating->rate - config('app.one_stars')] = $rating->total;
         }
 
         return $starRatings;
     }
 
-    public function getProgressAttribute()
+    public function getTotalProgramAttribute()
     {
-        $numberProgram = config('app.process_min');
-        $numberProgramJoined = config('app.process_min');
-
-        $numberLesson = $this->lessons()->count();
-
+        $totalProgram = config('app.process_min');
         foreach ($this->lessons as $lesson) {
-            $takeNumberProgramJoined = Program::numberJoinedProcess($lesson->id);
-            $takeNumberProgram = $lesson->programs()->count();
-            $numberProgram += $takeNumberProgram;
-            $numberProgramJoined += $takeNumberProgramJoined;
+            $totalProgram += $lesson->programs()->count();
+        }
+        return $totalProgram;
+    }
+
+    public function getTotalProgramJoinedAttribute()
+    {
+        $totalProgramJoined = config('app.process_min');
+        foreach ($this->lessons as $lesson) {
+            $totalProgramJoined += Program::numberJoinedProcess($lesson->id);
         }
 
-        $sumLessonProgram = ($numberLesson * $numberProgram) == 0 ? config('app.process_auto') : ($numberLesson * $numberProgram);
-        $progress = round(($numberLesson * $numberProgramJoined) / $sumLessonProgram * config('app.process_max'), config('app.process_auto'));
+        return $totalProgramJoined;
+    }
 
-        return $progress == config('app.process_min') ? config('app.process_min') : $progress;
+    public function getTotalLessonProgramAttribute()
+    {
+        return ($this->totalLesson * $this->totalProgram) == 0 ? config('app.process_auto') : ($this->totalLesson * $this->totalProgram);
+    }
+
+    public function getProgressAttribute()
+    {
+        return round(($this->totalLesson * $this->totalProgramJoined) / $this->totalLessonProgram * config('app.process_max'), config('app.process_auto'));
     }
 
     public function scopeSearch($query, $data)

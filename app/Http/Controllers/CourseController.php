@@ -25,23 +25,9 @@ class CourseController extends Controller
     public function show(Request $request, Course $course)
     {
         $lessons = $course->lessons()->where('name', 'LIKE', '%' . $request['keyword'] . '%')->paginate(config('app.paginate_courses_tab_lessons'));
-        $courses = Course::randomCourses(config('app.paginate_other_courses'))->get();
+        $randomCourses = Course::randomCourses(config('app.paginate_other_courses'))->get();
         $reviews = $course->reviews()->where('type', Review::TYPE_COURSE)->paginate(config('app.paginate_reviews'));
 
-        return view('courses.show', compact('course', 'courses', 'lessons', 'reviews'));
-    }
-
-    public function join(Course $course)
-    {
-        $course->users()->sync([Auth::user()->id ?? null]);
-
-        return back()->with('success', 'Join the successful course');
-    }
-
-    public function leave(Course $course)
-    {
-        $course->users()->detach([Auth::user()->id ?? null]);
-
-        return redirect()->route('courses.show', $course)->with('success', 'Leave this course successfully');
+        return view('courses.show', compact('course', 'randomCourses', 'lessons', 'reviews'));
     }
 }
