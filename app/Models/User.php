@@ -72,7 +72,9 @@ class User extends Authenticatable
 
     public function getBirthdayFormatAttribute()
     {
-        return Carbon::parse($this['birthday'])->format('d/m/Y');
+        if ($this->birthday) {
+            return Carbon::parse($this->birthday)->format('d/m/Y');
+        }
     }
 
     public function updateAvatar($data, $user)

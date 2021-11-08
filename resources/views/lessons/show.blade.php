@@ -8,7 +8,7 @@
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.index') }}">All courses</a></li>
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.show', $course) }}">Course detail</a></li>
-            <li class="breadcrumb-item"><a class="breadcrumb-link" href="">Lesson detail</a></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.lessons.show', [$course, $lesson]) }}">Lesson detail</a></li>
         </ol>
     </nav>
 
@@ -78,7 +78,7 @@
                                     <div class="detail-course-char">:</div>
                                 </div>
                                 <div class="col-6 pl-0">
-                                    <div class="detail-course-number">{{ $course->number_user }}</div>
+                                    <div class="detail-course-number">{{ $course->total_user }}</div>
                                 </div>
                             </div>
                         </li>
