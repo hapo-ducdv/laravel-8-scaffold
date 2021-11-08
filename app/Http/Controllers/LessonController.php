@@ -12,11 +12,11 @@ class LessonController extends Controller
     public function show(Course $course, $lesson)
     {
         $lesson = Lesson::find($lesson);
-        $courses = Course::randomCourses(config('app.paginate_other_courses'))->get();
+        $randomCourses = Course::randomCourses(config('app.paginate_other_courses'))->get();
         $reviews = $lesson->reviews()->where('type', Review::TYPE_LESSON)->paginate(config('app.paginate_reviews'));
 
         $lesson->users()->sync([Auth::user()->id ?? null]);
 
-        return view('lessons.show', compact('course', 'courses', 'lesson', 'reviews'));
+        return view('lessons.show', compact('course', 'randomCourses', 'lesson', 'reviews'));
     }
 }

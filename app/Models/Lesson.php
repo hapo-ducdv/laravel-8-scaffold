@@ -31,7 +31,7 @@ class Lesson extends Model
         return $this->belongsToMany(User::class, 'lesson_users');
     }
 
-    public function getJoinAttribute()
+    public function getIsJoinedAttribute()
     {
         return $this->users->contains(Auth::user()->id ?? null);
     }
@@ -61,26 +61,33 @@ class Lesson extends Model
         return round($this->reviews()->where('type', Review::TYPE_LESSON)->avg('rate'));
     }
 
+    public function getRatingsAttribute()
+    {
+        return $this->reviews()->where('type', Review::TYPE_LESSON)->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
+    }
+
     public function getStarRatingAttribute()
     {
         $starRatings = [0, 0, 0, 0, 0];
-
-        $ratings = $this->reviews()->where('type', Review::TYPE_LESSON)->selectRaw('count(*) as total, rate')->groupBy('rate')->get();
-
-        foreach ($ratings as $rating) {
+        foreach ($this->ratings as $rating) {
             $starRatings[$rating->rate - config('app.one_stars')] = $rating->total;
         }
 
         return $starRatings;
     }
+    public function getTotalJoinedAttribute()
+    {
+        return Program::numberJoinedProcess($this->id);
+    }
+
+    public function getTotalProgramAttribute()
+    {
+        return $this->programs()->count() == config('app.process_min') ? config('app.process_auto') : $this->programs()->count();
+    }
 
     public function getProgressAttribute()
     {
-        $numberJoined = Program::numberJoinedProcess($this->id);
-        $numberProgram = $this->programs()->count() == config('app.process_min') ? config('app.process_auto') : $this->programs()->count();
-        $progress = round($numberJoined / $numberProgram * config('app.process_max'), config('app.process_auto'));
-
-        return $progress == config('app.process_min') ? config('app.process_min') : $progress;
+        return round($this->totalJoined / $this->totalProgram * config('app.process_max'), config('app.process_auto'));
     }
 
     public function scopeNumberJoinedProcess($query, $courseId)

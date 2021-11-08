@@ -8,7 +8,7 @@
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.index') }}">All courses</a></li>
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.show', $course) }}">Course detail</a></li>
-            <li class="breadcrumb-item"><a class="breadcrumb-link" href="">Lesson detail</a></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.lessons.show', [$course, $lesson]) }}">Lesson detail</a></li>
         </ol>
     </nav>
 
@@ -78,7 +78,7 @@
                                     <div class="detail-course-char">:</div>
                                 </div>
                                 <div class="col-6 pl-0">
-                                    <div class="detail-course-number">{{ $course->number_user }}</div>
+                                    <div class="detail-course-number">{{ $course->total_user }}</div>
                                 </div>
                             </div>
                         </li>
@@ -129,9 +129,9 @@
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-center">
-                            <form action="{{ route('courses.leave', $course) }}">
+                            <form method="post" action="{{ route('courses.users.destroy', [$course, Auth::user()]) }}">
+                                @method('DELETE')
                                 @csrf
-                                <input type="hidden" name="course_id" value="{{ $course->id }}"/>
                                 <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
                             </form>
                         </li>
@@ -140,7 +140,7 @@
                 <div class="detail-other-course">
                     <h5 class="text-center title">Other Courses</h5>
                     <ul class="list-group list-group-flush">
-                        @foreach($courses as $key => $course)
+                        @foreach($randomCourses as $key => $course)
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-1 pr-0">

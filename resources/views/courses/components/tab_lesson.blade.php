@@ -11,9 +11,11 @@
                     <button type="submit" class="btn btn-search">Search</button>
                 </form>
                 <div class="col-4 d-flex justify-content-end">
-                    <form action="{{ route('courses.join', $course) }}">
-                        @if($course->join)
-                            <div class="w-30 text-right btn btn-join-course">Joined</div>
+                    <form method="post" action="{{ route('courses.users.store', $course) }}">
+                        @csrf
+                        <input type="hidden" name="course_id" value="{{ $course->id }}">
+                        @if($course->is_joined)
+                            <button type="submit" class="w-30 btn btn-join-course">Joined</button>
                         @else
                             <button type="submit" class="w-30 btn btn-join-course">Join in the course</button>
                         @endif
@@ -38,8 +40,8 @@
                         <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="name-lesson">{{ $lesson->name }}</a>
                     </div>
                     <div class="col-2">
-                        @if($course->join)
-                            @if($lesson->join)
+                        @if($course->is_joined)
+                            @if($lesson->is_joined)
                                 <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="float-right btn btn-learn">{{ ($lesson->progress == config('app.process_max')) ? 'Learned': 'Learning...'}}</a>
                             @else
                                 <a href="{{ route('courses.lessons.show', [$course, $lesson]) }}" class="float-right btn btn-learn">Learn</a>

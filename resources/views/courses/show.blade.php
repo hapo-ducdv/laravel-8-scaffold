@@ -7,7 +7,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.index') }}">All courses</a></li>
-            <li class="breadcrumb-item"><a class="breadcrumb-link" href="">Course detail</a></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('courses.show', $course) }}">Course detail</a></li>
         </ol>
     </nav>
 
@@ -19,7 +19,7 @@
                 </div>
 
                 @auth
-                    @if($course->join)
+                    @if($course->is_joined)
                         <div class="row progress-course">
                             <div class="col-2 p-0 text-center progress-title">Progress:</div>
                             <div class="col-9 progress p-0">
@@ -73,7 +73,7 @@
                                     <div class="detail-course-char">:</div>
                                 </div>
                                 <div class="col-6 pl-0">
-                                    <div class="detail-course-number">{{ $course->number_user }}</div>
+                                    <div class="detail-course-number">{{ $course->total_user }}</div>
                                 </div>
                             </div>
                         </li>
@@ -87,7 +87,7 @@
                                     <div class="detail-course-char">:</div>
                                 </div>
                                 <div class="col-6 pl-0">
-                                    <div class="detail-course-number">{{ $course->number_lesson }} lesson</div>
+                                    <div class="detail-course-number">{{ $course->total_lesson }} lesson</div>
                                 </div>
                             </div>
                         </li>
@@ -138,9 +138,10 @@
                             </div>
                         </li>
 
-                        @if($course->join)
+                        @if($course->is_joined)
                             <li class="list-group-item d-flex justify-content-center">
-                                <form action="{{ route('courses.leave', $course) }}">
+                                <form method="post" action="{{ route('courses.users.destroy', [$course, Auth::user()]) }}">
+                                    @method('DELETE')
                                     @csrf
                                     <button type="submit" class="w-30 btn btn-leave-course">Leave this course</button>
                                 </form>
@@ -151,7 +152,7 @@
                 <div class="other-course">
                     <h5 class="text-center title">Other Courses</h5>
                     <ul class="list-group list-group-flush">
-                        @foreach($courses as $key => $course)
+                        @foreach($randomCourses as $key => $course)
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-1 pr-0">

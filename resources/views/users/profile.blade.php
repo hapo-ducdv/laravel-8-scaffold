@@ -8,12 +8,12 @@
             <div class="col-12 col-md-3">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">
-                        <form method="post" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('user.update', $user) }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
-                            <img src='{{ $user->avatar ? asset("$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profile-avatar" class="rounded-circle profile-avatar" alt="Avatar">
-                            <i class="fas fa-camera text-center icon-upload-avatar" id="icon-upload-avatar"></i>
-                            <input onchange="form.submit()" type="file" name="avatar" class="input-upload-avatar" id="input-upload-avatar">
+                            <img src='{{ $user->avatar ? asset("$user->avatar") : asset("/assets/images/users/user_person.jpg") }}' id="profileAvatar" class="rounded-circle profile-avatar" alt="Avatar">
+                            <i class="fas fa-camera text-center icon-upload-avatar" id="iconUploadAvatar"></i>
+                            <input onchange="form.submit()" type="file" name="avatar" class="input-upload-avatar" id="inputUploadAvatar">
                         </form>
                         <p class="profile-name">{{ $user->fullname }}</p>
                         <p class="profile-email">{{ $user->email }}</p>
@@ -57,7 +57,7 @@
                     <h5 class="title">Edit profile</h5>
                     <hr class="horizontal-line">
                     <hr class="horizontal-line">
-                    <form method="post" class="update-profile" action="{{ route('user.update', $user->id) }}">
+                    <form method="post" class="update-profile" action="{{ route('user.update', $user) }}">
                         @method('patch')
                         @csrf
                         <div class="form-row update-profile-line">
